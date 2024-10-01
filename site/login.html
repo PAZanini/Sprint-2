@@ -12,8 +12,8 @@
     
     <main id="main_container">
         <div id="left_login">
-            <h1>Faça o seu login e<br>comece a inovação<br>da  sua empresa</h1>
-            <img id="img_water_drop" src="../site/imagens/water-drop-animate.svg" alt="">
+            <h1>Faça o seu login e inove <br> a sua empresa com  <br> a Water Works!</h1>
+            <img id="img_water_drop" src="../site/imagens/coffee-farm-animate.svg" alt="">
         </div>
             
         </div>
@@ -73,11 +73,13 @@
     const container = main_container
     const botao = btn_login
     const text_filde = div_input
+    const esq_senha = esqueceu_senha
 
     if(mode.classList.contains('fa-moon')) {
         mode.classList.remove('fa-moon');
         mode.classList.add('fa-sun');
 
+        esq_senha.classList.add('dark')
         text_filde.classList.add('dark')
         botao.classList.add('dark');
         container.classList.add('dark');
@@ -88,6 +90,7 @@
     mode.classList.remove('fa-sun');
     mode.classList.add('fa-moon');
 
+    esq_senha.classList.remove('dark')
     text_filde.classList.remove('dark')
     botao.classList.remove('dark')
     container.classList.remove('dark');
