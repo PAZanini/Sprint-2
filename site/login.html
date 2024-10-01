@@ -26,9 +26,9 @@
 
             <div id="div_input">
                 <div class="input-box">
-                    <span>Usuario:</span><br>
+                    <span id="input_text">Usuario:</span><br>
                     <input type="text" placeholder="Cleber" id="inp_user"> <br>
-                    <span>Senha:</span><br>
+                    <span id="input_text">Senha:</span><br>
                     <input type="password" placeholder="********" id="inp_senha"><br>
                 </div>
             </div>
@@ -43,7 +43,7 @@
 
             <div id="outras_opcoes">
                 <a href="#">
-                    <img src="../site/imagens/icone_face.webp" alt="face.png">
+                    <img src="../site/imagens/icone_Face.png" alt="face.png">
                 </a> 
                 <a href="#">
                     <img src="../site/imagens/icone_google.png" alt="google.png">
@@ -71,10 +71,15 @@
     mode.addEventListener('click', () => {
     const form = document.getElementById('login_form');
     const container = main_container
+    const botao = btn_login
+    const text_filde = div_input
+
     if(mode.classList.contains('fa-moon')) {
         mode.classList.remove('fa-moon');
         mode.classList.add('fa-sun');
 
+        text_filde.classList.add('dark')
+        botao.classList.add('dark');
         container.classList.add('dark');
         form.classList.add('dark');
         return ;
@@ -83,6 +88,8 @@
     mode.classList.remove('fa-sun');
     mode.classList.add('fa-moon');
 
+    text_filde.classList.remove('dark')
+    botao.classList.remove('dark')
     container.classList.remove('dark');
     form.classList.remove('dark');
 });

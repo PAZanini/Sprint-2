@@ -6,8 +6,8 @@
     --color-texto-100: #C3C3C3;
     --color-texto-50: #F0F6F5;
 
-    --color-bg-slide-900: #000A09;
-    --color-bg-slide-800: #000F0E;
+    --color-bg-slide-900: #000F0E;
+    --color-bg-slide-800: #012220;
     --color-bg-slide-100: #c7d6cd;
     --color-bg-slide-50: #e4e0e0;
 
@@ -133,13 +133,13 @@
    
 }
 
-.input-box span 
+#div_input span
 { 
     font-size: 20px;
     color: #000F0E;
 }
 
-.input-box input 
+#div_input input 
 {
     border-radius: 5px;
     border-style: hidden;
@@ -174,34 +174,34 @@
 
 
 
+.dark#div_input input 
+{
+    background-color: #012320;
+}
+
+
+.dark#btn_login 
+{
+    color: var(--color-texto-900);
+}
+
 .dark#main_container
 {
     background: var(--gradient-bg-dark);
-    animation: light-to-dark-bg 0.3s ease-in-out;
+    /* animation: light-to-dark-bg 0.3s ease-in-out; */
 }
 
 .dark#login_form 
 {
     color: var(--color-texto-50);
     background: var(--gradient-bg-slide-dark);
-    animation: light-to-dark-bg-slide 0.3s ease-in-out;
+    /* animation: light-to-dark-bg-slide 0.3s ease-in-out; */
 }
 
-.dark.input-box span 
+.dark#div_input span
 {
-    color: #ffffff
+    color: var(--color-texto-50)
 }
-
-.dark#btn_login 
-{
-    color: #000F0E;
-}
-
-
-
-
-
-
 
 
 
@@ -229,29 +229,5 @@
     100% 
     {
         background: var(--gradient-bg-slide-light);
-    }
-}
-
-@keyframes light-to-dark-bg
-{
-    0%
-    {
-        background: var(--gradient-bg-light);
-    }
-    100%
-    {
-        background: var(--gradient-bg-dark);
-    }
-}
-
-@keyframes dark-to-light-bg 
-{
-    0%
-    {
-        background: var(--gradient-bg-dark);
-    }
-    100% 
-    {
-        background: var(--gradient-bg-light);
     }
 }
