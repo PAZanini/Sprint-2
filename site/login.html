@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua</title>
+    
+    <link rel="stylesheet" href="../site/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    
+    <main id="main_container">
+        <div id="left_login">
+            <h1>Faça o seu login e<br>comece a inovação<br>da  sua empresa</h1>
+            <img id="img_water_drop" src="../site/imagens/water-drop-animate.svg" alt="">
+        </div>
+            
+        </div>
+       <div id="login_right">
+        <form id="login_form">
+            <div id="header">
+                <h1>LOGIN</h1>
+                <i id="icon_modo" class="fa-solid fa-moon"></i>
+            </div>
+
+            <div id="div_input">
+                <div class="input-box">
+                    <span>Usuario:</span><br>
+                    <input type="text" placeholder="Cleber" id="inp_user"> <br>
+                    <span>Senha:</span><br>
+                    <input type="password" placeholder="********" id="inp_senha"><br>
+                </div>
+            </div>
+
+            <button type="submit" id="btn_login">Entrar</button>
+
+            <div id="esqueceu_senha">
+                <a href="#">
+                    Esqueceu a senha?
+                </a>
+            </div>
+
+            <div id="outras_opcoes">
+                <a href="#">
+                    <img src="../site/imagens/icone_face.webp" alt="face.png">
+                </a> 
+                <a href="#">
+                    <img src="../site/imagens/icone_google.png" alt="google.png">
+                </a> 
+                <a href="#">
+                    <img src="../site/imagens/icone_git.png" alt="git.png">
+                </a> 
+            </div>
+        </form>
+       </div>
+        
+        
+    </main>
+
+
+    
+
+
+</body>
+</html>
+
+<script>
+    const mode = icon_modo;
+
+    mode.addEventListener('click', () => {
+    const form = document.getElementById('login_form');
+    const container = main_container
+    if(mode.classList.contains('fa-moon')) {
+        mode.classList.remove('fa-moon');
+        mode.classList.add('fa-sun');
+
+        container.classList.add('dark');
+        form.classList.add('dark');
+        return ;
+    }
+    
+    mode.classList.remove('fa-sun');
+    mode.classList.add('fa-moon');
+
+    container.classList.remove('dark');
+    form.classList.remove('dark');
+});
+
+</script>
