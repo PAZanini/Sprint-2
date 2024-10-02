@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Sensores - Water Works</title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 150vh;
+        margin: 10px;
+      }
+
+      .calculadora {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 800px;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 3em;
+      }
+
+      .texto {
+        text-align: left;
+        color: #34495e;
+        margin-bottom: 20px;
+        font-size: 1.1em;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #34495e;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #ae3d27;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #8e2b1a;
+      }
+
+      #div_mensagem {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculadora">
+      <h1>
+        Water Works<br />
+        Simule Aqui!
+      </h1>
+
+      <p class="texto">
+        <strong>🌱 Transforme sua plantação de café com a Water Works!</strong>
+        🌱
+        <br />
+        Você sabia que a umidade do solo é crucial para uma colheita de café de
+        alta qualidade? Com o sistema de monitoramento de umidade da Water
+        Works, você pode otimizar a irrigação e aumentar a produtividade da sua
+        colheita como nunca antes!
+        <br />
+        💧 <strong>DUPLO BENEFÍCIO:</strong> Economize água e aumente a
+        eficiência.
+        <br />
+        💼<strong>PRODUTIVIDADE E QUALIDADE:</strong> Colheitas mais abundantes
+        e saudáveis.
+        <br />
+        💰<strong>LUCRO MAXIMIZADO:</strong> Calcule seu lucro estimado com
+        nossa calculadora!
+        <br />
+        <strong
+          >O QUE ESTA ESPERANDO? <br />
+          DESCUBRA AGORA MESMO!</strong
+        >
+        <br />
+        Quer saber quantos sensores você precisa para sua área de cultivo e qual
+        será o seu lucro estimado? Utilize nossa calculadora abaixo e veja como
+        a Water Works pode transformar sua plantação!
+      </p>
+      <div class="input-group">
+        <label for="area"
+          >Informe o tamanho de sua área de cultivo (cada hectare equivale à
+          10.000m²)(m²):</label
+        >
+        <input type="number" id="ipt_area" />
+        <label for="quilos">Informe o peso da colheita (Kg):</label>
+        <input type="number" id="ipt_quilos" />
+        <label for="preco"
+          >Informe o preço de venda por quilo (em média, o preço é cerca de R$
+          90,00 por quilo) (R$):</label
+        >
+        <input type="number" id="ipt_preco" />
+      </div>
+      <button onclick="calcular()">Resultado</button>
+      <div id="div_mensagem"></div>
+    </div>
+    <script>
+      function calcular() {
+        var area = Number(ipt_area.value);
+        var preco = Number(ipt_preco.value);
+        var quilos = Number(ipt_quilos.value);
+        var alcanceSensor = 1000;
+        if (area && quilos && preco) {
+          var sensoresNecessarios = Math.ceil(area / alcanceSensor);
+          var lucro = preco * quilos;
+          div_mensagem.innerHTML = `Será necessário o investimento em <strong>${sensoresNecessarios}</strong> sensores para garantir o monitoramento adequado da sua área de cultivo.
+          <br> 
+          Com o sistema de monitoramento Water Works, o lucro estimado é de <strong>R$ ${lucro.toFixed(
+            2
+          )}!!!</strong>.`;
+          return;
+        } else {
+          div_mensagem.innerHTML =
+            "Por favor, preencha os campos corretamente.";
+          return;
+        }
+      }
+    </script>
+  </body>
+</html>
