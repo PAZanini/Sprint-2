@@ -1,0 +1,186 @@
+/* Geral */
+
+body {
+    background-color: #F0F6F5;
+    margin: 0px;
+    font-family: 'Rubik';
+}
+
+/* Header: */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid black;
+    position: fixed;
+    background-color: #F0F6F5;
+    width: -webkit-fill-available;
+}
+
+header h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #024873;
+    margin: 0px;
+}
+
+header menu {
+    display: flex;
+    list-style: none;
+}
+
+header menu li {
+    margin-left: 30px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+/* Seção Banner: */
+
+.banner {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+
+.banner div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 50px;
+}
+
+.texto1 {
+    font-weight: bold;
+    font-size: 90px;
+}
+
+.texto2 {
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.banner div p {
+    margin: 0px;
+}
+
+.banner img {
+    height: 500px;
+    width: 100%;
+}
+
+/* Seção arduino */
+
+.arduino{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arduino h2 {
+    font-size: 64px;
+}
+
+.divArduino {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 35px;
+    align-items: center;
+}
+
+.divArduino2 {
+    font: 138px;
+    color: #0A8CBF;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 80px;
+}
+
+.divArduino2 h2 {
+    font-size: 100px;
+}
+
+.arduino img {
+    height: 500px;
+    width: 450px;
+}
+
+
+/* Seção Quem Somos */
+
+.quemSomos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quemSomos h2 {
+    font-size: 64px;
+}
+
+.quemSomos .divQuemSomos {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    font-size: 35px;
+}
+
+.quemSomos img {
+    height: 500px;
+    width: 500px;
+}
+
+/* Footer: */
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    color: white;
+    background-color: #012623;
+    height: 250px;
+}
+
+footer menu {
+    list-style: none;
+    padding-right: 40px;
+}
+
+footer menu li {
+    margin: 30px;
+}
+
+.duvidas li{
+    list-style: disc;
+    margin-bottom: 10px;
+}
+
+li::marker {
+    color: #012623;
+}
+
+footer menu input {
+    text-align: center;
+    background-color: #012623;
+    border: ridge white 1px;
+    border-radius: 3px;
+    padding: 5px 8px;
+    color: white;
+}
+
+/* Extras */
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #0A8CBF;
+}
