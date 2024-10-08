@@ -52,6 +52,14 @@ header menu li {
     font-weight: bold;
 }
 
+a {
+    color: black;
+}
+
+a:hover {
+    color: #0A8CBF;
+}
+
 * 
 {
     font-family: "Rubik", sans-serif;

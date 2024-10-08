@@ -29,6 +29,14 @@ header menu li {
     font-weight: bold;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  color: #0A8CBF;
+}
+
 body {
   font-family: "Rubik", sans-serif;
   background-color: #f4f4f4;
