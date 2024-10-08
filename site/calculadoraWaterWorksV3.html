@@ -4,83 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Sensores - Water Works</title>
-    <style>
-      body {
-        font-family: "Roboto", sans-serif;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 150vh;
-        margin: 10px;
-      }
-
-      .calculadora {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        max-width: 800px;
-        width: 100%;
-        margin-top: 20px;
-      }
-
-      h1 {
-        color: #2c3e50;
-        font-size: 3em;
-      }
-
-      .texto {
-        text-align: left;
-        color: #34495e;
-        margin-bottom: 20px;
-        font-size: 1.1em;
-      }
-
-      .input-group {
-        margin-bottom: 20px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-        color: #34495e;
-        font-weight: bold;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-      }
-
-      button {
-        background-color: #ae3d27;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s ease;
-      }
-
-      button:hover {
-        background-color: #8e2b1a;
-      }
-
-      #div_mensagem {
-        margin-top: 20px;
-        font-size: 1.2em;
-        color: green;
-      }
-    </style>
+    <link rel="stylesheet" href="estiloCalculadora.css">
   </head>
+  <header>
+    <h2>WaterWorks</h2>
+    <menu>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="calculadoraWaterWorksV3.html">SIMULADOR</a></li>
+    </menu>
+    <menu>
+        <li><a href="login.html">LOGIN</a></li>
+        <li><b style="color: #0A8CBF;">CADASTRO</b></li>
+    </menu>
+</header>
   <body>
+    <div class="lugar">
     <div class="calculadora">
       <h1>
         Water Works<br />
@@ -131,6 +69,7 @@
       <button onclick="calcular()">Resultado</button>
       <div id="div_mensagem"></div>
     </div>
+  </div>
     <script>
       function calcular() {
         var area = Number(ipt_area.value);
