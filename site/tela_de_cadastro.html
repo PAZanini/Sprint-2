@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="../Sprint 2/tela_cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <main id="main_container">
+        <div id="left_cadastro">
+            <h1>Faça o seu Cadastro e inove <br> a sua empresa com  <br> a Water Works!</h1>
+            <img id="img_water_drop" src="../Sprint 2/Sprint-2/site/imagens/water-drop-animate.svg" alt="">
+        </div>
+
+    <div id="cadastro_right">
+        <form id="cadastro_form">
+            <div id="header">
+                <h1>CADASTRO</h1>
+            <i id="icon_modo" class="fa-solid fa-moon"></i>
+        </div>
+
+    <div id="div_input">
+        <div class="input-box">
+            <span id="input_text">Nome Completo</span><br>
+                <input type="text" id="input_nome" placeholder="Nome Completo" oninput="validarNome()"/><br />
+                    <div class="mensagemErro" id="div_nome"></div>
+            
+            <span id="input_text">CPF</span><br />
+                <input type="text" id="input_cpf" placeholder="CPF" oninput="validarCPF()"/><br />
+                    <div class="mensagemErro" id="div_cpf"></div>
+
+            <span id="input_text">CNPJ</span><br />
+                <input type="text" id="input_cnpj" placeholder="CNPJ" oninput="validarCNPJ()"/><br />
+                    <div class="mensagemErro" id="div_cnpj"></div>
+
+            <span id="input_text">Telefone/Celular</span><br />
+                <input type="text" id="input_telefone" placeholder="Telefone/Celular" oninput="validarTelefone()"/><br />
+                    <div class="mensagemErro" id="div_telefone"></div>
+
+            <span id="input_text">Cargo</span><br />
+                <input type="text" id="input_cargo" placeholder="Cargo" oninput="validarCargo()"/><br />
+                    <div class="mensagemErro" id="div_cargo"></div>
+
+            <span id="input_text">CEP</span><br />
+                <input type="text" id="input_cep" placeholder="CEP" oninput="validarCEP()"/><br />
+                    <div class="mensagemErro" id="div_cep"></div>
+
+            <span id="input_text">Rua</span><br />
+                <input type="text" id="input_rua" placeholder="Rua" oninput="validarRua()"/><br />
+                    <div class="mensagemErro" id="div_rua"></div>
+
+            <span id="input_text">Cidade</span><br />
+                <input type="text" id="input_cidade" placeholder="Cidade" oninput="validarCidade()"/><br />
+                    <div class="mensagemErro" id="div_cidade"></div>
+
+            <span  id="input_text">Número</span><br />
+                <input type="text" id="input_numEnd" placeholder="Número" oninput="validarNumero()"/><br />
+                    <div class="mensagemErro" id="div_numEnd"></div>
+
+            <span id="input_text">UF</span><br />
+                <select id="slt_uf">
+                    <option value="">AC</option>
+                    <option value="">AL</option>
+                    <option value="">AP</option>
+                    <option value="">AM</option>
+                    <option value="">BA</option>
+                    <option value="">CE</option>
+                    <option value="">ES</option>
+                    <option value="">GO</option>
+                    <option value="">MA</option>
+                    <option value="">MT</option>
+                    <option value="">MS</option>
+                    <option value="">MG</option>
+                    <option value="">PA</option>
+                    <option value="">PB</option>
+                    <option value="">PR</option>
+                    <option value="">PE</option>
+                    <option value="">PI</option>
+                    <option value="">RJ</option>
+                    <option value="">RN</option>
+                    <option value="">RS</option>
+                    <option value="">RO</option>
+                    <option value="">RR</option>
+                    <option value="">SC</option>
+                    <option value="" selected>SP</option>
+                    <option value="">SE</option>
+                    <option value="">TO</option>
+                    <option value="">DF</option>
+                </select><br />
+            
+            <span id="input_text">Senha</span><br />
+                <input type="password" id="input_senha" placeholder="Senha" oninput="validarSenha()"/><br />
+                    <div class="mensagemErro" id="div_senha"></div>
+
+            <span id="input_text">Confirmar Senha</span><br />
+                <input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" oninput="validarConfirmarSenha()"/><br />
+                    <div class="mensagemErro" id="div_confirmarSenha"></div>
+        </div>
+    </div>
+
+    <button type="submit" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
+        
+</body>
+</html>
+<script>
+    
+    const mode = icon_modo;
+
+    mode.addEventListener('click', () => {
+        
+        const form = document.getElementById('cadastro_form');
+        const container = main_container;
+        const botao = btn_cadastro;
+        const text_filde = div_input;
+
+        if (mode.classList.contains('fa-moon')) {
+            mode.classList.remove('fa-moon');
+            mode.classList.add('fa-sun');
+
+            text_filde.classList.add('dark');
+            botao.classList.add('dark');
+            container.classList.add('dark');
+            form.classList.add('dark');
+        } else {
+            mode.classList.remove('fa-sun');
+            mode.classList.add('fa-moon');
+
+            text_filde.classList.remove('dark');
+            botao.classList.remove('dark');
+            container.classList.remove('dark');
+            form.classList.remove('dark');
+        }
+    });
+
+
+    function validarNome() {
+        var nomeCompleto = input_nome.value; // Variável nome completo
+        var mensagemErro = ""; // mensagem de erro começa vazia
+
+        if (nomeCompleto.length == 0) { // Verifica se o campo está vazio
+            mensagemErro += "Insira o nome.";
+        } else {
+            if (nomeCompleto.match(/[^a-zA-Z ]/)) { // Verifica se o nome contém apenas letras
+                mensagemErro += "Insira um nome válido.";
+            }
+        }
+        
+        div_nome.innerHTML = mensagemErro; // Exibe a mensagem de erro
+    }
+
+    function validarCPF() {
+        var cpf = input_cpf.value;
+        var mensagemErro = "";
+
+        if (cpf.length == 0) { // Verifica se o campo está vazio
+            mensagemErro = "Insira o CPF.";
+        } else {
+            if (cpf.match(/[^0-9]/)) { // Verifica se o CPF contém apenas números
+                mensagemErro = "O CPF deve conter apenas números.";
+            }
+        }
+
+        div_cpf.innerHTML = mensagemErro; // Exibe a mensagem de erro
+    }
+    function validarCNPJ() {
+        var cnpj = input_cnpj.value;
+        var mensagemErro = "";
+
+        if (cnpj.length == 0) { // Verifica se o campo está vazio
+            mensagemErro = "Insira o CNPJ.";
+        } else {
+            if (cnpj.match(/[^0-9]/)) { // Verifica se o CNPJ contém apenas números
+                mensagemErro = "O CNPJ deve conter apenas números.";
+            }
+        }
+
+        div_cnpj.innerHTML = mensagemErro; // Exibe a mensagem de erro
+    }
+    function validarTelefone() {
+        var telefone = input_telefone.value;
+        var mensagemErro = "";
+
+        if (telefone.length == 0) { // Verifica se o campo está vazio
+                mensagemErro = "Insira o telefone.";
+        } else {
+            if (telefone.match(/[^0-9]/)) { // Verifica se o telefone contém apenas números
+                mensagemErro = "O telefone deve conter apenas números.";
+            }
+        }
+
+        div_telefone.innerHTML = mensagemErro; // Exibe a mensagem de erro
+    }
+    function validarCargo(){
+        var cargo = input_cargo.value;
+        var mensagemErro = "";
+
+        if(cargo.length == 0){
+            mensagemErro = "Insira o cargo";
+        }
+        div_cargo.innerHTML = mensagemErro;
+    }
+    function validarCEP(){
+        var cep = input_cep.value;
+        var mensagemErro = "";
+
+        if(cep.length == 0){
+            mensagemErro = "Insira o CEP";
+        } else {
+            if (cep.match(/[^0-9]/)) {
+                mensagemErro = "O cep deve conter apenas números.";
+            }
+        }
+        div_cep.innerHTML = mensagemErro;
+    }
+    function validarRua(){
+        var rua = input_rua.value;
+        var mensagemErro = "";
+
+        if(rua.length == 0){
+            mensagemErro = "Insira a Rua";
+        }
+        div_rua.innerHTML = mensagemErro;
+
+    }
+    function validarCidade(){
+        var cidade = input_cidade.value;
+        var mensagemErro = "";
+
+        if(cidade.length == 0){
+            mensagemErro = "Insira a Cidade";
+        }
+        div_cidade.innerHTML = mensagemErro;
+
+    }
+    function validarNumero(){
+        var numero = input_numEnd.value;
+        var mensagemErro = "";
+
+        if(numero.length == 0){
+            mensagemErro = "Insira o número";
+        } else {
+            if (numero.match(/[^0-9]/)) {
+                mensagemErro = "O campo deve conter apenas números.";
+            }
+        }
+        div_numEnd.innerHTML = mensagemErro;
+    }
+    var senhaOriginal = "";
+
+    function validarSenha(){
+        var senha = input_senha.value;
+        senhaOriginal = senha;
+        var mensagem = "";
+        var tamanho_senha = senha.length;
+        if(tamanho_senha < 8){
+        mensagem += `8 ou mais caracteres <br>`;
+        }
+
+        var caracteresEspeciais = "!@#$%^&*(),.?\":{}|<>";
+        if (!(senha.includes('!') || senha.includes('@') || senha.includes('#') || senha.includes('$') || senha.includes('%') || senha.includes('^') || senha.includes('&') || senha.includes('*') || senha.includes('(') || senha.includes(')') || senha.includes(',') || senha.includes('.') || senha.includes('?') || senha.includes(':') || senha.includes('{') || senha.includes('}') || senha.includes('|') || senha.includes('<') || senha.includes('>'))) {
+        mensagem += `Caracteres especiais<br>`;
+        }
+
+        if(!(senha.includes('0') || senha.includes('1') || senha.includes('2') || senha.includes('3') || senha.includes('4') || senha.includes('5') || senha.includes('6') || senha.includes('7') || senha.includes('8') || senha.includes('9'))){
+        mensagem += `Pelo menos um número<br>`;
+        }
+
+        if (senha == senha.toLowerCase() || senha == senha.toUpperCase()) {
+        mensagem += `Letras maiúsculas e minúsculas<br>`;
+        }
+
+        div_senha.innerHTML = `Sua senha deve ter:<br>${mensagem}`; //arrumar textinho
+    }
+    function validarConfirmarSenha() {
+        var confirmar = input_confirmarSenha.value;
+        var mensagem = "";
+
+        if (confirmar !== senhaOriginal) {
+            mensagem += `Insira a mesma senha<br>`;
+        }
+        
+        div_confirmarSenha.innerHTML = mensagem;
+    }
+
+</script>
