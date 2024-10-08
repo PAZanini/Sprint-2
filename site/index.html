@@ -154,32 +154,32 @@
     const avancar = document.getElementById('avancar')
     const voltar = document.getElementById('voltar')
 
-    let currentSlide = 0;
+    let possicaoSlider = 0;
 
     function hideSlider() {
         imgSlider.forEach(item => item.classList.remove('on'))
     }
 
     function showSlider() {
-        imgSlider[currentSlide].classList.add('on')
+        imgSlider[possicaoSlider].classList.add('on')
     }
 
     function nextSlider() {
         hideSlider()
-        if(currentSlide === imgSlider.length -1) {
-            currentSlide = 0
+        if(possicaoSlider === imgSlider.length -1) {
+            possicaoSlider = 0
         } else {
-            currentSlide++
+            possicaoSlider++
         }
         showSlider()
     }
 
     function prevSlider() {
         hideSlider()
-        if(currentSlide === 0) {
-            currentSlide = imgSlider.length -1
+        if(possicaoSlider === 0) {
+            possicaoSlider = imgSlider.length -1
         } else {
-            currentSlide--
+            possicaoSlider--
         }
         showSlider()
     }
