@@ -23,7 +23,7 @@
         </menu>
         <menu>
             <li>LOGIN</li>
-            <li>CADASTRO</li>
+            <li><b style="color: #0A8CBF;">CADASTRO</b></li>
         </menu>
     </header>
 
@@ -39,18 +39,18 @@
     </section>
     
     <section class="arduino">
-        <h2>ESSE É O FUTURO</h2>
+        <h2>ESSE É O <b style="color: #0A8CBF;">FUTURO</b></h2>
         <div class="divArduino">
             <img src="../site/imgs - Home/logoProvisório.png" alt="Logo da Empresa">
             <p>
-                Nos utilizaremos o arduino <br>
+                Nós utilizaremos o arduino <br>
                 UNO e o sensor LDR para a <br>
-                captacao de dados. Logo após <br>
-                iremos lancar esses dados <br>
-                no banco. E por ultimo mas não <br>
+                captação de dados. Logo após <br>
+                iremos lançar esses dados <br>
+                no banco. E por último mas não <br>
                 menos importante, vamos usar <br>
                 os dados coletados para <br>
-                transformar em uma informacao <br>
+                transformá-los em uma informação <br>
                 intuitiva para o usuario atraves <br>
                 da nossa dashboard. <a href="https://www.google.com.br/"><b>Saiba mais</b></a>
             </p>
@@ -60,9 +60,41 @@
         </div>
     </section>
 
+    <section class="dashboard">
+        <p>
+            Conheça nossa <a href="https://www.google.com.br/" style="font-weight: bold;">dashboard</a> <br>
+            aqui você vai receber <br>
+            todas as informações <br>
+            necessárias para o seu negócio <br>
+            fluir como o planejado!
+        </p>
+        <img src="../site/imgs - Home/dashboard.png" alt="imagem de uma dashboard">
+    </section>
+
+    <section class="calculadora">
+        <img src="../site/imgs - Home/calculadora.jpg" alt="imagem de uma calculadora">
+        <p>
+            Lorem Ipsum is simply dummy text <br>
+            of the printing and typesetting <br>
+            industry. Lorem Ipsum has been the <br>
+            industry's standard dummy text <br>
+            ever since the 1500s, when an <br>
+            unknown printer took a galley of type <br>
+            and scrambled it to make a type <br>
+            specimen book. It has survived not <br>
+            only five centuries, but also the leap <br> 
+            into electronic typesetting, <br>
+            remaining essentially unchanged.
+        </p>
+        <div>
+            <h2>L</h2>
+            <h2>D</h2>
+            <h2>R</h2>
+        </div>
+    </section>
 
     <section class="quemSomos">
-        <h2>QUEM É A WATER WORKS?</h2>
+        <h2>QUEM É A <b style="color: #0A8CBF;">WATER WORKS?</b></h2>
         <div class="divQuemSomos">
             <p>
                 Nós da water works <br>
@@ -74,7 +106,18 @@
                 carrossel dos cabeças <br>
                 da empresa.
             </p>
-            <img src="../site/imgs - Home/logoProvisório.png" alt="">
+            <div class="slider">
+                <button id="voltar">&lt;</button>
+                <ul>
+                    <li><img src="https://i.pinimg.com/550x/0a/37/c0/0a37c072811e12a93e785c3a0aef820b.jpg" alt="" class="imgSlider on"></li>
+                    <li><img src="https://ironstudios.vtexassets.com/arquivos/ids/312467/264000_0.jpg?v=637954938683600000" alt="" class="imgSlider"></li>
+                    <li><img src="https://cdn.awsli.com.br/800x800/222/222813/produto/81836222/84af715426.jpg" alt="" class="imgSlider"></li>
+                    <li><img src="https://ironstudios.vtexassets.com/arquivos/ids/319124/264010_0.jpg?v=637955242549430000" alt="" class="imgSlider"></li>
+                    <li><img src="https://ironstudios.vtexassets.com/arquivos/ids/317508/264002_0.jpg?v=637955168711100000" alt="" class="imgSlider"></li>
+                    <li><img src="https://p2.trrsf.com.br/image/fget/cf/540/960/smart/images.terra.com/2022/11/21/ranger-verde-1jia1s6qlwj09.jpg" alt="" class="imgSlider"></li>
+                </ul>
+                <button id="avancar">&gt;</button>
+            </div>
         </div>
     </section>
 
@@ -93,6 +136,11 @@
         </menu>
         <menu class="contatos">
             <li>CONTATOS</li>
+            <div>
+                <a href="https://www.google.com.br/"><img id="facebookLogo" src="../site/imgs - Home/facebook2.png" alt="Logo Facebook"></a>
+                <a href="https://www.google.com.br/"><img id="instagramLogo" src="../site/imgs - Home/Instagram_icon.png.webp" alt="Logo Instagram"></a>
+                <a href="https://www.google.com.br/"><img id="linkedinLogo" src="../site/imgs - Home/linkedin-icon.svg" alt="Logo LinkedIn"></a>
+            </div>
         </menu>
         <menu class="duvidas">
             <li>DUVIDAS?</li>
@@ -101,3 +149,41 @@
     </footer>
 </body>
 </html>
+<script>
+    const imgSlider = document.querySelectorAll('.imgSlider')
+    const avancar = document.getElementById('avancar')
+    const voltar = document.getElementById('voltar')
+
+    let currentSlide = 0;
+
+    function hideSlider() {
+        imgSlider.forEach(item => item.classList.remove('on'))
+    }
+
+    function showSlider() {
+        imgSlider[currentSlide].classList.add('on')
+    }
+
+    function nextSlider() {
+        hideSlider()
+        if(currentSlide === imgSlider.length -1) {
+            currentSlide = 0
+        } else {
+            currentSlide++
+        }
+        showSlider()
+    }
+
+    function prevSlider() {
+        hideSlider()
+        if(currentSlide === 0) {
+            currentSlide = imgSlider.length -1
+        } else {
+            currentSlide--
+        }
+        showSlider()
+    }
+
+    avancar.addEventListener('click', nextSlider)
+    voltar.addEventListener('click', prevSlider)
+</script>
