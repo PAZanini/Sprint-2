@@ -10,24 +10,33 @@
     <h1>Dashboard WaterWorks</h1>
     <p>
       Umidade Maxima: 80%
-      <br>
+      <br />
       Umidade Minima: 60%
     </p>
     <b>UMIDADE ATUAL: 66%</b>
-    <b>MÉDIA GERAL: 65% 
-      <br>
-     STATUS: IDEAL PARA CULTIVO</b>
-     <div style="display: flex;">
-    <div>
-      <br><br>
-        "Recorte do dia 22 de Abril" 
-      <canvas id="myChart" style="position: relative; height:40vh; width:40vw" ></canvas>
-    </div>
-    <div>
-      <canvas id="myChart2" style="position: relative; height:40vh; width:40vw" ></canvas>
-    </div>
-    
-
+    <br>
+    <b
+      >MÉDIA GERAL: 65%
+      <br />
+      STATUS: IDEAL PARA CULTIVO</b
+    >
+    <br /><br /><br />
+    <div style="display: flex">
+      <div>
+        <br /><br />
+        "Recorte do dia 22 de Abril"
+        <canvas
+          id="myChart"
+          style="position: relative; height: 40vh; width: 40vw"
+        ></canvas>
+      </div>
+      <br /><br />
+      <div>
+        <canvas
+          id="myChart2"
+          style="position: relative; height: 40vh; width: 40vw"
+        ></canvas>
+      </div>
     </div>
   </body>
 </html>
@@ -55,7 +64,7 @@
       ],
       datasets: [
         {
-          label: "Sensor Umidade 01 (%)", 
+          label: "Sensor Umidade 01 (%)",
           data: [45, 58, 62, 65, 70, 73, 85, 92, 68, 77, 64, 70],
           borderWidth: 2,
         },
@@ -84,6 +93,7 @@
           label: "Umidade Geral",
           data: [32, 45, 89, 78, 73, 76],
           borderWidth: 4,
+          backgroundColor: "rgb(255, 99, 132)",
         },
       ],
     },
