@@ -26,6 +26,7 @@
     font-family: "Rubik", sans-serif;
     margin: 0px;
     padding: 0px;
+    overflow: hidden;
 
 }
 
@@ -193,6 +194,7 @@
 
 .dark#div_input input 
 {
+    color: white;
     background-color: #012320;
     animation: light-to-dark-input 0.3s ease-in-out;
 }
@@ -339,10 +341,12 @@
 {
     0%
     {   
+        color: #000F0E;
         background-color: #BECFCA;
     }
     100%
     {
+        color: white;
         background-color: #012320;
     }
 }
@@ -351,10 +355,12 @@
 {
     0%
     {
+        color: white;
         background-color: #012320;
     }
     100% 
     {
+        color: #000F0E;
         background-color: #BECFCA;
     }
 }

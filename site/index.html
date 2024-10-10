@@ -18,7 +18,7 @@
         <menu>
             <li><a href="index.html">HOME</a></li>
             <li><a href="#produto">PRODUTO</a></li>
-            <li>DASHBOARD</li>
+            <li><a href="login.html">DASHBOARD</a></li>
             <li><a href="calculadoraWaterWorksV3.html">SIMULADOR</a></li>
         </menu>
         <menu>
@@ -28,33 +28,43 @@
     </header>
 
     <section class="banner">
-        <div>
-            <p class="texto1">LAZER,</p>
-            <p class="texto1">LONGEVIDADE</p>
-            <p class="texto1">E SEGURANÇA</p>
-            <p class="texto2">A WATER WORKS É A EMPRESA MAIS SEGURA </p>
-            <p class="texto2">E RENTÁVEL DO MERCADO</p>
+        <div class="left_banner">
+           <div class="div_gg_banenr">
+            <p >LAZER, <br> LONGEVIDADE <BR> E SEGURANÇA</p>
+           </div>
+           <div class="div_pp_banner">
+             <p>A <span id="water_works_span">WATER WORKS</span> É A EMPRESA MAIS SEGURA E RENTÁVEL DO MERCADO</p>
+           </div>
+      
         </div>
-        <img src="../site/imgs - Home/imgBanner.png" alt="Imagem de uma pequena planta">
+        <div class="right_banner">
+            <img src="../site/imgs - Home/imgBanner.png" alt="Imagem de uma pequena planta">
+        </div>
+        
     </section>
     
     <section class="arduino" id="produto"> 
         <br> <br>
         <h2>ESSE É O <b style="color: #0A8CBF;">FUTURO</b></h2>
         <div class="divArduino">
-            <img src="../site/imgs - Home/logoProvisório.png" alt="Logo da Empresa">
-            <p> Nós utilizaremos o arduino <br>
-                UNO e o sensor de umidade (MTS) <br> 
-                também conhecido como Moisture Sensor <br> 
-                para a  captação de dados. Logo após <br>
-                iremos lançar esses dados <br>
-                no banco. E por último mas não <br>
-                menos importante, vamos usar <br>
-                os dados coletados para <br>
-                transformá-los em uma informação <br>
-                intuitiva para o usuario atraves <br>
-                da nossa dashboard. <a href="https://www.google.com.br/"><b>Saiba mais</b></a>
-            </p>
+            <div id="div_ard_img">
+                <img class="img_content" src="../site/imgs - Home/logoProvisório.png" alt="Logo da Empresa">
+            </div>
+            <div id="div_ard_text">
+                <p> Nós utilizaremos o arduino <br>
+                    UNO e o sensor de umidade (MTS) <br> 
+                    também conhecido como Moisture Sensor <br> 
+                    para a  captação de dados. Logo após <br>
+                    iremos lançar esses dados <br>
+                    no banco. E por último mas não <br>
+                    menos importante, vamos usar <br>
+                    os dados coletados para <br>
+                    transformá-los em uma informação <br>
+                    intuitiva para o usuario atraves <br>
+                    da nossa dashboard. <a href="https://www.google.com.br/"><b>Saiba mais</b></a>
+                </p>
+            </div>
+            
         </div>
         <div class="divArduino2">
             <h2>UNO R3</h2>
@@ -69,11 +79,11 @@
             necessárias para o seu negócio <br>
             fluir como o planejado!
         </p>
-        <img src="../site/imgs - Home/dashboard.png" alt="imagem de uma dashboard">
+        <img class="img_content" src="../site/imgs - Home/dashboard.png" alt="imagem de uma dashboard">
     </section>
 
     <section class="calculadora">
-        <img src="../site/imgs - Home/calculadora.jpg" alt="imagem de uma calculadora">
+        <a href="calculadoraWaterWorksV3.html"><img class="img_content" src="../site/imgs - Home/calculadora.jpg" alt="imagem de uma calculadora">   </a>
         <p>
             Conheça também o nosso <a href="calculadoraWaterWorksV3.html">Simulador Financeiro</a> <br>
             podendo realizar simulações a respeito <br>
@@ -138,7 +148,11 @@
         </menu>
         <menu class="duvidas">
             <li>DUVIDAS?</li>
-            <input type="text" placeholder="E-mail">
+           <div class="duvidas_texto">
+                <input type="text" placeholder="Mensagem">
+                <button>Enviar</button>
+           </div>
+            
         </menu>
     </footer>
 </body>

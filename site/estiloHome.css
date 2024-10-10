@@ -1,6 +1,7 @@
 /* Geral */
 
 body {
+    overflow-x: hidden;
     background-color: #F0F6F5;
     margin: 0px;
     font-family: 'Rubik';
@@ -36,7 +37,41 @@ header menu li {
     margin-left: 30px;
     font-size: 27px;
     font-weight: bold;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+header menu li a
+{
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+header menu li a:hover
+{
+    transform: scale(1.05);
+    color: #0A8CBF;
+}
+
+header menu li:hover
+{
+    transform: scale(1.05);
+    color: #0A8CBF;
+}
+
+
+.img_content 
+{
+    transition: transform 0.4s ease-in-out;
+}
+
+.img_content:hover
+{
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
 
 /* Seção Banner: */
 
@@ -45,36 +80,65 @@ header menu li {
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
+    width: 100vw;
 }
-
+/* 
 .banner div {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 15px;
+} */
+
+.right_banner 
+{
+    margin-left: 35%;
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 70%;
 }
 
-.texto1 {
+.left_banner 
+{
+    z-index: 3;
+    position: absolute;
+    margin-left: 2%;
+    width: 50%;
+}
+
+.right_banner img 
+{
+    height: 80%;
+    width: 100%;
+}
+
+
+.div_gg_banenr {
+    letter-spacing: 5px;
+    text-align: center;
     font-weight: bold;
     font-size: 90px;
 }
 
-.texto2 {
+.div_pp_banner {
+    letter-spacing: 2px;
+    text-align: center;
     font-weight: bold;
     font-size: 27px;
 }
 
+#water_works_span 
+{
+    color: #0A8CBF;
+}
+
 .banner div p {
     margin: 0px;
-
 }
 
-.banner img {
-    height: 100vh;
-    width: 60vw;
-    position: absolute;
-    left: 580px;
-}
 
 /* Seção arduino */
 
@@ -92,9 +156,14 @@ header menu li {
 .divArduino {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-size: 35px;
     align-items: center;
+}
+
+#div_ard_text 
+{
+    margin: 0px 0px;
 }
 
 .divArduino2 {
@@ -184,8 +253,8 @@ header menu li {
 }
 
 .slider button {
-    color: white;
-    background-color: #0A8CBF;
+    color: gray;
+    background-color: none;
     border: none;
     font-size: 20px;
     font-weight: bold;
@@ -193,7 +262,8 @@ header menu li {
 }
 
 .slider button:hover {
-    background-color: #024873;
+    color: white;
+    background-color: #0A8CBF;
     cursor: pointer;
 }
 
@@ -232,7 +302,7 @@ footer {
     align-items: flex-start;
     color: white;
     background-color: #012623;
-    height: 250px;
+    height: fit-content;
 }
 
 footer menu {
@@ -241,11 +311,33 @@ footer menu {
 }
 
 footer menu li {
+    color: white;
     margin: 30px;
 }
 
-.duvidas li{
-    list-style: disc;
+.duvidas 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.duvidas_texto
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.duvidas_texto button
+{
+    margin: 0 8px;
+}
+
+.duvidas li
+{
+    
     margin-bottom: 10px;
 }
 
@@ -261,6 +353,19 @@ footer menu input {
     padding: 5px 8px;
     color: white;
 }
+
+footer menu button 
+{
+    cursor: pointer;
+    background-color: #012623;
+    border: ridge white 1px;
+    border-style: hidden;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-weight: bolder;
+    background-color: #0A8CBF;
+}
+
 
 .contatos li{
     margin-bottom: 15px;
@@ -285,4 +390,20 @@ a {
 
 a:hover {
     color: #0A8CBF;
+}
+
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
 }
