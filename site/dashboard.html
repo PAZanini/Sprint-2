@@ -22,46 +22,57 @@
       <li><b style="color: #0A8CBF;"><a href="tela_de_cadastro.html">CADASTRO</a></b></li>
     </menu>
   </header>
-  <div class="Titulo">
-    <h1>Dashboard WaterWorks</h1>
-  </div>
+  <main>
+    <div class="containerKPI">
   
-  <div class="containerKPI">
+      <div class="kpi">
+          <p>Umidade Maxima: </p> 
+          <span>80%</span>
+      </div>
+      
+      <div class="kpi">
+        <p>Umidade Minima: </p> 
+        <span>60%</span>
+      </div>
+      
+      <div class="kpi">
+        <p>UMIDADE ATUAL:</p> 
+        <span> 66%</span>
+      </div>
+      
+      <div id="div_geral" class="kpi">
+        <p class="p_geral">
+          MÉDIA GERAL DIÁRIA:
+      </p>
+      <span class="s_geral">
+        70%
+      </span>
+      </div>
+      
+      <div class="kpi">
+        <p> 
+         STATUS: 
+       </p>
+       <span style="color: green;">
+        IDEAL
+       </span>
+       </div>
 
-    <div class="kpi">
-        <p>Umidade Maxima: 80%</p>
-    </div>
-    
-    <div class="kpi">
-      <p>Umidade Minima: 60%</p>
-    </div>
-    
-    <div class="kpi">
-      <p>UMIDADE ATUAL: 66%</p>
-    </div>
-    
-    <div class="kpi">
-     <p> 
-      MÉDIA GERAL: 65%
-      STATUS: IDEAL PARA CULTIVO
-    </p>
-    </div>
- 
-  </div>
-  
-   <div class="containerGrafico" style="display: flex;">
-  <div>
-    <h1>Recorte do dia 26 de abril:</h1>
-    <canvas id="myChart" class="grafico"></canvas>
-  </div> 
 
-  <button onclick="mudar()" id='btn_grafico'>Gráfico mensal</button>
-  <div>
-    <h1>Recorte da umidade mensal:</h1>
-    <canvas id="myChart2" class="grafico"></canvas>
-  </div>
-   </div>
-  
+       <button id='btn_grafico' class="pushable">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front">Gráfico Mensal</span>
+      </button>
+
+    </div>
+
+    
+     <div class="containerGrafico" style="display: flex;">
+          <canvas id="myChart" class="grafico"></canvas>
+          <canvas id="myChart2" class="grafico"></canvas>
+     </div>  
+  </main>
   
 </body>
 
@@ -120,12 +131,13 @@
                 }
             },
             title: {
+                align: 'start',
                 display: true,
-                text: 'Monitoramento de Umidade',
+                text: 'Monitoramento de Umidade 26 de abril',
                 font: {
-                    size: 16,
+                    size: 18,
                     family: "'Arial', sans-serif",
-                    weight: 'bold'
+                    weight: 'bold',
                 }
             }
         },
@@ -186,6 +198,7 @@ new Chart(ctx2, {
         },
       },
       title: {
+        align: 'start',
         display: true,
         text: 'Gráfico de Umidade Geral (Jan - Jun)', // Título do gráfico
         font: {
@@ -228,15 +241,38 @@ new Chart(ctx2, {
     },
   },
 });
-function mostrar() {
+
+
+  
+
+  
+
   const botao = btn_grafico
+  const grafico1 = myChart
+  const grafico2 = myChart2
 
-  botao.addEventListener('Click', =>  {
+  grafico2.style.display = 'none'
 
+  botao.addEventListener('click', () => {
+    if (grafico1.style.display == 'none')
+    {
+      grafico2.style.display = 'none'
+      grafico1.style.display = 'block'
+      botao.querySelector('.front').textContent = 'Gráfico Mensal'; 
+      div_geral.querySelector('.s_geral').textContent = '70%'
+      div_geral.querySelector('.p_geral').textContent = 'MÉDIA GERAL DIÁRIA:'
+    }
+    else 
+    {
+      grafico2.style.display = 'block'
+      grafico1.style.display = 'none'
+      botao.querySelector('.front').textContent = 'Gráfico Diário';
+      div_geral.querySelector('.s_geral').textContent = '65%'
+      div_geral.querySelector('.p_geral').textContent = 'MÉDIA GERAL 6 MESES:'
+    }
+
+   
   } )
 
-  
 
-  
-}
 </script>
