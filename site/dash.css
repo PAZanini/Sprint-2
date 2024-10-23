@@ -68,24 +68,33 @@ body{
 .containerKPI {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .kpi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     font-weight: bold;
     width: 300px;
     height: 100px;
-    text-align: center;
     background-color: #45b8e6;
     border-radius: 10px;
     color: black;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 
 .containerGrafico {
-    
+    display: flex;
+    justify-content: space-between;
 }
 
-.grafico1 {
+.grafico {
+    position: relative; 
+    height:40vh; 
+    width:50vw;
     
 }

@@ -25,42 +25,43 @@
   <div class="Titulo">
     <h1>Dashboard WaterWorks</h1>
   </div>
-  <br> <br> <br>
+  
   <div class="containerKPI">
-    <div class="kpi">
-      <br> <br>
-      <p>
-        Umidade Maxima: 80%
-        <br />
-    </div>
-    <div class="kpi">
-      <br> <br>
-      Umidade Minima: 60%
-    </div>
-    </p>
-    <div class="kpi">
-      <br> <br>
-      UMIDADE ATUAL: 66%
-    </div>
-    <br>
-    <div class="kpi">
-      <br>
-      MÉDIA GERAL: 65%
-      <br />
-      STATUS: IDEAL PARA CULTIVO
-    </div>
-    <br /><br /><br />
-  </div>
-  "Recorte do dia 22 de Abril"
-  <div class="containerGrafico'">
-    <br /><br />
-    <canvas id="myChart"  style="position: relative; height:40vh; width:40vw" ></canvas>
-  </div>
-  <div>
-    <br /><br />
-    <canvas id="myChart2" style="position: relative; height:40vh; width:40vw" ></canvas>
-  </div>
 
+    <div class="kpi">
+        <p>Umidade Maxima: 80%</p>
+    </div>
+    
+    <div class="kpi">
+      <p>Umidade Minima: 60%</p>
+    </div>
+    
+    <div class="kpi">
+      <p>UMIDADE ATUAL: 66%</p>
+    </div>
+    
+    <div class="kpi">
+     <p> 
+      MÉDIA GERAL: 65%
+      STATUS: IDEAL PARA CULTIVO
+    </p>
+    </div>
+ 
+  </div>
+  
+   <div class="containerGrafico" style="display: flex;">
+  <div>
+    <h1>Recorte do dia 26 de abril:</h1>
+    <canvas id="myChart" class="grafico"></canvas>
+  </div> 
+
+  <button onclick="mudar()" id='btn_grafico'>Gráfico mensal</button>
+  <div>
+    <h1>Recorte da umidade mensal:</h1>
+    <canvas id="myChart2" class="grafico"></canvas>
+  </div>
+   </div>
+  
   
 </body>
 
@@ -73,61 +74,169 @@
   new Chart(ctx1, {
     type: "line",
     data: {
-      labels: [
-        "12:00",
-        "12:15",
-        "12:30",
-        "12:45",
-        "13:00",
-        "13:15",
-        "13:30",
-        "13:45",
-        "14:00",
-        "14:15",
-        "14:30",
-        "14:45",
-      ],
-      datasets: [
-        {
-          label: "Sensor Umidade 01 (%)",
-          data: [45, 58, 62, 65, 70, 73, 85, 92, 68, 77, 64, 70],
-          borderWidth: 2,
-        },
-        {
-          label: "Umidade Geral (%)",
-          data: [61, 64, 67, 70, 73, 76, 79, 78, 75, 72, 69, 66],
-          borderWidth: 4,
-        },
-      ],
+        labels: [
+            "12:00", "12:15", "12:30", "12:45", "13:00", "13:15",
+            "13:30", "13:45", "14:00", "14:15", "14:30", "14:45",
+        ],
+        datasets: [
+            {
+                label: "Sensor Umidade 01 (%)",
+                data: [45, 58, 62, 65, 70, 73, 85, 92, 68, 77, 64, 70],
+                borderWidth: 2,
+                borderColor: '#0A8CBF',
+                backgroundColor: 'rgba(10, 140, 191, 0.1)',
+                tension: 0.4,
+                fill: false,
+                pointStyle: 'circle',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#0A8CBF',
+            },
+            {
+                label: "Umidade Geral (%)",
+                data: [61, 64, 67, 70, 73, 76, 79, 78, 75, 72, 69, 66],
+                borderWidth: 3,
+                borderColor: '#58A69F',
+                backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                tension: 0.4,
+                fill: false,
+                pointStyle: 'circle',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#58A69F',
+            },
+        ],
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: false,
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    font: {
+                        size: 14,
+                        family: "'Arial', sans-serif"
+                    }
+                }
+            },
+            title: {
+                display: true,
+                text: 'Monitoramento de Umidade',
+                font: {
+                    size: 16,
+                    family: "'Arial', sans-serif",
+                    weight: 'bold'
+                }
+            }
         },
-      },
-    },
-  });
+        scales: {
+            y: {
+                beginAtZero: false,
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
+                },
+                ticks: {
+                    font: {
+                        size: 12
+                    }
+                }
+            },
+            x: {
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
+                },
+                ticks: {
+                    font: {
+                        size: 12
+                    }
+                }
+            }
+        }
+    }
+})
 
-  new Chart(ctx2, {
-    type: "bar",
-    data: {
-      labels: ["janeiro", "fevereiro", "março", "abril", "maio", "junho"],
-      datasets: [
-        {
-          label: "Umidade Geral",
-          data: [32, 45, 89, 78, 73, 76],
-          borderWidth: 4,
-          backgroundColor: "rgb(255, 99, 132)",
+new Chart(ctx2, {
+  type: "bar",
+  data: {
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+    datasets: [
+      {
+        label: "Umidade Geral",
+        data: [32, 45, 89, 78, 73, 76],
+        borderWidth: 2,
+        backgroundColor: "rgba(88, 166, 159, 0.6)", // Cor com transparência
+        borderColor: "#58A69F", // Cor da borda
+        hoverBackgroundColor: "rgba(88, 166, 159, 0.8)", // Cor ao passar o mouse
+        hoverBorderColor: "#58A69F", // Cor da borda ao passar o mouse
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top', // Posição da legenda
+        labels: {
+          font: {
+            size: 14, // Tamanho da fonte da legenda
+            weight: 'bold', // Peso da fonte da legenda
+          },
+          color: "#333", // Cor da fonte da legenda
         },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: false,
+      },
+      title: {
+        display: true,
+        text: 'Gráfico de Umidade Geral (Jan - Jun)', // Título do gráfico
+        font: {
+          size: 18, // Tamanho da fonte do título
+          weight: 'bold', // Peso da fonte do título
+          color: "#333", // Cor da fonte do título
         },
       },
     },
-  });
+    scales: {
+      y: {
+        beginAtZero: true, // Começar em zero
+        title: {
+          display: true,
+          text: 'Umidade (%)', // Título do eixo Y
+          font: {
+            size: 14, // Tamanho da fonte do título do eixo Y
+            weight: 'bold', // Peso da fonte do título do eixo Y
+            color: "#333", // Cor da fonte do título do eixo Y
+          },
+        },
+        grid: {
+          color: "#ddd", // Cor da grade do eixo Y
+        },
+      },
+      x: {
+        title: {
+          display: true,
+          text: 'Meses', // Título do eixo X
+          font: {
+            size: 14,
+            weight: 'bold',
+            color: "#333", // Cor da fonte do título do eixo X
+          },
+        },
+        grid: {
+          color: "#ddd", // Cor da grade do eixo X
+        },
+      },
+    },
+  },
+});
+function mostrar() {
+  const botao = btn_grafico
+
+  botao.addEventListener('Click', =>  {
+
+  } )
+
+  
+
+  
+}
 </script>
