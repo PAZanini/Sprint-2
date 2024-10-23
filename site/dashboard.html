@@ -1,44 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Implementando o ChartJS</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Dashboard WaterWorks</title>
+  <link rel="stylesheet" href="dash.css">
+</head>
+
+<body>
+  <header>
+    <h2>WaterWorks</h2>
+    <menu>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="login.html">DASHBOARD</a></li>
+      <li><a href="calculadoraWaterWorksV3.html">SIMULADOR</a></li>
+    </menu>
+    <menu>
+      <li><a href="login.html">LOGIN</a></li>
+      <li><b style="color: #0A8CBF;"><a href="tela_de_cadastro.html">CADASTRO</a></b></li>
+    </menu>
+  </header>
+  <div class="Titulo">
     <h1>Dashboard WaterWorks</h1>
-    <p>
-      Umidade Maxima: 80%
-      <br />
-      Umidade Minima: 60%
-    </p>
-    <b>UMIDADE ATUAL: 66%</b>
-    <br>
-    <b
-      >MÉDIA GERAL: 65%
-      <br />
-      STATUS: IDEAL PARA CULTIVO</b
-    >
-    <br /><br /><br />
-    <div style="display: flex">
-      <div>
-        <br /><br />
-        "Recorte do dia 22 de Abril"
-        <canvas
-          id="myChart"
-          style="position: relative; height: 40vh; width: 40vw"
-        ></canvas>
-      </div>
-      <br /><br />
-      <div>
-        <canvas
-          id="myChart2"
-          style="position: relative; height: 40vh; width: 40vw"
-        ></canvas>
-      </div>
+  </div>
+  <br> <br> <br>
+  <div class="containerKPI">
+    <div class="kpi">
+      <br> <br>
+      <p>
+        Umidade Maxima: 80%
+        <br />
     </div>
-  </body>
+    <div class="kpi">
+      <br> <br>
+      Umidade Minima: 60%
+    </div>
+    </p>
+    <div class="kpi">
+      <br> <br>
+      UMIDADE ATUAL: 66%
+    </div>
+    <br>
+    <div class="kpi">
+      <br>
+      MÉDIA GERAL: 65%
+      <br />
+      STATUS: IDEAL PARA CULTIVO
+    </div>
+    <br /><br /><br />
+  </div>
+  "Recorte do dia 22 de Abril"
+  <div class="containerGrafico'">
+    <br /><br />
+    <canvas id="myChart"  style="position: relative; height:40vh; width:40vw" ></canvas>
+  </div>
+  <div>
+    <br /><br />
+    <canvas id="myChart2" style="position: relative; height:40vh; width:40vw" ></canvas>
+  </div>
+
+  
+</body>
+
 </html>
 
 <script>
