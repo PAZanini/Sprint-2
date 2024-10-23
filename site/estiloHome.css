@@ -82,13 +82,6 @@ header menu li:hover
     height: 100vh;
     width: 100vw;
 }
-/* 
-.banner div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 15px;
-} */
 
 .right_banner 
 {
@@ -197,7 +190,7 @@ header menu li:hover
 }
 
 .dashboard img {
-    width: 60vw;
+    width: 40vw;
     height: 60vh;
 }
 
@@ -214,6 +207,10 @@ header menu li:hover
 .calculadora img {
     height: 60vh;
     width: 40vw;
+}
+
+.calculadora p {
+    width: 60vh;
 }
 
 .calculadora h2 {
@@ -315,29 +312,21 @@ footer menu li {
     margin: 30px;
 }
 
-.duvidas 
-{
+footer form {
+    margin: 30px;
+}
+
+.duvidas {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.duvidas_texto
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.duvidas li {
+    margin-bottom: 10px;
 }
 
-.duvidas_texto button
-{
-    margin: 0 8px;
-}
-
-.duvidas li
-{
-    
+.duvidas input {
     margin-bottom: 10px;
 }
 
@@ -345,7 +334,7 @@ li::marker {
     color: #012623;
 }
 
-footer menu input {
+footer form input {
     text-align: center;
     background-color: #012623;
     border: ridge white 1px;
@@ -354,10 +343,8 @@ footer menu input {
     color: white;
 }
 
-footer menu button 
-{
+footer form button {
     cursor: pointer;
-    background-color: #012623;
     border: ridge white 1px;
     border-style: hidden;
     border-radius: 5px;
@@ -390,6 +377,10 @@ a {
 
 a:hover {
     color: #0A8CBF;
+}
+
+.duvidas button:hover {
+    background-color: #00b7ff;
 }
 
 
