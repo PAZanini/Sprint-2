@@ -55,16 +55,18 @@
           div_mensagem.innerHTML = `
           Para o monitoramento adequado da sua area de ${area} m², nós sugerimos a aquisição de ${qtdsensor_pra_area} sensores.
           <br>
-          Atualmente, seu lucro esta sendo de R$ ${lucro_sem_sistema.toFixed(2)}
+          obs: Os nossos sensores tem a capacidade de monitorar adequadamente 1000 m², portanto, o calculo realizado na sugestão de aquisição é com base no tamanho
+          da zona de cultivo informada
           <br>
-          Com o sistema de monitoramento Water Works, o seu lucro é potencializado e pode chegar a <strong>R$${lucro_com_sistema.toFixed(
+          Atualmente, considerando um aproveitamento médio de 80% , o seu lucro estimado é R$ ${lucro_sem_sistema.toFixed(
             2
-          )}!!!</strong>.`;
-          return;
+          )}
+          <br>
+          Com o sistema de monitoramento  da Water Works, o seu lucro é potencializado, atingindo 100% de eficiência, garantindo o pontencial total
+          da platanção, o lucro pode chegar a <strong>R$${lucro_com_sistema.toFixed(2)}!!!</strong>.`;
         } else {
           div_mensagem.innerHTML =
             "Por favor, preencha os campos corretamente.";
-          return;
         }
       }
     </script>
