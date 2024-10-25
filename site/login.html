@@ -25,14 +25,16 @@
 
             <div id="div_input">
                 <div class="input-box">
-                    <span id="input_text">Usuario:</span><br>
-                    <input type="text" placeholder="Cleber" id="inp_user"> <br>
+                    <span id="input_text">Email:</span><br>
+                    <input type="text" placeholder="example@gmail.com" id="inp_user" oninput="validarEmail()"> <br>
+                    <div class="mensagemErro" id="div_email"></div>
                     <span id="input_text">Senha:</span><br>
                     <input type="password" placeholder="********" id="inp_senha"><br>
                 </div>
             </div>
 
-            <button type="submit" id="btn_login">Entrar</button>
+            <button onclick="validar()" type="button" id="btn_login">Entrar</button>
+
 
             <div id="esqueceu_senha">
                 <a href="#">
@@ -65,6 +67,32 @@
 </html>
 
 <script>
+    function validar() {
+    var email = inp_user.value;
+    var senha = inp_senha.value;
+
+        if(email == 'fernando@sptech.com' && senha == '@Urubu100') {
+            window.location.href = "../site/dashboard.html";
+        } else if (email == 'clara@sptech.com' && senha == '@Urubu101') {
+            window.location.href = "../site/dashboard.html";
+        } else {
+            alert('Email ou Senha Inválidos!!');
+        }
+}
+
+function validarEmail(){
+        var email = inp_user.value;
+        var mensagemErro = "";
+
+        if(email.length == 0){
+            mensagemErro = "Insira seu e-mail";
+        }
+        else if(!(email.includes('@'))){
+            mensagemErro = "Insira um email válido";
+        }
+        div_email.innerHTML = mensagemErro;
+    }
+
     const mode = icon_modo;
 
     mode.addEventListener('click', () => {

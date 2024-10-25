@@ -170,7 +170,7 @@
     animation: dark-to-light-input 0.3s ease-in-out;
 }
 
-#btn_login 
+#btn_login
 {
     width: 60%;
     height: 50px;
@@ -184,12 +184,20 @@
     animation: dark-to-light-botao 0.3s ease-in-out;
 }
 
+#btn_login:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 #esqueceu_senha a
 {
     color: #000A09;
 }
 
-
+.mensagemErro
+{
+    color: red;
+}
 
 
 .dark#div_input input 
