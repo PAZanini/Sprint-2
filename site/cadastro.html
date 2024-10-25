@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro</title>
 
-    <link rel="stylesheet" href="tela_cadastro.css">
+    <link rel="stylesheet" href="cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
@@ -26,17 +26,18 @@
 
         <div id="div_input">
             <div class="input-box">
+
+                <span id="input_text">CNPJ da sua  empresa</span><br />
+                    <input type="text" id="input_cnpj" placeholder="* 00.000 000-0000 00" oninput="validarCNPJ()"/><br />
+                        <div class="mensagemErro" id="div_cnpj"></div>
+                        
                 <span id="input_text">Nome Completo</span><br>
                     <input type="text" id="input_nome" placeholder="* Nome Completo" oninput="validarNome()"/><br />
                         <div class="mensagemErro" id="div_nome"></div>
-                
+                                
                 <span id="input_text">CPF</span><br />
                     <input type="text" id="input_cpf" placeholder="* 000 000 000-00" oninput="validarCPF()"/><br />
                         <div class="mensagemErro" id="div_cpf"></div>
-    
-                <span id="input_text">CNPJ</span><br />
-                    <input type="text" id="input_cnpj" placeholder="* 00.000 000-0000 00" oninput="validarCNPJ()"/><br />
-                        <div class="mensagemErro" id="div_cnpj"></div>
     
                 <span id="input_text">Telefone/Celular</span><br />
                     <input type="text" id="input_telefone" placeholder="* DDD e número de celular" oninput="validarTelefone()"/><br />
@@ -142,8 +143,23 @@
         }
     });
 
+    
+    function validarCNPJ() {
+        var cnpj = input_cnpj.value;
+        var mensagemErro = "";
 
+        if (cnpj.length == 0) { // Verifica se o campo está vazio
+            mensagemErro = "Insira o CNPJ.";
+        } else {
+            if (cnpj.match(/[^0-9]/)) { // Verifica se o CNPJ contém apenas números
+                mensagemErro = "O CNPJ deve conter apenas números.";
+            }
+        }
+
+        div_cnpj.innerHTML = mensagemErro; // Exibe a mensagem de erro
+    }
     function validarNome() {
+        
         var nomeCompleto = input_nome.value; // Variável nome completo
         var mensagemErro = ""; // mensagem de erro começa vazia
 
@@ -157,7 +173,6 @@
         
         div_nome.innerHTML = mensagemErro; // Exibe a mensagem de erro
     }
-
     function validarCPF() {
         var cpf = input_cpf.value;
         var mensagemErro = "";
@@ -173,20 +188,6 @@
         div_cpf.innerHTML = mensagemErro; // Exibe a mensagem de erro
     }
 
-    function validarCNPJ() {
-        var cnpj = input_cnpj.value;
-        var mensagemErro = "";
-
-        if (cnpj.length == 0) { // Verifica se o campo está vazio
-            mensagemErro = "Insira o CNPJ.";
-        } else {
-            if (cnpj.match(/[^0-9]/)) { // Verifica se o CNPJ contém apenas números
-                mensagemErro = "O CNPJ deve conter apenas números.";
-            }
-        }
-
-        div_cnpj.innerHTML = mensagemErro; // Exibe a mensagem de erro
-    }
 
     function validarTelefone() {
         var telefone = input_telefone.value;
