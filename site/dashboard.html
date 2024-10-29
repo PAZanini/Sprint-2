@@ -30,9 +30,9 @@
         <span>60%</span>
       </div>
       
-      <div class="kpi">
-        <p>UMIDADE ATUAL:</p> 
-        <span> 66%</span>
+      <div id="div_umidade" class="kpi">
+        <p class="p_umidade">UMIDADE ATUAL:</p> 
+        <span class="s_umidade"> 66%</span>
       </div>
       
       <div id="div_geral" class="kpi">
@@ -44,11 +44,11 @@
       </span>
       </div>
       
-      <div class="kpi">
-        <p> 
+      <div id="div_status" class="kpi">
+        <p class="p_status"> 
          STATUS: 
        </p>
-       <span style="color: green;">
+       <span class="s_status" style="color: green;">
         IDEAL
        </span>
        </div>
@@ -256,6 +256,10 @@ new Chart(ctx2, {
       botao.querySelector('.front').textContent = 'Gráfico Mensal'; 
       div_geral.querySelector('.s_geral').textContent = '70%'
       div_geral.querySelector('.p_geral').textContent = 'MÉDIA GERAL DIÁRIA:'
+      div_umidade.querySelector('.p_umidade').textContent = 'UMIDADE ATUAL:'
+      div_umidade.querySelector('.s_umidade').textContent = '66%'
+      div_status.querySelector('.p_status').textContent = 'STATUS'
+      div_status.querySelector('.s_status').textContent = 'IDEAL'
     }
     else 
     {
@@ -264,6 +268,10 @@ new Chart(ctx2, {
       botao.querySelector('.front').textContent = 'Gráfico Diário';
       div_geral.querySelector('.s_geral').textContent = '65%'
       div_geral.querySelector('.p_geral').textContent = 'MÉDIA GERAL 6 MESES:'
+      div_umidade.querySelector('.p_umidade').textContent = 'UMIDADE DO ULTIMO MES:'
+      div_umidade.querySelector('.s_umidade').textContent = '76%'
+      div_status.querySelector('.p_status').textContent = 'STATUS DO ULTIMO MES'
+      div_status.querySelector('.s_status').textContent = 'IDEAL'
     }
 
    
