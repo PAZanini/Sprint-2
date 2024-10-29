@@ -31,10 +31,15 @@ header menu li {
 
 a {
   color: black;
+  text-decoration: none;
 }
 
 a:hover {
   color: #0A8CBF;
+}
+
+header li:hover {
+  scale: 1.1;
 }
 
 body {
