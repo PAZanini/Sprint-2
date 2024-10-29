@@ -1,7 +1,7 @@
 CREATE DATABASE WaterWorks;
 USE WaterWorks;
 
-
+DROP DATABASE WaterWorks;
 
 CREATE TABLE endereco (
 idEndereco INT primary key auto_increment,
@@ -69,12 +69,13 @@ CREATE TABLE registro (
 );
 
 CREATE TABLE Alerta (
-    idALERTA INT PRIMARY KEY AUTO_INCREMENT,
+    idALERTA INT AUTO_INCREMENT,
     gravidade VARCHAR(45),
     dhora DATETIME DEFAULT CURRENT_TIMESTAMP,
     protocolo VARCHAR(256),
     fkUsuario INT,
     fkRegistro INT,
+    constraint pkComposta primary key (idALERTA, fkUsuario, fkRegistro),
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUSER),
     FOREIGN KEY (fkRegistro) REFERENCES registro(idRegistro)
 );
@@ -131,11 +132,11 @@ SELECT
     r.dadoSensor,
     r.dataRegistro
 FROM 
-    alerta a
+    alerta AS a
 JOIN 
-    usuario u ON a.fkUsuario = u.idUSER
+    usuario AS u ON a.fkUsuario = u.idUSER
 JOIN 
-    registro r ON a.fkRegistro = r.idRegistro;
+    registro AS r ON a.fkRegistro = r.idRegistro;
 
 -- Selecionar todos os dados combinados (dados de alertas, registros, sensores, plantações, empresas e usuários)
 
@@ -153,17 +154,17 @@ SELECT
     p.nome AS plantacao,
     p.area AS area_plantacao
 FROM 
-    alerta a
+    alerta AS a
 JOIN 
-    usuario u ON a.fkUsuario = u.idUSER
+    usuario AS u ON a.fkUsuario = u.idUSER
 JOIN 
-    empresa e ON u.fkEmpresa = e.idEmpresa
+    empresa AS e ON u.fkEmpresa = e.idEmpresa
 JOIN 
-    registro r ON a.fkRegistro = r.idRegistro
+    registro AS r ON a.fkRegistro = r.idRegistro
 JOIN 
-    sensor s ON r.fkSensor = s.idSensor
+    sensor AS s ON r.fkSensor = s.idSensor
 JOIN 
-    plantacao p ON s.fkPlantacao = p.idPLANTACAO;
+    plantacao AS p ON s.fkPlantacao = p.idPLANTACAO;
 
 
 
