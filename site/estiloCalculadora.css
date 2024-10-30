@@ -100,7 +100,7 @@ input {
 }
 
 button {
-  background-color: #ae3d27;
+  background-color: #0A8CBF;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -111,7 +111,7 @@ button {
 }
 
 button:hover {
-  background-color: #8e2b1a;
+  background-color: #0ea2dd;
 }
 
 #div_mensagem {
