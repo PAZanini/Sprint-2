@@ -109,7 +109,7 @@
             </div>
         </div>
     
-        <button type="submit" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
+        <button type="button" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
             
 </body>
 </html>
@@ -316,4 +316,7 @@
         div_confirmarSenha.innerHTML += mensagem;
     }
 
+    function cadastrar() {
+        window.location.href = 'login.html'
+    }
 </script>
