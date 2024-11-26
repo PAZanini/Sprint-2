@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <main id="main_container">
+        <div id="left_login">
+            <h1>Faça o seu login e inove <br> a sua empresa com  <br> a Water Works!</h1>
+            <img id="img_water_drop" src="../imagens/coffee-farm-animate.svg" alt="">
+        </div>
+            
+        </div>
+       <div id="login_right">
+        <form id="login_form">
+            <div id="header">
+                <h1>LOGIN</h1>
+                <i id="icon_modo" class="fa-solid fa-moon"></i>
+            </div>
+
+            <div id="div_input">
+                <div class="input-box">
+                    <span id="input_text">Email:</span><br>
+                    <input type="text" placeholder="example@gmail.com" id="inp_user" oninput="validarEmail()"> <br>
+                    <div class="mensagemErro" id="div_email"></div>
+                    <span id="input_text">Senha:</span><br>
+                    <input type="password" placeholder="********" id="inp_senha"><br>
+                </div>
+            </div>
+
+            <button onclick="validar()" type="button" id="btn_login">Entrar</button>
+
+
+            <div id="esqueceu_senha">
+                <a href="#">
+                    Esqueceu a senha?
+                </a>
+            </div>
+
+            <div id="outras_opcoes">
+                <a href="#">
+                    <img src="../site/imagens/icone_Face.png" alt="face.png">
+                </a> 
+                <a href="#">
+                    <img src="../site/imagens/icone_google.png" alt="google.png">
+                </a> 
+                <a href="#">
+                    <img src="../site/imagens/icone_git.png" alt="git.png">
+                </a> 
+            </div>
+        </form>
+       </div>
+        
+        
+    </main>
+
+
+    
+
+
+</body>
+</html>
+
+<script>
+    function validar() {
+    var email = inp_user.value;
+    var senha = inp_senha.value;
+
+        if(email == 'fernando@sptech.com' && senha == '@Urubu100') {
+            window.location.href = "../site/dashboard.html";
+        } else if (email == 'clara@sptech.com' && senha == '@Urubu101') {
+            window.location.href = "../site/dashboard.html";
+        } else {
+            alert('Email ou Senha Inválidos!!');
+        }
+}
+
+function validarEmail(){
+        var email = inp_user.value;
+        var mensagemErro = "";
+
+        if(email.length == 0){
+            mensagemErro = "Insira seu e-mail";
+        }
+        else if(!(email.includes('@'))){
+            mensagemErro = "Insira um email válido";
+        }
+        div_email.innerHTML = mensagemErro;
+    }
+
+    const mode = icon_modo;
+
+    mode.addEventListener('click', () => {
+    const form = document.getElementById('login_form');
+    const container = main_container
+    const botao = btn_login
+    const text_filde = div_input
+    const esq_senha = esqueceu_senha
+
+    if(mode.classList.contains('fa-moon')) {
+        mode.classList.remove('fa-moon');
+        mode.classList.add('fa-sun');
+
+        esq_senha.classList.add('dark')
+        text_filde.classList.add('dark')
+        botao.classList.add('dark');
+        container.classList.add('dark');
+        form.classList.add('dark');
+        return ;
+    }
+    
+    mode.classList.remove('fa-sun');
+    mode.classList.add('fa-moon');
+
+    esq_senha.classList.remove('dark')
+    text_filde.classList.remove('dark')
+    botao.classList.remove('dark')
+    container.classList.remove('dark');
+    form.classList.remove('dark');
+});
+
+</script>
