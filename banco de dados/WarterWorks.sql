@@ -1,7 +1,6 @@
+-- Active: 1732573765546@@127.0.0.1@3306@waterworks
 CREATE DATABASE WaterWorks;
 USE WaterWorks;
-
-
 
 CREATE TABLE endereco (
 idEndereco INT primary key auto_increment,
@@ -122,6 +121,8 @@ INSERT INTO alerta (gravidade, dhora, protocolo, fkUsuario, fkRegistro) VALUES
 
 --  Selecionar todos os dados de registro, alerta e o responsável pelo alerta
 
+CREATE VIEW vw_registro_alerta_responsavel
+as
 SELECT 
     a.idALERTA,
     a.gravidade,
@@ -138,7 +139,8 @@ JOIN
     registro r ON a.fkRegistro = r.idRegistro;
 
 -- Selecionar todos os dados combinados (dados de alertas, registros, sensores, plantações, empresas e usuários)
-
+CREATE VIEW vw_geral
+as
 SELECT 
     a.idALERTA,
     a.gravidade,
@@ -165,9 +167,9 @@ JOIN
 JOIN 
     plantacao p ON s.fkPlantacao = p.idPLANTACAO;
 
+/*os selects em views*/
 
-
-
-
+SELECT * FROM vw_geral;
+SELECT * FROM vw_registro_alerta_responsavel;
 
 
