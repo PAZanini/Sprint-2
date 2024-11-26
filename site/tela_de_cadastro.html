@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro</title>
+    <title>Cadastro de Funcionário</title>
 
     <link rel="stylesheet" href="tela_cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -24,6 +24,10 @@
         </div>
         <div id="div_input">
                 <div class="input-box">
+                    <span id="input_text">Código de Identificação</span><br>
+                    <input type="text" id="input_codigo" placeholder="Código"/><br />
+                        <div class="mensagemErro" id="div_codigo"></div>
+
                     <span id="input_text">Nome Completo</span><br>
                         <input type="text" id="input_nome" placeholder="Nome Completo" oninput="validarNome()"/><br />
                             <div class="mensagemErro" id="div_nome"></div>
@@ -31,10 +35,6 @@
                     <span id="input_text">CPF</span><br />
                         <input type="text" id="input_cpf" placeholder="CPF" oninput="validarCPF()"/><br />
                             <div class="mensagemErro" id="div_cpf"></div>
-        
-                    <span id="input_text">CNPJ</span><br />
-                        <input type="text" id="input_cnpj" placeholder="CNPJ" oninput="validarCNPJ()"/><br />
-                            <div class="mensagemErro" id="div_cnpj"></div>
         
                     <span id="input_text">Telefone/Celular</span><br />
                         <input type="text" id="input_telefone" placeholder="Telefone/Celular" oninput="validarTelefone()"/><br />
@@ -56,7 +56,7 @@
                         <input type="text" id="input_cidade" placeholder="Cidade" oninput="validarCidade()"/><br />
                             <div class="mensagemErro" id="div_cidade"></div>
         
-                    <span  id="input_text">Número</span><br />
+                    <span  id="input_text">Número Residência</span><br />
                         <input type="text" id="input_numEnd" placeholder="Número" oninput="validarNumero()"/><br />
                             <div class="mensagemErro" id="div_numEnd"></div>
         
