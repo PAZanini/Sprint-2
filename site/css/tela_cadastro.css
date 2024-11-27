@@ -76,15 +76,16 @@ body {
 
 #cadastro_form 
 {
-    width: 40%;
+    width: 300px;
+    height: 700px;
     background-color: var(--color-bg-slide-50);
     display: flex;
     flex-direction: column;
-    padding: 10px 80px;
+    justify-content: space-around;
+    padding: 10px 50px;
     border-radius: 10px;
     gap: 30px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.366);
-    height: fit-content;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -120,7 +121,8 @@ body {
 
 .input-box 
 {
-    width: 95%;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -138,7 +140,7 @@ body {
     border-radius: 5px;
     border-style: hidden;
     width: 100%;
-    height: 50%;
+    height: 30px;
     font-size: 18px;
     color: #000F0E;
     padding: 0px 5px;

@@ -9,112 +9,118 @@
     <link rel="stylesheet" href="../css/tela_cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
+
 <body>
     <main id="main_container">
         <div id="left_cadastro">
-            <h1>Faça o seu Cadastro e inove <br> a sua empresa com  <br> a Water Works!</h1>
+            <h1>Faça o seu Cadastro e inove <br> a sua empresa com <br> a Water Works!</h1>
             <img id="img_water_drop" src="../imagens/water-drop-animate.svg" alt="">
         </div>
 
-    <div id="cadastro_right">
-        <form id="cadastro_form">
-            <div id="header">
-                <h1>CADASTRO</h1>
-            <i id="icon_modo" class="fa-solid fa-moon"></i>
-        </div>
-        <div id="div_input">
-                <div class="input-box">
-                    <span id="input_text">Código de Identificação</span><br>
-                    <input type="text" id="input_codigo" placeholder="Código"/><br />
-                        <div class="mensagemErro" id="div_codigo"></div>
-
-                    <span id="input_text">Nome Completo</span><br>
-                        <input type="text" id="input_nome" placeholder="Nome Completo" oninput="validarNome()"/><br />
-                            <div class="mensagemErro" id="div_nome"></div>
-                    
-                    <span id="input_text">CPF</span><br />
-                        <input type="text" id="input_cpf" placeholder="CPF" oninput="validarCPF()"/><br />
-                            <div class="mensagemErro" id="div_cpf"></div>
-        
-                    <span id="input_text">Telefone/Celular</span><br />
-                        <input type="text" id="input_telefone" placeholder="Telefone/Celular" oninput="validarTelefone()"/><br />
-                            <div class="mensagemErro" id="div_telefone"></div>
-        
-                    <span id="input_text">Cargo</span><br />
-                        <input type="text" id="input_cargo" placeholder="Cargo" oninput="validarCargo()"/><br />
-                            <div class="mensagemErro" id="div_cargo"></div>
-        
-                    <span id="input_text">CEP</span><br />
-                        <input type="text" id="input_cep" placeholder="CEP" oninput="validarCEP()"/><br />
-                            <div class="mensagemErro" id="div_cep"></div>
-        
-                    <span id="input_text">Rua</span><br />
-                        <input type="text" id="input_rua" placeholder="Rua" oninput="validarRua()"/><br />
-                            <div class="mensagemErro" id="div_rua"></div>
-        
-                    <span id="input_text">Cidade</span><br />
-                        <input type="text" id="input_cidade" placeholder="Cidade" oninput="validarCidade()"/><br />
-                            <div class="mensagemErro" id="div_cidade"></div>
-        
-                    <span  id="input_text">Número Residência</span><br />
-                        <input type="text" id="input_numEnd" placeholder="Número" oninput="validarNumero()"/><br />
-                            <div class="mensagemErro" id="div_numEnd"></div>
-        
-                    <span id="input_text">UF</span><br />
-                        <select id="slt_uf">
-                            <option value="#"></option> 
-                            <option value="">AC</option>
-                            <option value="">AL</option>
-                            <option value="">AP</option>
-                            <option value="">AM</option>
-                            <option value="">BA</option>
-                            <option value="">CE</option>
-                            <option value="">ES</option>
-                            <option value="">GO</option>
-                            <option value="">MA</option>
-                            <option value="">MT</option>
-                            <option value="">MS</option>
-                            <option value="">MG</option>
-                            <option value="">PA</option>
-                            <option value="">PB</option>
-                            <option value="">PR</option>
-                            <option value="">PE</option>
-                            <option value="">PI</option>
-                            <option value="">RJ</option>
-                            <option value="">RN</option>
-                            <option value="">RS</option>
-                            <option value="">RO</option>
-                            <option value="">RR</option>
-                            <option value="">SC</option>
-                            <option value="" selected>SP</option>
-                            <option value="">SE</option>
-                            <option value="">TO</option>
-                            <option value="">DF</option>
-                        </select><br />
-                    
-                    <span id="input_text">Senha</span><br />
-                        <input type="password" id="input_senha" placeholder="Senha" oninput="validarSenha()"/><br />
-                            <div class="mensagemErro" id="div_senha"></div>
-        
-                    <span id="input_text">Confirmar Senha</span><br />
-                        <input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" oninput="validarConfirmarSenha()"/><br />
-                            <div class="mensagemErro" id="div_confirmarSenha"></div>
-
-                            
+        <div id="cadastro_right">
+            <form id="cadastro_form">
+                <div id="header">
+                    <h1>CADASTRO</h1>
+                    <i id="icon_modo" class="fa-solid fa-moon"></i>
                 </div>
-            </div>
-            <button type="submit" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
-    </form>
-    </div>
-</main>
+                <div id="div_input">
+                    <div class="input-box">
+                        <div class="caixa">
+                            <input type="text" id="input_codigo" placeholder="Código" /><br />
+                            <div class="mensagemErro" id="div_codigo"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_nome" placeholder="Nome Completo"
+                                oninput="validarNome()" /><br />
+                            <div class="mensagemErro" id="div_nome"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_cpf" placeholder="CPF" oninput="validarCPF()" /><br />
+                            <div class="mensagemErro" id="div_cpf"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_telefone" placeholder="Telefone/Celular"
+                                oninput="validarTelefone()" /><br />
+                            <div class="mensagemErro" id="div_telefone"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_cargo" placeholder="Cargo" oninput="validarCargo()" /><br />
+                            <div class="mensagemErro" id="div_cargo"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_cep" placeholder="CEP" oninput="validarCEP()" /><br />
+                            <div class="mensagemErro" id="div_cep"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_rua" placeholder="Rua" oninput="validarRua()" /><br />
+                            <div class="mensagemErro" id="div_rua"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_cidade" placeholder="Cidade" oninput="validarCidade()" /><br />
+                            <div class="mensagemErro" id="div_cidade"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="text" id="input_numEnd" placeholder="Número" oninput="validarNumero()" /><br />
+                            <div class="mensagemErro" id="div_numEnd"></div>
+                        </div>
+                        <div class="caixa">
+                            <select id="slt_uf">
+                                <option value="#"></option>
+                                <option value="">AC</option>
+                                <option value="">AL</option>
+                                <option value="">AP</option>
+                                <option value="">AM</option>
+                                <option value="">BA</option>
+                                <option value="">CE</option>
+                                <option value="">ES</option>
+                                <option value="">GO</option>
+                                <option value="">MA</option>
+                                <option value="">MT</option>
+                                <option value="">MS</option>
+                                <option value="">MG</option>
+                                <option value="">PA</option>
+                                <option value="">PB</option>
+                                <option value="">PR</option>
+                                <option value="">PE</option>
+                                <option value="">PI</option>
+                                <option value="">RJ</option>
+                                <option value="">RN</option>
+                                <option value="">RS</option>
+                                <option value="">RO</option>
+                                <option value="">RR</option>
+                                <option value="">SC</option>
+                                <option value="" selected>SP</option>
+                                <option value="">SE</option>
+                                <option value="">TO</option>
+                                <option value="">DF</option>
+                            </select><br />
+                        </div>
+                        <div class="caixa">
+                            <input type="password" id="input_senha" placeholder="Senha"
+                                oninput="validarSenha()" /><br />
+                            <div class="mensagemErro" id="div_senha"></div>
+                        </div>
+                        <div class="caixa">
+                            <input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha"
+                                oninput="validarConfirmarSenha()" /><br />
+                            <div class="mensagemErro" id="div_confirmarSenha"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <button type="submit" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>
 <script>
-    
+
     const mode = icon_modo;
 
     mode.addEventListener('click', () => {
-        
+
         const form = document.getElementById('cadastro_form');
         const container = document.getElementById('main_container');
         const botao = btn_cadastro;
@@ -151,7 +157,7 @@
                 mensagemErro += "Insira um nome válido.";
             }
         }
-        
+
         div_nome.innerHTML = mensagemErro; // Exibe a mensagem de erro
     }
 
@@ -188,7 +194,7 @@
         var mensagemErro = "";
 
         if (telefone.length == 0) { // Verifica se o campo está vazio
-                mensagemErro = "Insira o telefone.";
+            mensagemErro = "Insira o telefone.";
         } else {
             if (telefone.match(/[^0-9]/)) { // Verifica se o telefone contém apenas números
                 mensagemErro = "O telefone deve conter apenas números.";
@@ -197,20 +203,20 @@
 
         div_telefone.innerHTML = mensagemErro; // Exibe a mensagem de erro
     }
-    function validarCargo(){
+    function validarCargo() {
         var cargo = input_cargo.value;
         var mensagemErro = "";
 
-        if(cargo.length == 0){
+        if (cargo.length == 0) {
             mensagemErro = "Insira o cargo";
         }
         div_cargo.innerHTML = mensagemErro;
     }
-    function validarCEP(){
+    function validarCEP() {
         var cep = input_cep.value;
         var mensagemErro = "";
 
-        if(cep.length == 0){
+        if (cep.length == 0) {
             mensagemErro = "Insira o CEP";
         } else {
             if (cep.match(/[^0-9]/)) {
@@ -219,31 +225,31 @@
         }
         div_cep.innerHTML = mensagemErro;
     }
-    function validarRua(){
+    function validarRua() {
         var rua = input_rua.value;
         var mensagemErro = "";
 
-        if(rua.length == 0){
+        if (rua.length == 0) {
             mensagemErro = "Insira a Rua";
         }
         div_rua.innerHTML = mensagemErro;
 
     }
-    function validarCidade(){
+    function validarCidade() {
         var cidade = input_cidade.value;
         var mensagemErro = "";
 
-        if(cidade.length == 0){
+        if (cidade.length == 0) {
             mensagemErro = "Insira a Cidade";
         }
         div_cidade.innerHTML = mensagemErro;
 
     }
-    function validarNumero(){
+    function validarNumero() {
         var numero = input_numEnd.value;
         var mensagemErro = "";
 
-        if(numero.length == 0){
+        if (numero.length == 0) {
             mensagemErro = "Insira o número";
         } else {
             if (numero.match(/[^0-9]/)) {
@@ -254,26 +260,26 @@
     }
     var senhaOriginal = "";
 
-    function validarSenha(){
+    function validarSenha() {
         var senha = input_senha.value;
         senhaOriginal = senha;
         var mensagem = "";
         var tamanho_senha = senha.length;
-        if(tamanho_senha < 8){
-        mensagem += `8 ou mais caracteres <br>`;
+        if (tamanho_senha < 8) {
+            mensagem += `8 ou mais caracteres <br>`;
         }
 
         var caracteresEspeciais = "!@#$%^&*(),.?\":{}|<>";
         if (!(senha.includes('!') || senha.includes('@') || senha.includes('#') || senha.includes('$') || senha.includes('%') || senha.includes('^') || senha.includes('&') || senha.includes('*') || senha.includes('(') || senha.includes(')') || senha.includes(',') || senha.includes('.') || senha.includes('?') || senha.includes(':') || senha.includes('{') || senha.includes('}') || senha.includes('|') || senha.includes('<') || senha.includes('>'))) {
-        mensagem += `Caracteres especiais<br>`;
+            mensagem += `Caracteres especiais<br>`;
         }
 
-        if(!(senha.includes('0') || senha.includes('1') || senha.includes('2') || senha.includes('3') || senha.includes('4') || senha.includes('5') || senha.includes('6') || senha.includes('7') || senha.includes('8') || senha.includes('9'))){
-        mensagem += `Pelo menos um número<br>`;
+        if (!(senha.includes('0') || senha.includes('1') || senha.includes('2') || senha.includes('3') || senha.includes('4') || senha.includes('5') || senha.includes('6') || senha.includes('7') || senha.includes('8') || senha.includes('9'))) {
+            mensagem += `Pelo menos um número<br>`;
         }
 
         if (senha == senha.toLowerCase() || senha == senha.toUpperCase()) {
-        mensagem += `Letras maiúsculas e minúsculas<br>`;
+            mensagem += `Letras maiúsculas e minúsculas<br>`;
         }
 
         div_senha.innerHTML = `Sua senha deve ter:<br>${mensagem}`; //arrumar textinho
@@ -285,7 +291,7 @@
         if (confirmar !== senhaOriginal) {
             mensagem += `Insira a mesma senha<br>`;
         }
-        
+
         div_confirmarSenha.innerHTML = mensagem;
     }
 
