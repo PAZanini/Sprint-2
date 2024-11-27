@@ -13,17 +13,16 @@ const HABILITAR_OPERACAO_INSERIR = true;
 // função para comunicação serial
 const serial = async (
     valoresSensorAnalogico,
-    valoresSensorDigital,
 ) => {
 
     // conexão com o banco de dados MySQL     COLOQUE O SEU USUARIO DO BANCO DE DADOS NA HORA
     let poolBancoDados = mysql.createPool(
         {
             host: 'localhost',
-            user: 'aluno',
-            password: 'Sptech#2024',
-            database: 'sensor',
-            port: 3307
+            user: 'root',
+            password: 'Familia2000@',
+            database: 'aquatech',
+            port: 3306
         }
     ).promise();
 
@@ -57,13 +56,25 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
+            var agora = Date.now(); // Pega o timestamp atual
+            var obj = new Date(agora); // Cria o objeto Date
+
+    // Pega o ano, mês (adiciona 1, pois o mês começa de 0), dia, hora, minuto e segundo
+            var ano = obj.getFullYear();
+            var mes = (obj.getMonth() + 1).toString().padStart(2, '0'); // Adiciona 1 ao mês, pois é baseado em 0
+            var dia = obj.getDate().toString().padStart(2, '0');
+            var hora = obj.getHours().toString().padStart(2, '0');
+            var minuto = obj.getMinutes().toString().padStart(2, '0');
+            var segundo = obj.getSeconds().toString().padStart(2, '0');
+
+            var dataFormatada = `'${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}'`;
+
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO dados_sensor (sensor_analogico) VALUES (?)',
-                [sensorAnalogico]
+                `INSERT INTO medida(dht11_umidadade, momento, fk_aquario)VALUES(${sensorAnalogico}, ${dataFormatada}, 2)`,
             );
-            console.log("valores inseridos no banco: ", sensorAnalogico);
+            console.log("valores inseridos no banco: ", sensorAnalogico + ' e', dataFormatada);
 
         }
 
@@ -104,11 +115,9 @@ const servidor = (
 (async () => {
     // arrays para armazenar os valores dos sensores
     const valoresSensorAnalogico = [];
-
     // inicia a comunicação serial
     await serial(
-        valoresSensorAnalogico,
-        
+        valoresSensorAnalogico,   
     );
 
     // inicia o servidor web

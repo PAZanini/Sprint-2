@@ -150,32 +150,32 @@
     const avancar = document.getElementById('avancar')
     const voltar = document.getElementById('voltar')
 
-    let possicaoSlider = 0;
+    let posicaoSlider = 0;
 
     function hideSlider() {
         imgSlider.forEach(item => item.classList.remove('on'))
     }
 
     function showSlider() {
-        imgSlider[possicaoSlider].classList.add('on')
+        imgSlider[posicaoSlider].classList.add('on')
     }
 
     function nextSlider() {
         hideSlider()
-        if(possicaoSlider === imgSlider.length -1) {
-            possicaoSlider = 0
+        if(posicaoSlider === imgSlider.length -1) {
+            posicaoSlider = 0
         } else {
-            possicaoSlider++
+            posicaoSlider++
         }
         showSlider()
     }
 
     function prevSlider() {
         hideSlider()
-        if(possicaoSlider === 0) {
-            possicaoSlider = imgSlider.length -1
+        if(posicaoSlider === 0) {
+            posicaoSlider = imgSlider.length -1
         } else {
-            possicaoSlider--
+            posicaoSlider--
         }
         showSlider()
     }
