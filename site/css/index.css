@@ -6,7 +6,6 @@ html, body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     scroll-padding-top: 80px;
-
 }
 
 .main-content {
@@ -128,7 +127,6 @@ header {
 }
 
 .banner {
-    /* background-color: red; */
     width: 100%;
     padding-top: 80px;
     height: calc(100vh - 80px);
@@ -138,15 +136,12 @@ header {
     background-image: url("../imagens/fruto.jpg");
     background-size: cover;
     z-index: 0;
-    /* background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 100%); */
 
     .fundo {
         width: 100%;
-        /* padding-top: 80px; */
         height: calc(100vh - 80px);
         background-color: rgba(0, 0, 0, 0.3);
         position: absolute;
-        /* z-index: 1; */
     }
 
     .titulo {
@@ -185,6 +180,11 @@ header {
             }
         }
     }
+}
 
-
+.sobreNos {
+    width: 100%;
+    padding-top: 80px;
+    height: calc(100vh - 80px);
+    background-color: blueviolet;
 }
