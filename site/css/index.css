@@ -160,6 +160,7 @@ header {
                 text-align: center;
                 margin: 0;
                 padding: 0;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 1s);
             }
 
         }
@@ -173,9 +174,12 @@ header {
                 text-align: center;
                 margin: 0;
                 padding: 0;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+
 
                 span {
                     color: #0A8CBF;
+                    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
                 }
             }
         }
