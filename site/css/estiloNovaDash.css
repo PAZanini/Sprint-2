@@ -1,0 +1,205 @@
+/* Gerais */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Rubik';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+}
+
+
+/* Header Superior */
+
+#headerSuperior {
+    background-color: #F0F6F5;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px black;
+}
+
+#headerSuperior div {
+    margin: 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#headerSuperior h2 {
+    margin: 0px 20px;
+    font-size: 40px;
+    color: #0A8CBF;
+}
+
+#nomeEmpresa {
+    font-size: 20px;
+}
+
+/* Header Fixo Lateral */
+
+#headerLateral {
+    height: 90vh;
+    width: 15%;
+    background-color: #F0F6F5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-right: solid 2px black;
+    color: #0A8CBF;
+}
+
+#headerLateral button {
+    background-color: #0A8CBF;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#headerLateral button:hover {
+    background-color: #0caeee;
+    cursor: pointer;
+    scale: 1.1;
+}
+
+/* Graficos */
+
+#graficos {
+    background-color: white;
+    width: 85%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#graficos menu {
+    margin: 20px;
+}
+
+#graficos menu button {
+    background-color: #0A8CBF;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#graficos menu button:hover {
+    background-color: #0caeee;
+    cursor: pointer;
+}
+
+#graficos menu select {
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#graficos section {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+#graficos section button {
+    background-color: #0A8CBF;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#graficos section button:hover {
+    background-color: #0caeee;
+    cursor: pointer;
+}
+
+#graficoMensalPlant1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#graficoDiarioPlant1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#graficoMensalPlant2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#graficoDiarioPlant2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grafico {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.kpiNaoEstatica {
+    display: flex;
+}
+
+.btnMudarGrafico {
+    margin: 40px;
+}
+
+.kpi {
+    background-color: #0A8CBF;
+    padding: 10px;
+    margin: 20px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+/* Plantações */
+
+#plantacao1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#plantacao2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
