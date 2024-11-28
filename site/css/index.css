@@ -185,94 +185,7 @@ header {
     }
 }
 
-.oQueE {
-    width: 100%;
-    height: calc(100vh - 80px);
-
-    .solo {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        height: 50%;
-        border-top: 3px solid #0A8CBF;
-        background-color: #F0F6F5;
-
-
-        .texto {
-            display: flex;
-            flex-direction: column;
-            margin-left: 100px;
-            width: 600px;
-            height: 210px;
-
-
-            h1 {
-                color: #0A8CBF;
-                margin: 0;
-                padding: 0;
-                font-size: 25px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                margin: 0;
-                color: black;
-                font-size: 20px;
-            }
-        }
-
-        .imagem {
-            width: 600px;
-            height: 250px;
-            border-radius: 40px 0 0 40px;
-            background-image: url("../imagens/terra(1).jpg");
-            background-size: cover;
-            box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
-            -webkit-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
-            -moz-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
-
-        }
-    }
-
-    .cafe {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row-reverse;
-        width: 100%;
-        /* padding-top: 80px; */
-        height: 50%;
-        /* border-top: 3px solid #0A8CBF; */
-        background-color: #F0F6F5;
-
-        .texto {
-            display: flex;
-            margin-right: 100px;
-            width: 600px;
-            height: 140px;
-
-            p {
-                color: black;
-                font-size: 20px;
-            }
-        }
-
-        .imagem {
-            width: 600px;
-            height: 250px;
-            border-radius: 0 40px 40px 0;
-            background-image: url("../imagens/geãos\ de\ café.jpg");
-            background-size: cover;
-            box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
-            -webkit-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
-            -moz-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
-
-        }
-    }
-}
-
-.tecnologia {
+.vantagem {
     height: calc(100vh - 80px);
     width: 100%;
     /* color: white; */
@@ -282,10 +195,66 @@ header {
     /* justify-content: space-between; */
     align-items: center;
     background-color: #F0F6F5;
+}
+
+.cookie {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #0A8CBF, #5CCFE6);
+    /* Laranja vibrante */
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+    p {
+        margin: 0;
+
+        a {
+            color: #fff;
+        }
+    }
+
+    button {
+        margin-top: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 50px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+
+
+
+        &:hover {
+            background-color: #218838;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+
+.tecnologia {
+    height: calc(100vh - 80px);
+    width: 100%;
+    /* color: white; */
+    /* border-top: 3px solid #0A8CBF; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #F0F6F5;
 
 
     .titulo {
-        background-color: #0A8CBF;
+        background: linear-gradient(90deg, #0A8CBF, #5CCFE6);
         width: 100%;
         height: 30%;
         display: flex;
@@ -375,6 +344,7 @@ header {
     justify-content: center;
     align-items: center;
 
+
     .container {
         background-color: #0A8CBF;
         width: 90%;
@@ -384,6 +354,9 @@ header {
         align-items: center;
         justify-content: space-between;
         color: #F0F6F5;
+        box-shadow: 9px 10px 14px -5px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 9px 10px 14px -5px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 9px 10px 14px -5px rgba(0, 0, 0, 0.75);
 
 
         .texto {
@@ -391,7 +364,7 @@ header {
             height: 400px;
             /* background-color: aqua; */
             list-style: none;
-            margin-left: 60px;
+            margin-left: 5%;
 
             .titulo {
                 h1 {
@@ -465,9 +438,83 @@ header {
             border-radius: 0 50px 50px 0;
             background-image: url("../imagens/grafico.JPG");
             background-size: cover;
+        }
+    }
+}
 
+.simulador {
+    background-color: #F0F6F5;
+    width: 100%;
+    height: calc(100vh - 80px);
+    /* border-top: 3px solid #0A8CBF; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        background: linear-gradient(90deg, #0A8CBF, #5CCFE6);
+        color: #F0F6F5;
+        width: 100%;
+        height: 80%;
+        margin: 20px 0;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            font-size: 60px;
+            width: 50%;
+            height: 60%;
+            margin-left: 40px;
+            margin-bottom: 10px;
+
+        }
+
+        .botao {
+            display: inline-block;
+            background-color: #28a745;
+            margin-left: 40px;
+            color: #fff;
+            padding: 23px 45px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #218838;
+                box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+                transform: scale(1.05);
+            }
         }
     }
 
+
+
+    /* 
+    .tooltip {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 14px;
+        animation: fade-in 0.5s ease-in-out;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    } */
 
 }

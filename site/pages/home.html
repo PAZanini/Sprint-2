@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="../imgs - Home/icons/ww icon.png" type="img/png">
 </head>
 
 <body>
@@ -21,16 +22,16 @@
             </a>
         </div>
         <div class="opcoes">
-            <li><a href="#monitoramento">Monitoramento</a></li>
+            <li><a href="./monitoramento.html">Monitoramento</a></li>
             <li><a href="#tecnologia">Tecnologia</a></li>
             <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="./pages/calculadoraWaterWorksV3.html">Simulador</a></li>
-            <li><a href="index.html">Sobre nós</a></li>
+            <li><a href="#simulador">Simulador</a></li>
+            <li><a href="#sobreNos">Sobre nós</a></li>
         </div>
         <div class="entrar">
             <!-- <li><a href="./pages/login.html">LOGIN</a></li>
             <li><a href="./pages/tela_de_cadastro.html">CADASTRO</a></li> -->
-            <img src="../imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt="">
+            <a href="./login.html"><img src="../imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt=""></a>
         </div>
     </header>
     <section class="banner" id="banner">
@@ -44,26 +45,8 @@
             </div>
         </div>
     </section>
-    <section class="oQueE" id="monitoramento">
-        <div class="solo">
-            <div class="texto">
-                <h1>O QUE É O MONITORAMENTO DE UMIDADE DE SOLO?</h1>
-                <p>O monitoramento da umidade do solo é uma técnica que permite acompanhar em tempo real a quantidade de
-                    água presente no solo de uma plantação. Essa prática é essencial para agricultores, pois oferece
-                    informações precisas que ajudam a tomar decisões estratégicas sobre irrigação e manejo hídrico,
-                    otimizando o uso da água e promovendo o crescimento saudável das plantas.</p>
-            </div>
-            <div class="imagem"></div>
-        </div>
-        <div class="cafe">
-            <div class="texto">
-                <p> No caso de plantações como o café, o monitoramento da umidade do solo é ainda mais importante, já
-                    que a
-                    irrigação inadequada pode impactar diretamente a qualidade dos grãos e a produtividade da lavoura.
-                </p>
-            </div>
-            <div class="imagem"></div>
-        </div>
+    <section class="vantagem">
+
     </section>
     <section class="tecnologia" id="tecnologia">
         <div class="titulo">
@@ -92,8 +75,7 @@
                 <div class="titulo">
                     <h1>Dashboard Water Works</h1>
                     <p>Na nossa dashboard, você terá acesso a todas as informações necessárias para gerenciar sua
-                        plantação
-                        de café de forma eficiente e sustentável.</p>
+                        plantação de café de forma eficiente e sustentável.</p>
                 </div>
                 <div class="um">
                     <img src="../imagens/relogio.png" alt="">
@@ -111,6 +93,27 @@
             <div class="imagem"></div>
         </div>
     </section>
+    <section class="simulador" id="simulador">
+        <div class="container">
+            <h2>Descubra como economizar recursos e maximizar resultados!</h2>
+            <!-- <p>Calcule agora a quantidade ideal de sensores e planeje melhor seu investimento.</p> -->
+            <a href="" class="botao">Simular agora</a>
+        </div>
+        <!-- <div class="tooltip">
+            <p>🧮 Planeje seu investimento com nosso Simulador Financeiro!</p>
+        </div> -->
+    </section>
+    <div id="cookie" class="cookie">
+        <p>
+            Clicando em "Aceito todos os cookies", você aceita nossa política de cookies com objetivo de melhorar sua navegação. Conheça nossa política e <a href="">configure seus cookies</a>
+        </p>
+        <button id="aceitar-cookies">aceitar todos os cookies</button>
+    </div>
 </body>
 
 </html>
+<script>
+    document.getElementById('aceitar-cookies').addEventListener('click', function () {
+        document.getElementById('cookie').style.display = 'none';
+    });
+</script>
