@@ -29,6 +29,12 @@ header {
     z-index: 1000;
     list-style: none;
 
+    a {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+    }
+
     .logoWW {
         display: flex;
         transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -43,21 +49,17 @@ header {
         li {
             font-size: 30px;
             color: #0A8CBF;
-
         }
 
-        &:hover {
-            transform: scale(1.03);
-            color: #0A8CBF;
-        }
     }
+
 
     .opcoes {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 100%;
-        width: 500px;
+        width: 700px;
 
 
         li {
@@ -88,7 +90,7 @@ header {
         display: flex;
         justify-content: flex-end;
         height: 100%;
-        width: 300px;
+        width: 100px;
         align-items: center;
 
         img {
@@ -96,9 +98,6 @@ header {
             height: 50px;
             transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 
-            &:hover {
-                transform: scale(1.05);
-            }
         }
 
         li {
@@ -155,7 +154,7 @@ header {
             width: 100%;
 
             p {
-                color: white;
+                color: #F0F6F5;
                 font-size: 60px;
                 text-align: center;
                 margin: 0;
@@ -169,7 +168,7 @@ header {
             width: 100%;
 
             p {
-                color: white;
+                color: #F0F6F5;
                 font-size: 25px;
                 text-align: center;
                 margin: 0;
@@ -229,9 +228,9 @@ header {
             border-radius: 40px 0 0 40px;
             background-image: url("../imagens/terra(1).jpg");
             background-size: cover;
-            box-shadow: -5px 9px 38px 3px rgba(0, 0, 0, 0.46);
-            -webkit-box-shadow: -5px 9px 38px 3px rgba(0, 0, 0, 0.46);
-            -moz-box-shadow: -5px 9px 38px 3px rgba(0, 0, 0, 0.46);
+            box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
+            -moz-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
 
         }
     }
@@ -265,9 +264,9 @@ header {
             border-radius: 0 40px 40px 0;
             background-image: url("../imagens/geãos\ de\ café.jpg");
             background-size: cover;
-            box-shadow: 4px 9px 38px 3px rgba(0, 0, 0, 0.46);
-            -webkit-box-shadow: 4px 9px 38px 3px rgba(0, 0, 0, 0.46);
-            -moz-box-shadow: 4px 9px 38px 3px rgba(0, 0, 0, 0.46);
+            box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
+            -moz-box-shadow: 9px 10px 14px -5px rgba(0,0,0,0.75);
 
         }
     }
@@ -315,10 +314,21 @@ header {
         width: 100%;
         height: 100%;
 
+
+
         .um, .dois, .tres {
             /* background-color: aquamarine; */
             width: 30%;
             height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: color 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+            &:hover {
+                transform: scale(1.03);
+                /* color: #0A8CBF; */
+            }
 
             li {
                 list-style: none;
@@ -327,52 +337,137 @@ header {
                 padding: 20px;
             }
 
+            /* img {
+                width: 300px;
+                height: auto;
+                
+            } */
+
+            .sensor {
+                margin-top: 30px;
+                width: 300px;
+                height: auto;
+
+            }
+
+            .bancoDados {
+                width: 230px;
+                height: auto;
+            }
+
+            .grafico {
+                margin-top: 10px;
+                width: 350px;
+                height: auto;
+            }
+
         }
     }
 
-/*     
+}
 
-    .texto {
+.dashboard {
+    background-color: #F0F6F5;
+    width: 100%;
+    height: calc(100vh - 80px);
+    /* border-top: 3px solid #0A8CBF; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        background-color: #0A8CBF;
+        width: 90%;
+        height: 90%;
+        border-radius: 50px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 50%;
-        height: 500px;
-        margin-left: 40px;
+        align-items: center;
+        justify-content: space-between;
+        color: #F0F6F5;
 
-        h1 {
-            color: #0A8CBF;
-            margin: 0;
-            padding: 0;
-            font-size: 40px;
-        }
 
-        p {
-            color: black;
-            font-size: 20px;
-        }
+        .texto {
+            width: 40%;
+            height: 400px;
+            /* background-color: aqua; */
+            list-style: none;
+            margin-left: 60px;
 
-        ul {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100%;
-            height: 200px;
-            li {
-                color: black;
-                font-size: 20px;
+            .titulo {
+                h1 {
+                    font-size: 40px;
+                    margin: 0;
+                    padding: 0;
+
+                }
+
+                /* p {
+                    font-weight: bold;
+                } */
+            }
+
+            .um {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 90px;
+                font-weight: bold;
+
+                /* background-color: blueviolet; */
+
+                img {
+                    width: 60px;
+                    height: auto;
+                    margin-right: 30px;
+                }
+            }
+
+            .dois {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 90px;
+                font-weight: bold;
+
+                /* background-color: yellowgreen; */
+
+                img {
+                    width: 60px;
+                    height: auto;
+                    margin-right: 30px;
+
+                }
+            }
+
+            .tres {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 90px;
+                font-weight: bold;
+
+                /* background-color: firebrick; */
+
+                img {
+                    width: 60px;
+                    height: auto;
+                    margin-right: 30px;
+
+                }
             }
         }
-    } */
 
-    /* .imagem {
-        width: 500px;
-        height: 500px;
-        background-image: url("../imagens/sensor\ de\ umidade.png");
-        background-size: cover;
-        /* box-shadow: 4px 9px 38px 3px rgba(0, 0, 0, 0.46);
-        -webkit-box-shadow: 4px 9px 38px 3px rgba(0, 0, 0, 0.46);
-        -moz-box-shadow: 4px 9px 38px 3px rgba(0, 0, 0, 0.46); */
-    /* }  */
+        .imagem {
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            /* background-color: red; */
+            border-radius: 0 50px 50px 0;
+            background-image: url("../imagens/grafico.JPG");
+            background-size: cover;
+
+        }
+    }
+
 
 }
