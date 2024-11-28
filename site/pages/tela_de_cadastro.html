@@ -29,23 +29,23 @@
                         <div class="mensagemErro" id="div_codigo"></div>
 
                     <span id="input_text">Nome Completo</span><br>
-                        <input type="text" id="input_nome" placeholder="Nome Completo" oninput="validarNome()"/><br />
+                        <input type="text" id="input_nome" placeholder="Nome Completo"/><br />
                             <div class="mensagemErro" id="div_nome"></div>
                     
                     <span id="input_text">Cargo</span><br />
-                        <input type="text" id="input_cargo" placeholder="Cargo" oninput="validarCargo()"/><br />
+                        <input type="text" id="input_cargo" placeholder="Cargo"/><br />
                             <div class="mensagemErro" id="div_cargo"></div>
 
                     <span id="input_text">Email</span><br>
-                        <input type="text" id="input_email" placeholder="Email" oninput="validarEmail()"/><br />
+                        <input type="text" id="input_email" placeholder="Email"/><br />
                             <div class="mensagemErro" id="div_email"></div>
                     
                     <span id="input_text">Senha</span><br />
-                        <input type="password" id="input_senha" placeholder="Senha" oninput="validarSenha()"/><br />
+                        <input type="password" id="input_senha" placeholder="Senha"/><br />
                             <div class="mensagemErro" id="div_senha"></div>
         
                     <span id="input_text">Confirmar Senha</span><br />
-                        <input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" oninput="validarConfirmarSenha()"/><br />
+                        <input type="password" id="input_confirmar_senha" placeholder="Confirmar Senha"/><br />
                             <div class="mensagemErro" id="div_confirmarSenha"></div>
 
                             
@@ -59,27 +59,29 @@
 </html>
 <script>
     
+    let listaEmpresasCadastradas = [];
+
   function cadastrar() {
 
     // VARIÁVEIS:
 
+    var codigoVar = input_codigo.value;
+    
     var nomeVar = input_nome.value;
 
-    var codigoVar = input_codigo.value;
-
     var cargoVar = input_cargo.value;
-        
-    var telefoneVar = input_telefone.value;
         
     var emailVar = input_email.value;
         
     var senhaVar = input_senha.value;
         
-    var confirmacaoSenhaVar = input_confirmacao_senha.value;
+    var confirmacaoSenhaVar = input_confirmar_senha.value;
+
+    //validacoes
         
-    var validacaoMaiuscula = senha.toUpperCase();
+    var validacaoMaiuscula = senhaVar.toUpperCase();
         
-    var validacaoMinuscula = senha.toLowerCase();
+    var validacaoMinuscula = senhaVar.toLowerCase();
 
     var listaNumeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -90,18 +92,19 @@
 
     // VALIDAÇÕES DO CADASTRO:
 
-    if (nomeVar == "" || telefoneVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || codigoVar == "" || cargoVar == "") {
+    if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || codigoVar == "" || cargoVar == "") {
 
       alert("Prencha todos os campos");
+      return
 
     } else if (!emailVar.includes('@') || !emailVar.includes('.com') || emailVar.length < 6) {
 
       alert("Utilize um email válido");
-
+      return
     } else if (senhaVar.length < 8 || validacaoMaiuscula == senhaVar || validacaoMinuscula == senhaVar || confirmacaoSenhaVar != senhaVar || !senhaVar.includes(listaNumeros) || !senhaVar.includes(listaCaracteresEspeciais)) {
 
       alert("Utilize uma senha válida");
-
+      return
     } else {}
 
     for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
@@ -123,6 +126,7 @@
   },
   body: JSON.stringify({
     nomeServer: nomeVar,
+    cargoServer: cargoVar,
     emailServer: emailVar,
     senhaServer: senhaVar,
     idEmpresaVincularServer: idEmpresaVincular,
