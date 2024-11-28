@@ -15,14 +15,17 @@
 <body>
     <header>
         <div class="logoWW">
-            <img src="../imgs - Home/logoWW.png" alt="WaterWorks">
-            <li>ater Works</li>
+            <a href="#banner">
+                <img src="../imgs - Home/logoWW.png" alt="WaterWorks">
+                <li>ater Works</li>
+            </a>
         </div>
         <div class="opcoes">
-            <li><a href="index.html">Sobre nós</a></li>
+            <li><a href="#monitoramento">Monitoramento</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
             <li><a href="./pages/calculadoraWaterWorksV3.html">Simulador</a></li>
-            <li>Sensor</li>
-            <li>Dashboard</li>
+            <li><a href="index.html">Sobre nós</a></li>
         </div>
         <div class="entrar">
             <!-- <li><a href="./pages/login.html">LOGIN</a></li>
@@ -30,7 +33,7 @@
             <img src="../imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt="">
         </div>
     </header>
-    <section class="banner">
+    <section class="banner" id="banner">
         <div class="fundo"></div>
         <div class="titulo">
             <div class="um">
@@ -41,7 +44,7 @@
             </div>
         </div>
     </section>
-    <section class="oQueE">
+    <section class="oQueE" id="monitoramento">
         <div class="solo">
             <div class="texto">
                 <h1>O QUE É O MONITORAMENTO DE UMIDADE DE SOLO?</h1>
@@ -62,7 +65,7 @@
             <div class="imagem"></div>
         </div>
     </section>
-    <section class="tecnologia">
+    <section class="tecnologia" id="tecnologia">
         <div class="titulo">
             <h1>NOSSA TECNOLOGIA</h1>
             <p>Utilizamos tecnologias confiáveis e acessíveis para garantir precisão e eficiência</p>
@@ -70,40 +73,44 @@
         <div class="texto">
             <div class="um">
                 <li>Arduino UNO e o Sensor de Umidade (MTS) para a captação de dados.</li>
+                <img class="sensor" src="../imagens/placa_sensor.png" alt="Sensor de umidade">
             </div>
             <div class="dois">
                 <li>Lançamento dos dados coletados diretamente em um banco de dados seguro.</li>
+                <img class="bancoDados" src="../imagens/banco de dados.png" alt="banco de dados">
             </div>
             <div class="tres">
-                <li>Transformação das informações em dados intuitivos e acessíveis através de nossa dashboard exclusiva.</li>
+                <li>Transformação das informações em dados intuitivos e acessíveis através de nossa dashboard exclusiva.
+                </li>
+                <img class="grafico" src="../imagens/dash.PNG" alt="dashboard">
             </div>
         </div>
-        <!-- <img src="../imagens/sensor de umidade.png" alt="">
-        <img src="../imagens/armazenamento-de-banco-de-dados.png" alt="">
-        <img src="" alt=""> -->
     </section>
-    <!-- <div class="arduino">
-        <br> <br>
-        <h2>ESSE É O <b style="color: #0A8CBF;">FUTURO</b></h2>
-        <div class="divArduino">
-            <div id="div_ard_img">
-                <img class="img_content" src="../imgs - Home/logoWW.png" alt="Logo da Empresa">
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="texto">
+                <div class="titulo">
+                    <h1>Dashboard Water Works</h1>
+                    <p>Na nossa dashboard, você terá acesso a todas as informações necessárias para gerenciar sua
+                        plantação
+                        de café de forma eficiente e sustentável.</p>
+                </div>
+                <div class="um">
+                    <img src="../imagens/relogio.png" alt="">
+                    <li>Visualize dados de umidade do solo em tempo real.</li>
+                </div>
+                <div class="dois">
+                    <img src="../imagens/estrategia.png" alt="">
+                    <li>Tome decisões estratégicas com base em análises intuitivas.</li>
+                </div>
+                <div class="tres">
+                    <img src="../imagens/gotas-de-agua.png" alt="">
+                    <li>Gerencie os recursos hídricos com mais precisão.</li>
+                </div>
             </div>
-            <div id="div_ard_text">
-                <p> Nós utilizaremos o arduino <br>
-                    UNO e o sensor de umidade (MTS) <br>
-                    também conhecido como Moisture Sensor <br>
-                    para a captação de dados. Logo após <br>
-                    iremos lançar esses dados <br>
-                    no banco. E por último mas não <br>
-                    menos importante, vamos usar <br>
-                    os dados coletados para <br>
-                    transformá-los em uma informação <br>
-                    intuitiva para o usuario atraves <br>
-                    da nossa dashboard.
-                </p>
-            </div>
-        </div> -->
+            <div class="imagem"></div>
+        </div>
+    </section>
 </body>
 
 </html>
