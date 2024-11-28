@@ -51,15 +51,16 @@
                             
                 </div>
             </div>
-            <button type="submit" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
+            <button type="button" id="btn_cadastro" onclick="cadastrar()">Cadastrar</button>
     </form>
     </div>
 </main>
 </body>
 </html>
+
 <script>
     
-    let listaEmpresasCadastradas = [];
+  let listaEmpresasCadastradas = [];
 
   function cadastrar() {
 
@@ -76,8 +77,6 @@
     var senhaVar = input_senha.value;
         
     var confirmacaoSenhaVar = input_confirmar_senha.value;
-
-    //validacoes
         
     var validacaoMaiuscula = senhaVar.toUpperCase();
         
@@ -94,53 +93,102 @@
 
     if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || codigoVar == "" || cargoVar == "") {
 
-      alert("Prencha todos os campos");
-      return
+      alert("Prencha todos os campos"); return
 
     } else if (!emailVar.includes('@') || !emailVar.includes('.com') || emailVar.length < 6) {
 
-      alert("Utilize um email válido");
-      return
-    } else if (senhaVar.length < 8 || validacaoMaiuscula == senhaVar || validacaoMinuscula == senhaVar || confirmacaoSenhaVar != senhaVar || !senhaVar.includes(listaNumeros) || !senhaVar.includes(listaCaracteresEspeciais)) {
+      alert("Utilize um email válido"); return
+    
+    } else if (senhaVar.length < 8) {
 
-      alert("Utilize uma senha válida");
-      return
-    } else {}
+      alert("Utilize uma senha válida"); return
+    
+    } else if (validacaoMaiuscula == senhaVar) {
+      
+      alert("A senha precisa de, no mínimo, uma letra maiúscula"); return
+      
+    } else if (validacaoMinuscula == senhaVar) {
+
+      alert("A senha precisa de, no mínimo, uma letra minúscula"); return
+
+    } else if (confirmacaoSenhaVar != senhaVar) {
+
+      alert("A confirmação de senha precisa ser igual a senha acima"); return
+
+    } else if (!senhaVar.includes(listaNumeros)) {
+      
+      alert("A senha precisa de, no mínimo, um número"); return
+      
+    } else if (!senhaVar.includes(listaCaracteresEspeciais)) {
+
+      alert("A senha precisa de, no mínimo, um caracter especial"); return
+
+    } else {
 
     for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      
       if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+      
         idEmpresaVincular = listaEmpresasCadastradas[i].id
+      
         console.log("Código de ativação válido.");
+      
         break;
+      
       } else {
+      
         cardErro.style.display = "block";
+      
         mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+      
         finalizarAguardar();
+      
       }
+    
     }
 
       fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    nomeServer: nomeVar,
-    cargoServer: cargoVar,
-    emailServer: emailVar,
-    senhaServer: senhaVar,
-    idEmpresaVincularServer: idEmpresaVincular,
-  }),
-})
-  .then(function (resposta) {
-    console.log("resposta: ", resposta);
-    window.location = './login.html';
-  })
-  .catch(function (resposta) {
-    console.log(`#ERRO: ${resposta}`);
-  });
-}
 
-    
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json",
+
+        },
+
+        body: JSON.stringify({
+
+          nomeServer: nomeVar,
+
+          cargoServer: cargoVar,
+
+          emailServer: emailVar,
+
+          senhaServer: senhaVar,
+
+          idEmpresaVincularServer: idEmpresaVincular,
+
+        }),
+
+      })
+
+      .then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        window.location = './login.html';
+
+      })
+
+      .catch(function (resposta) {
+
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    }
+
+  }
 
 </script>

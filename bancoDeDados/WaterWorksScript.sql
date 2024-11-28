@@ -67,6 +67,7 @@ CREATE TABLE Alerta (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
+
 INSERT INTO endereco (cep, rua, cidade, numero, uf) VALUES 
 ('12345678', 'Rua A', 'Cidade A', '100', 'SP'),
 ('87654321', 'Rua B', 'Cidade B', '200', 'MG');
