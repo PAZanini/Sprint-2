@@ -74,19 +74,18 @@ function cadastrar(req, res) {
 
 
 function plotar(req, res) {
-    var idusuario = req.body.idusuario;
-    var idPLANTACAO = req.body.platacaoServer;
+    var idPLANTACAO = req.body.idPLANTACAO;
 
 
 
-
-    if (idusuario == undefined) {
+    if (idPLANTACAO == undefined) {
       res.status(400).send("Algum parametro está undefined!");
     } else {
       usuarioModel
-        .plotar(idusuario, platacaoServer)
+        .plotar(idPLANTACAO)
         .then(function (resultado) {
           res.json(resultado);
+          res.status(200)
         })
         .catch(function (erro) {
           console.log(erro);
