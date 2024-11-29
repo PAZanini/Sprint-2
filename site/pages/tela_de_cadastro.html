@@ -74,12 +74,19 @@
     var confirmacaoSenhaVar = input_confirmar_senha.value;
     var validacaoMaiuscula = senhaVar.toUpperCase();
     var validacaoMinuscula = senhaVar.toLowerCase();
-    var listaNumeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var listaCaracteresEspeciais = ['!', "@", '#', '$', '%', '¨', '&', '*'];
+    var listaCaracteresEspeciais = "!@#$%^&*()_+";
     var idEmpresaVincular
 
 
     // VALIDAÇÕES DO CADASTRO:
+
+    var temCaracterEspecial = false;
+  for (var i = 0; i < listaCaracteresEspeciais.length; i++) {
+    if (senhaVar.includes(listaCaracteresEspeciais[i])) {
+      temCaracterEspecial = true;
+      break; // Sai do loop assim que encontrar um caractere especial
+    }
+  }
 
     if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || codigoVar == "" || cargoVar == "") {
       alert("Prencha todos os campos"); return
@@ -96,16 +103,16 @@
     } else if (senhaVar == validacaoMinuscula) {
       alert("A senha precisa de, no mínimo, uma letra maiúscula"); return
 
-    } else if (confirmacaoSenhaVar != senhaVar) {
-      alert("A confirmação de senha precisa ser igual a senha acima"); return
-
-    } else if (!senhaVar.includes(listaNumeros)) {
+    }  else if (!/[0-9]/.test(senhaVar)) {
       alert("A senha precisa de, no mínimo, um número"); return
       
-    } else if (!senhaVar.includes(listaCaracteresEspeciais)) {
+    } else if (!temCaracterEspecial) {
       alert("A senha precisa de, no mínimo, um caracter especial"); return
 
-    } else {
+    } else if (confirmacaoSenhaVar != senhaVar) {
+      alert("A confirmação de senha precisa ser igual a senha acima"); return
+    }
+    else {
     for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
       
       if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
