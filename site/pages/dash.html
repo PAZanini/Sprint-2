@@ -39,12 +39,12 @@
         <section id="graficos">
 
             <menu>
-                <select name="" id="listaPlant">
+                <select onselect="plotar()" id="listaPlant">
                     <option value="#" selected disabled>Selecione uma plantação</option>
-                    <option value="1" onselect="plotar()">Plantação 1</option>
-                    <option value="2" onselect="plotar()" >Plantação 2</option>
+                    <option value="1" >Plantação 1</option>
+                    <option value="2" >Plantação 2</option>
                 </select>
-                <button onclick="selecionarPlant()">Selecionar</button>
+                <button onclick="plotar()">Selecionar</button>
             </menu>
     
             <section id="plantacao1" style="display: none;">
