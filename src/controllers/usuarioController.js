@@ -72,7 +72,35 @@ function cadastrar(req, res) {
     }
 }
 
+
+function plotar(req, res) {
+    var idusuario = req.body.idusuario;
+    var idPLANTACAO = req.body.platacaoServer;
+
+
+
+
+    if (idusuario == undefined) {
+      res.status(400).send("Algum parametro está undefined!");
+    } else {
+      usuarioModel
+        .plotar(idusuario, platacaoServer)
+        .then(function (resultado) {
+          res.json(resultado);
+        })
+        .catch(function (erro) {
+          console.log(erro);
+          console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+          );
+          res.status(500).json(erro.sqlMessage);
+        });
+    }
+  }
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    plotar,
 };

@@ -41,8 +41,8 @@
             <menu>
                 <select name="" id="listaPlant">
                     <option value="#" selected disabled>Selecione uma plantação</option>
-                    <option value="1" >Plantação 1</option>
-                    <option value="2" >Plantação 2</option>
+                    <option value="1" onselect="plotar()">Plantação 1</option>
+                    <option value="2" onselect="plotar()" >Plantação 2</option>
                 </select>
                 <button onclick="selecionarPlant()">Selecionar</button>
             </menu>
@@ -122,6 +122,31 @@
 <script>
 
 function plotar(idRegistro) {
+
+  var plantacaoVar = Number(listaPlant.value);
+
+  fetch("/usuarios/atlGrafico", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            platacaoServer: plantacaoVar,
+        }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                
+            } 
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+
     fetch(`/usuarios/atlGrafico`, {
       method: "POST",
       headers: {
@@ -141,29 +166,21 @@ function plotar(idRegistro) {
             // div_kpi_smooth.innerHTML = dados[0].smooth;
             // div_kpi_reactive.innerHTML = dados[0].reactive;
 
-            const ctx = document.getElementById("chart_avg");
+            const ctx = document.getElementById("myChart");
 
             new Chart(ctx, {
               type: "bar",
               data: {
                 labels: [
-                  "static",
-                  "dinamyc",
-                  "speed",
-                  "evasive",
-                  "smooth",
-                  "reactive",
+                  "dadoSensor",
+                  "dataRegistro",
                 ],
                 datasets: [
                   {
                     label: "# of Votes",
                     data: [
-                      dados[0].static,
-                      dados[0].dynamic,
-                      dados[0].speed,
-                      dados[0].evasive,
-                      dados[0].smooth,
-                      dados[0].reactive,
+                      dados[0].dataRegistro,
+                      dados[0].dadosSensor,
                     ],
                     borderWidth: 1,
                   },
