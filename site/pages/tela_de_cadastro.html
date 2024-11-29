@@ -158,11 +158,11 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-      nome: nomeVar,
-      cargo: cargoVar,
-      email: emailVar,
-      senha: senhaVar,
-      idEmpresa: idEmpresaVincular
+      nomeServer: nomeVar,
+      cargoServer: cargoVar,
+      emailServer: emailVar,
+      senhaServer: senhaVar,
+      idEmpresaVincularServer: idEmpresaVincular
     }),
     })
       .then(function (resposta) {
@@ -174,9 +174,6 @@
 
             window.location = "login.html";
           
-
-          limparFormulario();
-          finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }

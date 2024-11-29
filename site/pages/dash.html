@@ -121,6 +121,82 @@
 </html>
 <script>
 
+function plotar(idRegistro) {
+    fetch(`/usuarios/atlGrafico`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idusuario: idRegistro,
+      }),
+    })
+      .then((resposta) => {
+        resposta
+          .json()
+          .then((dados) => {
+            "";
+            
+            // div_kpi_evasive.innerHTML = dados[0].evasive;
+            // div_kpi_smooth.innerHTML = dados[0].smooth;
+            // div_kpi_reactive.innerHTML = dados[0].reactive;
+
+            const ctx = document.getElementById("chart_avg");
+
+            new Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: [
+                  "static",
+                  "dinamyc",
+                  "speed",
+                  "evasive",
+                  "smooth",
+                  "reactive",
+                ],
+                datasets: [
+                  {
+                    label: "# of Votes",
+                    data: [
+                      dados[0].static,
+                      dados[0].dynamic,
+                      dados[0].speed,
+                      dados[0].evasive,
+                      dados[0].smooth,
+                      dados[0].reactive,
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              },
+              options: {
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                  title: {
+                    display: true,
+                    text: "Comparação das categorias",
+                  },
+                },
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  },
+                },
+              },
+            });
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  }
+
+
     function selecionarPlant() {
 
         var lista = listaPlant.value

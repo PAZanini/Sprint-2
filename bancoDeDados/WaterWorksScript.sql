@@ -1,6 +1,7 @@
 CREATE DATABASE WaterWorks;
 USE WaterWorks;
 
+DROP DATABASE WaterWorks;
 
 CREATE TABLE endereco (
 idEndereco INT primary key auto_increment,
@@ -27,6 +28,8 @@ CREATE TABLE usuario (
     nomeCompleto VARCHAR(50) NOT NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
     senha VARCHAR(45) NOT NULL,
+    cpf CHAR(11) NOT NULL UNIQUE,
+    telCelular CHAR(11),
     cargo VARCHAR(45),
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
@@ -64,12 +67,6 @@ CREATE TABLE Alerta (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
-	select * from usuario;
-
-
-INSERT INTO empresa  VALUES 
-(default, '12345678000100', 'Empresa Matriz', 123456789, NULL, null),
-(default, '98765432000100', 'Empresa Filial', 222222222, NULL, null);
 
 INSERT INTO endereco (cep, rua, cidade, numero, uf) VALUES 
 ('12345678', 'Rua A', 'Cidade A', '100', 'SP'),
