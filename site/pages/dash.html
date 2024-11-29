@@ -125,7 +125,7 @@ function plotar(idRegistro) {
 
   var plantacaoVar = Number(listaPlant.value);
 
-  fetch("/usuarios/atlGrafico", {
+  fetch("/usuarios/plotar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -147,7 +147,7 @@ function plotar(idRegistro) {
         });
 
 
-    fetch(`/usuarios/atlGrafico`, {
+    fetch(`/usuarios/plotar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
