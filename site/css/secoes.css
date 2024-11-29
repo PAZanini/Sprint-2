@@ -216,7 +216,13 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: #F0F6F5;
     padding-top: 80px;
+
+    .error {
+        width: 500px;
+        height: auto;
+    }
 
 }
