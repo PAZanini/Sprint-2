@@ -73,10 +73,11 @@ function cadastrar(req, res) {
 }
 
 
-function plotar(req, res) {
+async function plotar(req, res) {
     var idPLANTACAO = req.body.idPLANTACAO;
 
-
+    var sensor = []
+    var promessas = []
 
     if (idPLANTACAO == undefined) {
       res.status(400).send("Algum parametro está undefined!");
@@ -86,6 +87,7 @@ function plotar(req, res) {
         .then(function (resultado) {
           res.json(resultado);
           res.status(200)
+          sensor.push(resultado)
         })
         .catch(function (erro) {
           console.log(erro);
@@ -96,7 +98,13 @@ function plotar(req, res) {
           res.status(500).json(erro.sqlMessage);
         });
     }
+
+    var espera = await Promise.all(promessas)
+
+    res.json(espera)
   }
+
+
 
 module.exports = {
     autenticar,

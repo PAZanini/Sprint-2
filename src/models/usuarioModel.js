@@ -25,15 +25,16 @@ function plotar(idPLANTACAO) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT p.nome as Plantação, dadoSensor as Dado, dataRegistro AS registro FROM plantacao as p JOIN sensor on fkPlantacao = idPLANTACAO JOIN registro as dados on fkSensor = idSensor WHERE idPLANTACAO = ${idPLANTACAO};
+        SELECT p.nome as Plantação, dadoSensor as dadoSensor, dataRegistro AS dtRegistro FROM plantacao as p JOIN sensor on fkPlantacao = idPLANTACAO JOIN registro as dados on fkSensor = idSensor WHERE idPLANTACAO = ${idPLANTACAO};
       `;
       
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
   }
 
+
 module.exports = {
     autenticar,
     cadastrar,
-    plotar
+    plotar,
 };
