@@ -18,12 +18,12 @@
 
     <script src="../js/sessao.js"></script>
 </head>
-<body>
+<body onload="validarSessao()">
 
     <header id="headerSuperior">
         <h2>WaterWorks</h2>
         <div>
-            <b id="nomeEmpresa">Empresa</b>
+            <b id="b_empresa">Empresa</b>
         </div>
     </header>
 
@@ -33,7 +33,7 @@
         <header id="headerLateral">
             
             <div id="nomeUsuario">
-                Seja bem-vindo, Usuário
+                Seja bem-vindo, <b id="b_usuario">Usuário</b>
             </div>
             <button>Logout</button>
         </header>
