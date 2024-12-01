@@ -170,6 +170,18 @@ main {
     align-items: center;
 }
 
+/* #div_grafico_foda 
+{
+height: 1000px;
+width: 1000px;
+}
+
+#myChart
+{
+height: 100%;
+width: 100%;
+} */
+
 .kpiNaoEstatica {
     display: flex;
 }

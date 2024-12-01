@@ -27,14 +27,14 @@
             <div id="div_input">
                 <div class="input-box">
                     <span id="input_text">Email:</span><br>
-                    <input type="text" placeholder="example@gmail.com" id="inp_user" oninput="validarEmail()"> <br>
+                    <input type="text" placeholder="example@gmail.com" id="inp_user"> <br>
                     <div class="mensagemErro" id="div_email"></div>
                     <span id="input_text">Senha:</span><br>
                     <input type="password" placeholder="********" id="inp_senha"><br>
                 </div>
             </div>
 
-            <button onclick="validar()" type="button" id="btn_login">Entrar</button>
+            <button onclick="entrar()" type="button" id="btn_login">Entrar</button>
         </form>
        </div>
         
@@ -49,31 +49,67 @@
 </html>
 
 <script>
-    function validar() {
-    var email = inp_user.value;
-    var senha = inp_senha.value;
+    
 
-        if(email == 'fernando@sptech.com' && senha == '@Urubu100') {
-            window.location.href = "../site/dashboard.html";
-        } else if (email == 'clara@sptech.com' && senha == '@Urubu101') {
-            window.location.href = "../site/dashboard.html";
-        } else {
-            alert('Email ou Senha Inválidos!!');
-        }
-}
+function entrar() {
 
-function validarEmail(){
-        var email = inp_user.value;
-        var mensagemErro = "";
+        var emailVar = inp_user.value;
+        var senhaVar = inp_senha.value;
 
-        if(email.length == 0){
-            mensagemErro = "Insira seu e-mail";
+        if (emailVar == "" || senhaVar == "") {
+            alert("(Mensagem de erro para todos os campos em branco)");
+            return false;
         }
-        else if(!(email.includes('@'))){
-            mensagemErro = "Insira um email válido";
+        else {
         }
-        div_email.innerHTML = mensagemErro;
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                        window.location = "./dash.html";
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
+
 
     const mode = icon_modo;
 

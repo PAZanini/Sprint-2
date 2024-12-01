@@ -8,7 +8,7 @@ function validarSessao() {
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
     } else {
-        window.location = "../login.html";
+        window.location = "./login.html";
     }
 }
 
@@ -25,7 +25,7 @@ function aguardar() {
 
 function finalizarAguardar(texto) {
     var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "none";
+    // divAguardar.style.display = "none";
 
     var divErrosLogin = document.getElementById("div_erros_login");
     if (texto) {

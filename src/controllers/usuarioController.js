@@ -19,11 +19,11 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         res.json({
-                            id: resultadoAutenticar[0].idUSER,
+                            idUSER: resultadoAutenticar[0].idUSER,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
                             senha: resultadoAutenticar[0].senha,
-                            cpf: resultadoAutenticar[0].cpf
+                            empNome: resultadoAutenticar[0].empNome
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -73,7 +73,42 @@ function cadastrar(req, res) {
     }
 }
 
+
+async function plotar(req, res) {
+    var idPLANTACAO = req.body.idPLANTACAO;
+
+    var sensor = []
+    var promessas = []
+
+    if (idPLANTACAO == undefined) {
+      res.status(400).send("Algum parametro está undefined!");
+    } else {
+      usuarioModel
+        .plotar(idPLANTACAO)
+        .then(function (resultado) {
+          res.json(resultado);
+          res.status(200)
+          sensor.push(resultado)
+        })
+        .catch(function (erro) {
+          console.log(erro);
+          console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+          );
+          res.status(500).json(erro.sqlMessage);
+        });
+    }
+
+    var espera = await Promise.all(promessas)
+
+    res.json(espera)
+  }
+
+
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    plotar,
 };
