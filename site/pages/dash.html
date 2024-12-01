@@ -166,7 +166,7 @@
             <button onclick="graficoMensal2()" class="btnMudarGrafico">
               Gráfico Mensal
             </button>
-            <button onclick="graficoDiario2()" class="btnMudarGrafico">
+            <button onclick='graficoDiario2()' class="btnMudarGrafico">
               Gráfico Diário
             </button>
           </div>
@@ -178,8 +178,14 @@
 <script>
   // Funções de seleção front end
 
+
+let proximaAtualizacao;
+var umidade = [];
+var dtHora = [];
+
   function selecionarPlant() {
     var lista = listaPlant.value;
+    
 
     if (lista == 1) {
       document.getElementById("plantacao1").style.display = "flex";
@@ -222,7 +228,38 @@
     document.getElementById("graficoDiarioPlant2").style.display = "none";
   }
 
+  const ctx = document.getElementById('myChart');
+
+
+
+  function attDados() {
+    
+  }
+
+  new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dtHora,
+            datasets: [{
+              label: '# of Votes',
+              data: umidade,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+    });
+
+
   function plotar() {
+    
+    
+    
     var idPLANTACAO = Number(listaPlant.value);
 
     fetch("/usuarios/plotar", {
@@ -259,7 +296,16 @@
           .json()
           .then((dados) => {
             "";
-            console.log(dados[0].dadoSensor, dados[0].dtRegistro);
+            // umidade = [];
+            // dtHora = [];
+            for(i = 0; i < dados.length; i++){
+            console.log(dados[i].dadoSensor, dados[i].dtRegistro);
+            umidade.push(dados[i].dadoSensor);
+            dtHora.push(dados[i].dtRegistro);
+            ctx.data.datasets[0].data.push(dados[i].dadoSensor);
+          }
+          ctx.data.labels = dtHora;
+          ctx.update();
           })
           .catch((erro) => {
             console.log(erro);
@@ -268,8 +314,17 @@
       .catch((erro) => {
         console.log(erro);
       });
+
+      // if (proximaAtualizacao != undefined) {
+      //       clearTimeout(proximaAtualizacao);
+      //   }
+
   }
 
+  proximaAtualizacao = setInterval(() => plotar(), 2000);
+
+
+  
   //Funções para plotagem de dados
 
   // variáveis para os charts:
@@ -304,146 +359,148 @@
   //     });
   // }
 
-  function graficoMensalPlant1(dado) {
-    if (chart1) {
-      chart1.destroy();
-    }
+  // function graficoMensalPlant1(dado) {
+  //   if (chart1) {
+  //     chart1.destroy();
+  //   }
 
-    // console.log("Iniciando a plotagem dos gráficos");
-    console.log(dado, dado.length);
-    let labels = [];
-    let dados = {};
-    let dados_valor = [];
+  //   // console.log("Iniciando a plotagem dos gráficos");
+  //   console.log(dado, dado.length);
+  //   let labels = [];
+  //   let dados = {};
+  //   let dados_valor = [];
 
-    for (i = 0; i < dado.length; i++) {
-      labels.push([
-        dado[i].dtRegistro,
-        // dado[1].dtRegistro,
-        // dado[2].dtRegistro,
-        // dado[3].dtRegistro,
-      ]);
+  //   for (i = 0; i < dado.length; i++) {
+  //     labels.push([
+  //       dado[i].dtRegistro,
+  //       // dado[1].dtRegistro,
+  //       // dado[2].dtRegistro,
+  //       // dado[3].dtRegistro,
+  //     ]);
 
-      dados_valor.push(dado[i].dadoSensor);
-      dados = {
-        labels: labels,
-        datasets: [
-          {
-            label: "Umidade",
-            data: [],
-            fill: true,
-            borderColor: "blue",
-            tension: 1,
-            backgroundColor: "green",
-          },
-        ],
-      };
-    }
-    const config = {
-      type: "bar",
-      data: dados,
-    };
-    chart1 = new Chart(document.getElementById("myChart"), config);
+  //     dados_valor.push(dado[i].dadoSensor);
+  //     dados = {
+  //       labels: labels,
+  //       datasets: [
+  //         {
+  //           label: "Umidade",
+  //           data: [],
+  //           fill: true,
+  //           borderColor: "blue",
+  //           tension: 1,
+  //           backgroundColor: "green",
+  //         },
+  //       ],
+  //     };
+  //   }
+  //   const config = {
+  //     type: "bar",
+  //     data: dados,
+  //   };
+  //   chart1 = new Chart(document.getElementById("myChart"), config);
 
-    atlGrafico(dados.dataset[0].data, dado);
-  }
+  //   atlGrafico(dados.dataset[0].data, dado);
+  // }
 
-  function atlGrafico(data, dado) {
-    for (i = 0; i < dado.length; i++) {
-      data.push(dado[i].dadoSensor);
-    }
-    setInterval(atlGrafico, 3000);
-  }
+  // function atlGrafico(data, dado) {
+  //   for (i = 0; i < dado.length; i++) {
+  //     data.push(dado[i].dadoSensor);
+  //   }
+  //   setInterval(atlGrafico, 3000);
+  // }
 
-  function graficoDiarioPlant1(dado, data) {
-    if (chart2) {
-      chart2.destroy();
-    }
+  // function graficoDiarioPlant1(dado, data) {
+  //   if (chart2) {
+  //     chart2.destroy();
+  //   }
 
-    console.log("Iniciando a plotagem dos gráficos");
+  //   console.log("Iniciando a plotagem dos gráficos");
 
-    let labels = [data];
+  //   let labels = [data];
 
-    let dados = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Umidade",
-          data: [dado],
-          fill: true,
-          borderColor: "blue",
-          tension: 1,
-          backgroundColor: "green",
-        },
-      ],
-    };
+  //   let dados = {
+  //     labels: labels,
+  //     datasets: [
+  //       {
+  //         label: "Umidade",
+  //         data: [dado],
+  //         fill: true,
+  //         borderColor: "blue",
+  //         tension: 1,
+  //         backgroundColor: "green",
+  //       },
+  //     ],
+  //   };
 
-    const config = {
-      type: "line",
-      data: dados,
-    };
+  //   const config = {
+  //     type: "line",
+  //     data: dados,
+  //   };
 
-    chart2 = new Chart(document.getElementById("myChart2"), config);
-  }
+  //   chart2 = new Chart(document.getElementById("myChart2"), config);
+  // }
 
-  function graficoMensalPlant2() {
-    if (chart3) {
-      chart3.destroy();
-    }
+  // function graficoMensalPlant2() {
+  //   if (chart3) {
+  //     chart3.destroy();
+  //   }
 
-    console.log("Iniciando a plotagem dos gráficos");
+  //   console.log("Iniciando a plotagem dos gráficos");
 
-    let labels = [1, 2, 3, 4];
+  //   let labels = [1, 2, 3, 4];
 
-    let dados = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Umidade",
-          data: [1, 2, 3, 4],
-          fill: true,
-          borderColor: "blue",
-          tension: 1,
-          backgroundColor: "green",
-        },
-      ],
-    };
+  //   let dados = {
+  //     labels: labels,
+  //     datasets: [
+  //       {
+  //         label: "Umidade",
+  //         data: [1, 2, 3, 4],
+  //         fill: true,
+  //         borderColor: "blue",
+  //         tension: 1,
+  //         backgroundColor: "green",
+  //       },
+  //     ],
+  //   };
 
-    const config = {
-      type: "bar",
-      data: dados,
-    };
+  //   const config = {
+  //     type: "bar",
+  //     data: dados,
+  //   };
 
-    chart3 = new Chart(document.getElementById("myChart3"), config);
-  }
+  //   chart3 = new Chart(document.getElementById("myChart3"), config);
+  // }
 
-  function graficoDiarioPlant2() {
-    if (chart4) {
-      chart4.destroy();
-    }
+  // function graficoDiarioPlant2() {
+  //   if (chart4) {
+  //     chart4.destroy();
+  //   }
 
-    console.log("Iniciando a plotagem dos gráficos");
+  //   console.log("Iniciando a plotagem dos gráficos");
 
-    let labels = [1, 2, 3, 4];
+  //   let labels = [1, 2, 3, 4];
 
-    let dados = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Umidade",
-          data: [1, 2, 3, 4],
-          fill: true,
-          borderColor: "blue",
-          tension: 1,
-          backgroundColor: "green",
-        },
-      ],
-    };
+  //   let dados = {
+  //     labels: labels,
+  //     datasets: [
+  //       {
+  //         label: "Umidade",
+  //         data: [1, 2, 3, 4],
+  //         fill: true,
+  //         borderColor: "blue",
+  //         tension: 1,
+  //         backgroundColor: "green",
+  //       },
+  //     ],
+  //   };
 
-    const config = {
-      type: "line",
-      data: dados,
-    };
+  //   const config = {
+  //     type: "line",
+  //     data: dados,
+  //   };
 
-    chart4 = new Chart(document.getElementById("myChart4"), config);
-  }
+  //   chart4 = new Chart(document.getElementById("myChart4"), config);
+  // }
+
+  
 </script>
