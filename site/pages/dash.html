@@ -228,15 +228,9 @@ var dtHora = [];
     document.getElementById("graficoDiarioPlant2").style.display = "none";
   }
 
-  const ctx = document.getElementById('myChart');
+  
 
-
-
-  function attDados() {
-    
-  }
-
-  new Chart(ctx, {
+  var ctx = new Chart(document.getElementById("myChart"), {
           type: 'line',
           data: {
             labels: dtHora,
@@ -256,10 +250,8 @@ var dtHora = [];
     });
 
 
+
   function plotar() {
-    
-    
-    
     var idPLANTACAO = Number(listaPlant.value);
 
     fetch("/usuarios/plotar", {
@@ -296,15 +288,25 @@ var dtHora = [];
           .json()
           .then((dados) => {
             "";
-            // umidade = [];
-            // dtHora = [];
-            for(i = 0; i < dados.length; i++){
+            umidade = [];
+            dtHora = [];
+            for(var i = 0; i < dados.length; i++){
             console.log(dados[i].dadoSensor, dados[i].dtRegistro);
             umidade.push(dados[i].dadoSensor);
             dtHora.push(dados[i].dtRegistro);
-            ctx.data.datasets[0].data.push(dados[i].dadoSensor);
           }
-          ctx.data.labels = dtHora;
+          var ultima_posicao = umidade[0]
+          if(ultima_posicao > 80) {
+              alert('Água acima')
+          } else if(ultima_posicao < 60) {
+            alert('Água abaixo')
+          }
+
+         var umidadeReversa = umidade.reverse();
+         var dtHoraReversa = dtHora.reverse();
+
+          ctx.data.datasets[0].data = umidadeReversa;
+          ctx.data.labels = dtHoraReversa;
           ctx.update();
           })
           .catch((erro) => {
@@ -321,7 +323,7 @@ var dtHora = [];
 
   }
 
-  proximaAtualizacao = setInterval(() => plotar(), 2000);
+   proximaAtualizacao = setInterval(() => plotar(), 7000);
 
 
   
