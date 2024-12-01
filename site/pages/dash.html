@@ -1,347 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | WaterWorks</title>
 
-    <link rel="stylesheet" href="../css/estiloNovaDash.css">
+    <link rel="stylesheet" href="../css/estiloNovaDash.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
     </style>
 
     <script src="../js/sessao.js"></script>
-</head>
-<body onload="validarSessao()">
-
+  </head>
+  <body onload="validarSessao()">
     <header id="headerSuperior">
-        <h2>WaterWorks</h2>
-        <div>
-            <b id="b_empresa">Empresa</b>
-        </div>
+      <h2>WaterWorks</h2>
+      <div>
+        <b id="b_empresa">Empresa</b>
+      </div>
     </header>
 
-    
-    
     <main id="main">
-        <header id="headerLateral">
-            
-            <div id="nomeUsuario">
-                Seja bem-vindo, <b id="b_usuario">Usuário</b>
+      <header id="headerLateral">
+        <div id="nomeUsuario">
+          Seja bem-vindo, <b id="b_usuario">Usuário</b>
+        </div>
+        <button>Logout</button>
+      </header>
+
+      <section id="graficos">
+        <menu>
+          <!-- <button onclick="plotar(), plotar2()">Iniciar</button> -->
+          <select id="listaPlant">
+            <option value="#" selected disabled>Selecione uma plantação</option>
+            <option value="1">Plantação 1</option>
+            <option value="2">Plantação 2</option>
+          </select>
+          <button onclick="selecionarPlant(), plotar()">Selecionar</button>
+        </menu>
+
+        <section id="plantacao1" style="display: none">
+          <div id="graficoMensalPlant1">
+            <div class="kpiNaoEstatica">
+              <div class="kpi">
+                Média dos Últimos Meses: <br />
+                67%
+              </div>
+              <div class="kpi">
+                Status: <br />
+                IDEAL
+              </div>
             </div>
-            <button>Logout</button>
-        </header>
-    
+            <div class="grafico">
+              <div class="kpiEstatica">
+                <div class="kpi">
+                  Umidade Máxima: <br />
+                  80%
+                </div>
+                <div class="kpi">
+                  Umidade Mínima: <br />
+                  60%
+                </div>
+              </div>
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+          <div id="graficoDiarioPlant1" style="display: none">
+            <div class="kpiNaoEstatica">
+              <div class="kpi">
+                Média dos Últimos Meses: <br />
+                67%
+              </div>
+              <div class="kpi">
+                Status: <br />
+                IDEAL
+              </div>
+            </div>
+            <div class="grafico">
+              <div class="kpiEstatica">
+                <div class="kpi">
+                  Umidade Máxima: <br />
+                  80%
+                </div>
+                <div class="kpi">
+                  Umidade Mínima: <br />
+                  60%
+                </div>
+              </div>
+              <canvas id="myChart2"></canvas>
+            </div>
+          </div>
 
-    
-
-        <section id="graficos">
-
-            <menu>
-                <!-- <button onclick="plotar(), plotar2()">Iniciar</button> -->
-                <select id="listaPlant">
-                    <option value="#" selected disabled>Selecione uma plantação</option>
-                    <option value="1" >Plantação 1</option>
-                    <option value="2" >Plantação 2</option>
-                </select>
-                <button onclick="selecionarPlant(), plotar()">Selecionar</button>
-            </menu>
-    
-            <section id="plantacao1" style="display: none;">
-                <div id="graficoMensalPlant1">
-                    <div class="kpiNaoEstatica">
-                        <div class="kpi">Média dos Últimos Meses: <br> 67%</div>
-                        <div class="kpi">Status: <br> IDEAL</div>
-                    </div>
-                    <div class="grafico">
-                        <div class="kpiEstatica">
-                            <div class="kpi">Umidade Máxima: <br> 80%</div>
-                            <div class="kpi">Umidade Mínima: <br> 60%</div>
-                        </div>
-                        <canvas id="myChart"></canvas>
-                    </div>
-                </div>
-                <div id="graficoDiarioPlant1" style="display: none;">
-                    <div class="kpiNaoEstatica">
-                        <div class="kpi">Média dos Últimos Meses: <br> 67%</div>
-                        <div class="kpi">Status: <br> IDEAL</div>
-                    </div>
-                    <div class="grafico">
-                        <div class="kpiEstatica">
-                            <div class="kpi">Umidade Máxima: <br> 80%</div>
-                            <div class="kpi">Umidade Mínima: <br> 60%</div> 
-                        </div>
-                        <canvas id="myChart2"></canvas>
-                    </div>
-                </div>
-    
-                <div>
-                    <button onclick="graficoMensal()" class="btnMudarGrafico">Gráfico Mensal</button>
-                    <button onclick="graficoDiario() " class="btnMudarGrafico">Gráfico Diário</button>
-                </div>
-            </section>
-    
-    
-            <section id="plantacao2" style="display: none;">
-                <div id="graficoMensalPlant2">
-                    <div class="kpiNaoEstatica">
-                        <div class="kpi">Média dos Últimos Meses: <br> 59%</div>
-                        <div class="kpi">Status: <br> IDEAL</div>
-                    </div>
-                    <div class="grafico">
-                        <div class="kpiEstatica">
-                            <div class="kpi">Umidade Máxima: <br> 80%</div>
-                            <div class="kpi">Umidade Mínima: <br> 60%</div>
-                        </div>
-                        <canvas id="myChart3"></canvas>
-                    </div>
-                </div>
-                <div id="graficoDiarioPlant2" style="display: none;">
-                    <div class="kpiNaoEstatica">
-                        <div class="kpi">Média dos Últimos Meses: <br> 66%</div>
-                        <div class="kpi">Status: <br> IDEAL</div>
-                    </div>
-                    <div class="grafico">
-                        <div class="kpiEstatica">
-                            <div class="kpi">Umidade Máxima: <br> 80%</div>
-                            <div class="kpi">Umidade Mínima: <br> 60%</div>
-                        </div>
-                        <canvas id="myChart4"></canvas>
-                    </div>
-                </div>
-    
-                <div>
-                    <button onclick="graficoMensal2()" class="btnMudarGrafico">Gráfico Mensal</button>
-                    <button onclick="graficoDiario2()" class="btnMudarGrafico">Gráfico Diário</button>
-                </div>
-            </section>
+          <div>
+            <button onclick="graficoMensal()" class="btnMudarGrafico">
+              Gráfico Mensal
+            </button>
+            <button onclick="graficoDiario() " class="btnMudarGrafico">
+              Gráfico Diário
+            </button>
+          </div>
         </section>
+
+        <section id="plantacao2" style="display: none">
+          <div id="graficoMensalPlant2">
+            <div class="kpiNaoEstatica">
+              <div class="kpi">
+                Média dos Últimos Meses: <br />
+                59%
+              </div>
+              <div class="kpi">
+                Status: <br />
+                IDEAL
+              </div>
+            </div>
+            <div class="grafico">
+              <div class="kpiEstatica">
+                <div class="kpi">
+                  Umidade Máxima: <br />
+                  80%
+                </div>
+                <div class="kpi">
+                  Umidade Mínima: <br />
+                  60%
+                </div>
+              </div>
+              <canvas id="myChart3"></canvas>
+            </div>
+          </div>
+          <div id="graficoDiarioPlant2" style="display: none">
+            <div class="kpiNaoEstatica">
+              <div class="kpi">
+                Média dos Últimos Meses: <br />
+                66%
+              </div>
+              <div class="kpi">
+                Status: <br />
+                IDEAL
+              </div>
+            </div>
+            <div class="grafico">
+              <div class="kpiEstatica">
+                <div class="kpi">
+                  Umidade Máxima: <br />
+                  80%
+                </div>
+                <div class="kpi">
+                  Umidade Mínima: <br />
+                  60%
+                </div>
+              </div>
+              <canvas id="myChart4"></canvas>
+            </div>
+          </div>
+
+          <div>
+            <button onclick="graficoMensal2()" class="btnMudarGrafico">
+              Gráfico Mensal
+            </button>
+            <button onclick="graficoDiario2()" class="btnMudarGrafico">
+              Gráfico Diário
+            </button>
+          </div>
+        </section>
+      </section>
     </main>
-</body>
+  </body>
 </html>
 <script>
-
   // Funções de seleção front end
 
-    function selecionarPlant() {
+  function selecionarPlant() {
+    var lista = listaPlant.value;
 
-        var lista = listaPlant.value
+    if (lista == 1) {
+      document.getElementById("plantacao1").style.display = "flex";
+      document.getElementById("plantacao2").style.display = "none";
+    } else if (lista == 2) {
+      document.getElementById("plantacao1").style.display = "none";
+      document.getElementById("plantacao2").style.display = "flex";
+    }
+  }
 
-        if (lista == 1) {
-            document.getElementById('plantacao1').style.display = 'flex'
-            document.getElementById('plantacao2').style.display = 'none'
-        } else if (lista == 2) {
-            document.getElementById('plantacao1').style.display = 'none'
-            document.getElementById('plantacao2').style.display = 'flex'
+  function plantacao1() {
+    document.getElementById("selecionarPlantacao").style.display = "none";
+    document.getElementById("plantacao2").style.display = "none";
+    document.getElementById("plantacao1").style.display = "flex";
+  }
+
+  function plantacao2() {
+    document.getElementById("selecionarPlantacao").style.display = "none";
+    document.getElementById("plantacao2").style.display = "flex";
+    document.getElementById("plantacao1").style.display = "none";
+  }
+
+  function graficoDiario() {
+    document.getElementById("graficoMensalPlant1").style.display = "none";
+    document.getElementById("graficoDiarioPlant1").style.display = "flex";
+  }
+
+  function graficoMensal() {
+    document.getElementById("graficoMensalPlant1").style.display = "flex";
+    document.getElementById("graficoDiarioPlant1").style.display = "none";
+  }
+
+  function graficoDiario2() {
+    document.getElementById("graficoMensalPlant2").style.display = "none";
+    document.getElementById("graficoDiarioPlant2").style.display = "flex";
+  }
+
+  function graficoMensal2() {
+    document.getElementById("graficoMensalPlant2").style.display = "flex";
+    document.getElementById("graficoDiarioPlant2").style.display = "none";
+  }
+
+  function plotar() {
+    var idPLANTACAO = Number(listaPlant.value);
+
+    fetch("/usuarios/plotar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPLANTACAO: idPLANTACAO,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
         }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    fetch(`/usuarios/plotar`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPLANTACAO: idPLANTACAO,
+      }),
+    })
+      .then((resposta) => {
+        resposta
+          .json()
+          .then((dados) => {
+            "";
+            console.log(dados[0].dadoSensor, dados[0].dtRegistro);
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  }
+
+  //Funções para plotagem de dados
+
+  // variáveis para os charts:
+  let chart1, chart2, chart3, chart4;
+
+  // function plotar() {
+  //   var idPLANTACAO = Number(listaPlant.value);
+
+  //   fetch("/usuarios/plotar", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       idPLANTACAO: idPLANTACAO,
+  //     }),
+  //   })
+  //     .then(function (resposta) {
+  //       console.log("resposta: ", resposta);
+
+  //       if (resposta.ok) {
+  //         console.log("Dados plotados!");
+  //         graficoDiarioPlant1();
+  //         graficoMensalPlant1();
+  //         graficoDiarioPlant2();
+  //         graficoMensalPlant2();
+  //       }
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //       finalizarAguardar();
+  //     });
+  // }
+
+  function graficoMensalPlant1(dado) {
+    if (chart1) {
+      chart1.destroy();
     }
 
-    function plantacao1() {
-        document.getElementById('selecionarPlantacao').style.display = 'none'
-        document.getElementById('plantacao2').style.display = 'none'
-        document.getElementById('plantacao1').style.display = 'flex'
-    }
+    // console.log("Iniciando a plotagem dos gráficos");
+    console.log(dado, dado.length);
+    let labels = [];
+    let dados = {};
+    let dados_valor = [];
 
-    function plantacao2() {
-        document.getElementById('selecionarPlantacao').style.display = 'none'
-        document.getElementById('plantacao2').style.display = 'flex'
-        document.getElementById('plantacao1').style.display = 'none'
-    }
+    for (i = 0; i < dado.length; i++) {
+      labels.push([
+        dado[i].dtRegistro,
+        // dado[1].dtRegistro,
+        // dado[2].dtRegistro,
+        // dado[3].dtRegistro,
+      ]);
 
-    function graficoDiario() {
-        document.getElementById('graficoMensalPlant1').style.display = 'none'
-        document.getElementById('graficoDiarioPlant1').style.display = 'flex'
-    }
-
-    function graficoMensal() {
-        document.getElementById('graficoMensalPlant1').style.display = 'flex'
-        document.getElementById('graficoDiarioPlant1').style.display = 'none'
-    }
-
-    function graficoDiario2() {
-        document.getElementById('graficoMensalPlant2').style.display = 'none'
-        document.getElementById('graficoDiarioPlant2').style.display = 'flex'
-    }
-
-    function graficoMensal2() {
-        document.getElementById('graficoMensalPlant2').style.display = 'flex'
-        document.getElementById('graficoDiarioPlant2').style.display = 'none'
-    }
-
-
-
-
-    //Funções para plotagem de dados
-
-      // variáveis para os charts:
-        let chart1, chart2, chart3, chart4;
-
-    function plotar() {
-        var idPLANTACAO = Number(listaPlant.value)
-    
-        fetch("/usuarios/plotar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+      dados_valor.push(dado[i].dadoSensor);
+      dados = {
+        labels: labels,
+        datasets: [
+          {
+            label: "Umidade",
+            data: [],
+            fill: true,
+            borderColor: "blue",
+            tension: 1,
+            backgroundColor: "green",
           },
-        body: JSON.stringify({
-            idPLANTACAO: idPLANTACAO
-        }),
-        })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
+        ],
+      };
+    }
+    const config = {
+      type: "bar",
+      data: dados,
+    };
+    chart1 = new Chart(document.getElementById("myChart"), config);
 
-            if (resposta.ok) {
-                console.log('Dados plotados!')
-                graficoDiarioPlant1()
-                graficoMensalPlant1()
-                graficoDiarioPlant2()
-                graficoMensalPlant2()
-            } 
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        }); 
+    atlGrafico(dados.dataset[0].data, dado);
+  }
+
+  function atlGrafico(data, dado) {
+    for (i = 0; i < dado.length; i++) {
+      data.push(dado[i].dadoSensor);
+    }
+    setInterval(atlGrafico, 3000);
+  }
+
+  function graficoDiarioPlant1(dado, data) {
+    if (chart2) {
+      chart2.destroy();
     }
 
+    console.log("Iniciando a plotagem dos gráficos");
 
-    function graficoMensalPlant1() {
-      if(chart1) {
-        chart1.destroy()
-      }
+    let labels = [data];
 
-      console.log('Iniciando a plotagem dos gráficos')
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Umidade",
+          data: [dado],
+          fill: true,
+          borderColor: "blue",
+          tension: 1,
+          backgroundColor: "green",
+        },
+      ],
+    };
 
-      let labels = [1, 2, 3, 4]
+    const config = {
+      type: "line",
+      data: dados,
+    };
 
-      let dados = {
-        labels: labels,
-        datasets: [{
+    chart2 = new Chart(document.getElementById("myChart2"), config);
+  }
+
+  function graficoMensalPlant2() {
+    if (chart3) {
+      chart3.destroy();
+    }
+
+    console.log("Iniciando a plotagem dos gráficos");
+
+    let labels = [1, 2, 3, 4];
+
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
           label: "Umidade",
           data: [1, 2, 3, 4],
-          fill:true,
-          borderColor: 'blue',
+          fill: true,
+          borderColor: "blue",
           tension: 1,
-          backgroundColor: 'green'
-        }]
-      }
+          backgroundColor: "green",
+        },
+      ],
+    };
 
-      const config = {
-        type: 'bar',
-        data: dados
-      }
+    const config = {
+      type: "bar",
+      data: dados,
+    };
 
-      chart1 = new Chart(
-        document.getElementById('myChart'),
-        config
-      )
+    chart3 = new Chart(document.getElementById("myChart3"), config);
+  }
 
+  function graficoDiarioPlant2() {
+    if (chart4) {
+      chart4.destroy();
     }
 
-    function graficoDiarioPlant1() {
-      if(chart2) {
-        chart2.destroy()
-      }
-    
-      console.log('Iniciando a plotagem dos gráficos')
+    console.log("Iniciando a plotagem dos gráficos");
 
-      let labels = [1, 2, 3, 4]
+    let labels = [1, 2, 3, 4];
 
-      let dados = {
-        labels: labels,
-        datasets: [{
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
           label: "Umidade",
           data: [1, 2, 3, 4],
-          fill:true,
-          borderColor: 'blue',
+          fill: true,
+          borderColor: "blue",
           tension: 1,
-          backgroundColor: 'green'
-        }]
-      }
+          backgroundColor: "green",
+        },
+      ],
+    };
 
-      const config = {
-        type: 'line',
-        data: dados
-      }
+    const config = {
+      type: "line",
+      data: dados,
+    };
 
-      chart2 = new Chart(
-        document.getElementById('myChart2'),
-        config
-      )
-    }
-
-
-    function graficoMensalPlant2() {
-      if(chart3) {
-        chart3.destroy()
-      }
-
-      console.log('Iniciando a plotagem dos gráficos')
-
-      let labels = [1, 2, 3, 4]
-
-      let dados = {
-        labels: labels,
-        datasets: [{
-          label: "Umidade",
-          data: [1, 2, 3, 4],
-          fill:true,
-          borderColor: 'blue',
-          tension: 1,
-          backgroundColor: 'green'
-        }]
-      }
-
-      const config = {
-        type: 'bar',
-        data: dados
-      }
-
-      chart3 = new Chart(
-        document.getElementById('myChart3'),
-        config
-      )
-
-    }
-    
-    function graficoDiarioPlant2() {
-
-      if(chart4) {
-        chart4.destroy()
-      }
-      
-      console.log('Iniciando a plotagem dos gráficos')
-
-      let labels = [1, 2, 3, 4]
-
-      let dados = {
-        labels: labels,
-        datasets: [{
-          label: "Umidade",
-          data: [1, 2, 3, 4],
-          fill:true,
-          borderColor: 'blue',
-          tension: 1,
-          backgroundColor: 'green'
-        }]
-      }
-
-      const config = {
-        type: 'line',
-        data: dados
-      }
-
-      chart4 = new Chart(
-        document.getElementById('myChart4'),
-        config
-      )
-
-    }
+    chart4 = new Chart(document.getElementById("myChart4"), config);
+  }
 </script>
