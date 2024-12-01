@@ -69,6 +69,11 @@
     flex-direction: column;
 }
 
+a {
+    font-size: 20px;
+    color: rgb(255, 0, 166);
+}
+
 #left_login h1 
 {
     text-align: center;

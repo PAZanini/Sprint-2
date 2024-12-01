@@ -1,185 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WaterWorks</title>
-    <link rel="stylesheet" href="./css/estiloHome.css">
+    <title>WaterWorks | Soluções de Monitoramento de Umidade para Café</title>
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="../imgs - Home/icons/ww icon.png" type="img/png">
 </head>
+
 <body>
     <header>
-        <h2>WaterWorks</h2>
-        <menu>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="./pages/calculadoraWaterWorksV3.html">SIMULADOR</a></li>
-        </menu>
-        <menu>
-            <li><a href="./pages/login.html">LOGIN</a></li>
-            <li><b style="color: #0A8CBF;"><a href="./pages/tela_de_cadastro.html">CADASTRO</a></b></li>
-        </menu>
+        <div class="logoWW">
+            <a href="#banner">
+                <img src="./imgs - Home/logoWW.png" alt="WaterWorks">
+                <li>ater Works</li>
+            </a>
+        </div>
+        <div class="opcoes">
+            <li><a href="#simulador">Simulador</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="./pages/monitoramento.html">Monitoramento</a></li>
+            <li><a href="./pages/sobrenos.html">Sobre nós</a></li>
+        </div>
+        <div class="entrar">
+            <a href="./pages/login.html"><img src="./imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt=""></a>
+        </div>
     </header>
-
-    <section class="banner">
-        <div class="left_banner">
-            <div class="div_gg_banenr">
-            <p >LAZER, <br> LONGEVIDADE <BR> E SEGURANÇA</p>
+    <section class="banner" id="banner">
+        <div class="fundo"></div>
+        <div class="titulo">
+            <div class="um">
+                <p>EFICIÊNCIA, SUSTENTABILIDADE E INOVAÇÃO</p>
             </div>
-            <div class="div_pp_banner">
-                <p>A <span id="water_works_span">WATER WORKS</span> É A EMPRESA MAIS SEGURA E RENTÁVEL DO MERCADO</p>
-            </div>
-        </div>
-        <div class="right_banner">
-            <img src="./imgs - Home/imgBanner.png" alt="Imagem de uma pequena planta">
-        </div>
-    </section>
-    
-    <section class="arduino" id="produto"> 
-        <br> <br>
-        <h2>ESSE É O <b style="color: #0A8CBF;">FUTURO</b></h2>
-        <div class="divArduino">
-            <div id="div_ard_img">
-                <img class="img_content" src="./imgs - Home/logoWW.png" alt="Logo da Empresa">
-            </div>
-            <div id="div_ard_text">
-                <p> Nós utilizaremos o arduino <br>
-                    UNO e o sensor de umidade (MTS) <br> 
-                    também conhecido como Moisture Sensor <br> 
-                    para a  captação de dados. Logo após <br>
-                    iremos lançar esses dados <br>
-                    no banco. E por último mas não <br>
-                    menos importante, vamos usar <br>
-                    os dados coletados para <br>
-                    transformá-los em uma informação <br>
-                    intuitiva para o usuario atraves <br>
-                    da nossa dashboard.
-                </p>
-            </div>
-            
-        </div>
-        <div class="divArduino2">
-            <h2>UNO R3</h2>
-        </div>
-    </section>
-
-    <section class="dashboard">
-        <p>
-            Conheça nossa <a href="login.html" style="font-weight: bold;">dashboard</a> <br>
-            aqui você vai receber <br>
-            todas as informações <br>
-            necessárias para o seu negócio <br>
-            fluir como o planejado!
-        </p>
-        <img class="img_content" src="./imgs - Home/Site Stats-bro.svg" alt="imagem de uma dashboard">
-    </section>
-
-    <section class="calculadora">
-        <a href="calculadoraWaterWorksV3.html"><img class="img_content" src="./imgs - Home/Calculator-amico.svg" alt="imagem de uma calculadora">   </a>
-        <p>
-            Conheça também o nosso <a href="calculadoraWaterWorksV3.html"><b>Simulador Financeiro</b></a> <br>
-            podendo realizar simulações a respeito <br>
-            da quantidade de sensores você iria precisar <br>
-            no seu terreno, e saber a eficácia deles!!! <br>
-        </p>
-        <div>
-            <h2>M</h2>
-            <h2>T</h2>
-            <h2>S</h2>
-        </div>
-    </section>
-
-    <section class="quemSomos">
-        <h2>QUEM É A <b style="color: #0A8CBF;">WATER WORKS?</b></h2>
-        <div class="divQuemSomos">
-            <p>
-                Nós da <b style="color: #0A8CBF;">Water Works</b> <br>
-                queremos juntar o <br>
-                melhor dos dois mundos <br>
-                tecnologia de ponta <br>
-                e um preco que cabe <br>
-                no bolso! Ao lado um <br>
-                carrossel dos cabeças <br>
-                da empresa.
-            </p>
-            <div class="slider">
-                <button id="voltar">&lt;</button>
-                <ul>
-                    <li><img src="./imgs - Home/fotoAaron.jpeg" alt="" class="imgSlider on"></li>
-                    <li><img src="./imgs - Home/fotoGuilherme.jpeg" alt="" class="imgSlider"></li>
-                    <li><img src="./imgs - Home/fotoJulia.jpeg" alt="" class="imgSlider"></li>
-                    <li><img src="./imgs - Home/fotoAmoroso.jpeg" alt="" class="imgSlider"></li>
-                    <li><img src="./imgs - Home/fotoVlad.jpeg" alt="" class="imgSlider"></li>
-                    <li><img src="./imgs - Home/fotoZaqueu.jpeg" alt="" class="imgSlider"></li>
-                </ul>
-                <button id="avancar">&gt;</button>
+            <div class="dois">
+                <p>A <span>Water Works</span> traz a solução perfeita para controlar a umidade do solo e melhorar o
+                    rendimento das suas lavouras de café.</p>
             </div>
         </div>
     </section>
-
-    <footer>
-        <menu>
-            <li>HOME</li>
-            <li>PRODUTO</li>
-            <li>QUEM SOMOS</li>
-            <li>SIMULADOR</li>
-        </menu>
-        <menu class="contatos">
-            <li>CONTATOS</li>
-            <div>
-                <a href="https://www.google.com.br/"><img id="facebookLogo" src="./imgs - Home/facebook2.png" alt="Logo Facebook"></a>
-                <a href="https://www.google.com.br/"><img id="instagramLogo" src="./imgs - Home/Instagram_icon.png.webp" alt="Logo Instagram"></a>
-                <a href="https://www.google.com.br/"><img id="linkedinLogo" src="./imgs - Home/linkedin-icon.svg" alt="Logo LinkedIn"></a>
+    <section class="simulador" id="simulador">
+        <div class="container">
+            <div class="texto">
+                <h2>Descubra como economizar recursos e maximizar resultados!</h2>
+                <a href="./calculadoraWaterWorksV3.html" class="botao">Simular agora</a>
             </div>
-        </menu>
-        <form class="duvidas">
-            <li>DUVIDAS?</li>
-            <input type="email" id="emailDuvida" placeholder="E-mail" required>
-            <input type="text" id="mensagemDuvida" placeholder="Mensagem" required>
-            <button>Enviar</button>
-        </form>
+            <div class="imagem"></div>
+        </div>
+    </section>
+    <section class="tecnologia" id="tecnologia">
+        <div class="titulo">
+            <h1>NOSSA TECNOLOGIA</h1>
+            <p>Utilizamos tecnologias confiáveis e acessíveis para garantir precisão e eficiência</p>
+        </div>
+        <div class="texto">
+            <div class="um">
+                <li>Arduino UNO e o Sensor de Umidade (MTS) para a captação de dados.</li>
+                <img class="sensor" src="./imagens/placa_sensor.png" alt="Sensor de umidade">
+            </div>
+            <div class="dois">
+                <li>Lançamento dos dados coletados diretamente em um banco de dados seguro.</li>
+                <img class="bancoDados" src="./imagens/banco de dados.png" alt="banco de dados">
+            </div>
+            <div class="tres">
+                <li>Transformação das informações em dados intuitivos e acessíveis através de nossa dashboard exclusiva.
+                </li>
+                <img class="grafico" src="./imagens/dash.PNG" alt="dashboard">
+            </div>
+        </div>
+    </section>
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="texto">
+                <div class="titulo">
+                    <h1>Dashboard Water Works</h1>
+                    <p>Na nossa dashboard, você terá acesso a todas as informações necessárias para gerenciar sua
+                        plantação de café de forma eficiente e sustentável.</p>
+                </div>
+                <div class="um">
+                    <img src="./imagens/relogio.png" alt="">
+                    <li>Visualize dados de umidade do solo em tempo real.</li>
+                </div>
+                <div class="dois">
+                    <img src="./imagens/estrategia.png" alt="">
+                    <li>Tome decisões estratégicas com base em análises intuitivas.</li>
+                </div>
+                <div class="tres">
+                    <img src="./imagens/gotas-de-agua.png" alt="">
+                    <li>Gerencie os recursos hídricos com mais precisão.</li>
+                </div>
+            </div>
+            <div class="imagem"></div>
+        </div>
+    </section>
+    <section class="equipe">
+        <div class="texto">
+            <h1>Conheça os nossos <a href="">especialistas</a></h1>
+        </div>
+        <div class="perfil">
+            <div class="icones">
+                <a href="https://www.instagram.com/redzin.or/">
+                    <div class="um">
+                        <div class="circulo"></div>
+                        <p>@aaron.cutipa</p>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/gui.augusto.136/">
+                    <div class="dois">
+                        <div class="circulo"></div>
+                        <p>@guilherme.augusto</p>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/juliavisconti1506/">
+                    <div class="tres">
+                        <div class="circulo"></div>
+                        <p>@julia.visconti</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="quatro">
+                        <div class="circulo"></div>
+                        <p>@pedro.amoroso</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="cinco">
+                        <div class="circulo"></div>
+                        <p>@vlad.ribeiro</p>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/za_chavier/">
+                    <div class="seis">
+                        <div class="circulo"></div>
+                        <p>@zaqueu.chavier</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="barrinha">
+            <div class="logoWW">
+                <a href="#banner">
+                    <img src="./imgs - Home/logoWW.png" alt="WaterWorks">
+                    <li>ater Works</li>
+                </a>
+            </div>
+        </div>
+        <div class="links">
+            <div class="opcoes">
+                <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="./monitoramento.html">Monitoramento</a></li>
+                <li><a href="./sobrenos.html">Sobre nós</a></li>
+            </div>
+        </div>
+        <div class="redes">
+            <div class="container">
+                <p>Acompanhe a Water Works nas redes sociais</p>
+                <img src="../imgs - Home/icons/facebook.png" alt="">
+                <img src="../imgs - Home/icons/instagram.png" alt="">
+                <img src="../imgs - Home/icons/twitter.png" alt="">
+                <img src="../imgs - Home/icons/youtube.png" alt="">
+            </div>
+        </div>
+        <div class="texto">
+            <p>A marca WaterWorks é de propriedade da WaterWorks Tecnologia S.A. Todas as operações realizadas pela
+                WaterWorks são executadas pela WaterWorks Tecnologia S.A., inscrita sob o CNPJ: XX.XXX.XXX/XXXX-XX,
+                instituição autorizada pelos órgãos reguladores competentes.
+
+                Copyright © 2024 WaterWorks. Todos os direitos reservados. Toda comunicação através da rede mundial de
+                computadores está sujeita a interrupções ou atrasos, podendo impedir ou prejudicar o envio de dados ou a
+                recepção de informações atualizadas. A WaterWorks exime-se de responsabilidade por danos sofridos por
+                seus clientes, decorrentes de falhas de serviços disponibilizados por terceiros.
+
+                A WaterWorks Tecnologia S.A., inscrita no CNPJ/ME sob o nº XX.XXX.XXX/XXXX-XX, é uma empresa autorizada
+                a operar no mercado e exime-se de responsabilidade por danos sofridos por seus clientes, por falhas nos
+                serviços de terceiros. A WaterWorks informa que toda comunicação via rede mundial de computadores está
+                sujeita a interrupções ou atrasos, podendo afetar o envio de ordens ou a recepção de informações em
+                tempo real.
+
+                A WaterWorks assegura que os dados de seus clientes são mantidos de forma segura, conforme regulamentos
+                aplicáveis, e que os recursos ou informações coletadas são exclusivamente utilizados para o fornecimento
+                de nossos serviços de monitoramento e análise de umidade do solo. A WaterWorks não se responsabiliza por
+                eventuais falhas em serviços fornecidos por terceiros.</p>
+        </div>
+        <div class="endereco">
+            <p class="rua">Rua Haddock Lobo, 595, Cerqueira César - São Paulo, SP. CEP: 01414-001</p>
+            <p class="copy">Copyright © 2024 WaterWorks. CNPJ: XX.XXX.XXX/XXXX-XX</p>
+        </div>
     </footer>
+    <div id="cookie" class="cookie">
+        <p>
+            Clicando em "Aceito todos os cookies", você aceita nossa política de cookies com objetivo de melhorar sua
+            navegação. Conheça nossa política e <a href="">configure seus cookies</a>
+        </p>
+        <button id="aceitar-cookies">aceitar todos os cookies</button>
+    </div>
 </body>
+
 </html>
 <script>
-    const imgSlider = document.querySelectorAll('.imgSlider')
-    const avancar = document.getElementById('avancar')
-    const voltar = document.getElementById('voltar')
-
-    let posicaoSlider = 0;
-
-    function hideSlider() {
-        imgSlider.forEach(item => item.classList.remove('on'))
-    }
-
-    function showSlider() {
-        imgSlider[posicaoSlider].classList.add('on')
-    }
-
-    function nextSlider() {
-        hideSlider()
-        if(posicaoSlider === imgSlider.length -1) {
-            posicaoSlider = 0
-        } else {
-            posicaoSlider++
-        }
-        showSlider()
-    }
-
-    function prevSlider() {
-        hideSlider()
-        if(posicaoSlider === 0) {
-            posicaoSlider = imgSlider.length -1
-        } else {
-            posicaoSlider--
-        }
-        showSlider()
-    }
-
-    avancar.addEventListener('click', nextSlider)
-    voltar.addEventListener('click', prevSlider)
+    document.getElementById('aceitar-cookies').addEventListener('click', function () {
+        document.getElementById('cookie').style.display = 'none';
+    });
 </script>
