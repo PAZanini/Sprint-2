@@ -42,10 +42,10 @@
           <!-- <button onclick="plotar(), plotar2()">Iniciar</button> -->
           <select id="listaPlant">
             <option value="#" selected disabled>Selecione uma plantação</option>
-            <option value="1">Plantação 1</option>
-            <option value="2">Plantação 2</option>
+            <option  value="1">Plantação 1</option>
+            <option  value="2">Plantação 2</option>
           </select>
-          <button onclick="selecionarPlant(), atlGrafico(), plotar(), plotar2()">
+          <button onclick=" selecionarPlant(), atlGrafico(), plotar(), plotar2()">
             Selecionar
           </button>
         </menu>
@@ -135,7 +135,7 @@
                   60%
                 </div>
               </div>
-              <canvas id="myChart3"></canvas>
+              <canvas id="myChart" height="304" style="display: block; box-sizing: border-box; height: 304px; width: 609px;" width="609"></canvas>
             </div>
           </div>
           <div id="graficoDiarioPlant2" style="display: none">
@@ -180,6 +180,10 @@
 </html>
 <script>
   let listaEmpresasCadastradas = [];
+
+  function destroychartMerda() {
+    ctx.destroy();
+  }
 
   function listar() {
     fetch("/empresas/listar", {
@@ -380,47 +384,6 @@
     },
   });
 
-  var ctx3 = new Chart(document.getElementById("myChart3"), {
-    type: "line",
-    data: {
-      labels: dtHora,
-      datasets: [
-        {
-          label: "#Atual",
-          data: umidade,
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
-
-  var ctx4 = new Chart(document.getElementById("myChart4"), {
-    type: "bar",
-    data: {
-      labels: dtHora,
-      datasets: [
-        {
-          label: "#Mensal",
-          data: umidade,
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
 
 
   function plotar() {
