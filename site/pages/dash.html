@@ -21,7 +21,7 @@
 
     <script src="../js/sessao.js"></script>
   </head>
-  <body onload="validarSessao()">
+  <body onload="validarSessao(), listar()">
     <header id="headerSuperior">
       <h2>WaterWorks</h2>
       <div>
@@ -45,7 +45,9 @@
             <option value="1">Plantação 1</option>
             <option value="2">Plantação 2</option>
           </select>
-          <button onclick="selecionarPlant(), plotar()">Selecionar</button>
+          <button onclick="selecionarPlant(), atlGrafico(), plotar()">
+            Selecionar
+          </button>
         </menu>
 
         <section id="plantacao1" style="display: none">
@@ -166,26 +168,124 @@
             <button onclick="graficoMensal2()" class="btnMudarGrafico">
               Gráfico Mensal
             </button>
-            <button onclick='graficoDiario2()' class="btnMudarGrafico">
+            <button onclick="graficoDiario2()" class="btnMudarGrafico">
               Gráfico Diário
             </button>
           </div>
         </section>
       </section>
+      <div id="div_alerta"></div>
     </main>
   </body>
 </html>
 <script>
+  let listaEmpresasCadastradas = [];
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresasCadastradas.push(empresa);
+
+            console.log("listaEmpresasCadastradas");
+            console.log(listaEmpresasCadastradas[0].codigo_ativacao);
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
   // Funções de seleção front end
 
+  function destroier_of_alerts() {
+    // div_alerta.classList.add("aparecer");
+    div_alerta.style.display = "none";
+  }
 
-let proximaAtualizacao;
-var umidade = [];
-var dtHora = [];
+  function alertar_umi() {
+    var umidade = "Umidade Alta";
+    // var idEmpresaVincular
+
+    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      idEmpresaVincular = listaEmpresasCadastradas[i].idEmpresa;
+    }
+
+    div_alerta.style.display = "flex";
+    // div_alerta.classList.remove("aparecer");
+    // div_alerta.querySelector(".p_sit").textContent = "Umidade alta!";
+    div_alerta.innerHTML = `
+        <img
+          src="../imagens/alerta.png"
+          style="height: 30px; width: 30px"
+          alt=""
+        />
+        <p id="p_sit">Umidade Alta</p>
+        <button id="btn_alerta" onclick="destroier_of_alerts()">OK</button>`;
+
+    fetch("/usuarios/alertar_umi", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        umiServer: umidade,
+        idEmpresaVincularServer: idEmpresaVincular,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+      })
+      .catch(function (erro) {
+        console.error("Erro ao enviar dados:", erro);
+        alert("Erro ao tentar realizar o cadastro. Tente novamente.");
+      });
+  }
+  function alertar_desumi() {
+    var umidade = "Umidade Baixa";
+
+    div_alerta.style.display = "flex";
+
+    // div_alerta.classList.add("aparecer");
+    // div_alerta.querySelector(".p_sit").textContent = "Umidade baixa!";
+
+    div_alerta.innerHTML = `
+        <img
+          src="../imagens/alerta.png"
+          style="height: 30px; width: 30px"
+          alt=""
+        />
+        <p id="p_sit">Umidade Baixa</p>
+        <button id="btn_alerta" onclick="destroier_of_alerts()">OK</button>`;
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        umiServer: umidade,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+      })
+      .catch(function (erro) {
+        console.error("Erro ao enviar dados:", erro);
+        alert("Erro ao tentar realizar o cadastro. Tente novamente.");
+      });
+  }
+
+  let proximaAtualizacao;
+  var umidade = [];
+  var dtHora = [];
 
   function selecionarPlant() {
     var lista = listaPlant.value;
-    
 
     if (lista == 1) {
       document.getElementById("plantacao1").style.display = "flex";
@@ -228,28 +328,26 @@ var dtHora = [];
     document.getElementById("graficoDiarioPlant2").style.display = "none";
   }
 
-  
-
   var ctx = new Chart(document.getElementById("myChart"), {
-          type: 'line',
-          data: {
-            labels: dtHora,
-            datasets: [{
-              label: '# of Votes',
-              data: umidade,
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-    });
-
-
+    type: "line",
+    data: {
+      labels: dtHora,
+      datasets: [
+        {
+          label: "# of Votes",
+          data: umidade,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 
   function plotar() {
     var idPLANTACAO = Number(listaPlant.value);
@@ -290,24 +388,23 @@ var dtHora = [];
             "";
             umidade = [];
             dtHora = [];
-            for(var i = 0; i < dados.length; i++){
-            console.log(dados[i].dadoSensor, dados[i].dtRegistro);
-            umidade.push(dados[i].dadoSensor);
-            dtHora.push(dados[i].dtRegistro);
-          }
-          var ultima_posicao = umidade[0]
-          if(ultima_posicao > 80) {
-              alert('Água acima')
-          } else if(ultima_posicao < 60) {
-            alert('Água abaixo')
-          }
+            for (var i = 0; i < dados.length; i++) {
+              console.log(dados[i].dadoSensor, dados[i].dtRegistro);
+              umidade.push(dados[i].dadoSensor);
+              dtHora.push(dados[i].dtRegistro);
+            }
+            var ultima_posicao = umidade[0];
+            if (ultima_posicao > 80) {
+              alertar_umi();
+            } else if (ultima_posicao < 60) {
+              alertar_desumi();
+            }
+            var umidadeReversa = umidade.reverse();
+            var dtHoraReversa = dtHora.reverse();
 
-         var umidadeReversa = umidade.reverse();
-         var dtHoraReversa = dtHora.reverse();
-
-          ctx.data.datasets[0].data = umidadeReversa;
-          ctx.data.labels = dtHoraReversa;
-          ctx.update();
+            ctx.data.datasets[0].data = umidadeReversa;
+            ctx.data.labels = dtHoraReversa;
+            ctx.update();
           })
           .catch((erro) => {
             console.log(erro);
@@ -317,16 +414,15 @@ var dtHora = [];
         console.log(erro);
       });
 
-      // if (proximaAtualizacao != undefined) {
-      //       clearTimeout(proximaAtualizacao);
-      //   }
-
+    // if (proximaAtualizacao != undefined) {
+    //       clearTimeout(proximaAtualizacao);
+    //   }
   }
 
-   proximaAtualizacao = setInterval(() => plotar(), 7000);
+  function atlGrafico() {
+    proximaAtualizacao = setInterval(() => plotar(), 7000);
+  }
 
-
-  
   //Funções para plotagem de dados
 
   // variáveis para os charts:
@@ -503,6 +599,4 @@ var dtHora = [];
 
   //   chart4 = new Chart(document.getElementById("myChart4"), config);
   // }
-
-  
 </script>

@@ -1,173 +1,171 @@
 /* Gerais */
 
 * {
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Rubik';
+  margin: 0px;
+  padding: 0px;
+  font-family: "Rubik";
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    display: flex;
+  display: flex;
 }
-
 
 /* Header Superior */
 
 #headerSuperior {
-    background-color: #F0F6F5;
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: solid 2px black;
+  background-color: #f0f6f5;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px black;
 }
 
 #headerSuperior div {
-    margin: 0px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
 #headerSuperior h2 {
-    margin: 0px 20px;
-    font-size: 40px;
-    color: #0A8CBF;
+  margin: 0px 20px;
+  font-size: 40px;
+  color: #0a8cbf;
 }
 
 #nomeEmpresa {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 /* Header Fixo Lateral */
 
 #headerLateral {
-    height: 90vh;
-    width: 15%;
-    background-color: #F0F6F5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border-right: solid 2px black;
-    color: #0A8CBF;
+  height: 90vh;
+  width: 15%;
+  background-color: #f0f6f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-right: solid 2px black;
+  color: #0a8cbf;
 }
 
 #headerLateral button {
-    background-color: #0A8CBF;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
+  background-color: #0a8cbf;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 #headerLateral button:hover {
-    background-color: #0caeee;
-    cursor: pointer;
-    scale: 1.1;
+  background-color: #0caeee;
+  cursor: pointer;
+  scale: 1.1;
 }
 
 /* Graficos */
 
 #graficos {
-    background-color: white;
-    width: 85%;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: white;
+  width: 85%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #graficos menu {
-    margin: 20px;
+  margin: 20px;
 }
 
 #graficos menu button {
-    background-color: #0A8CBF;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
+  background-color: #0a8cbf;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 #graficos menu button:hover {
-    background-color: #0caeee;
-    cursor: pointer;
+  background-color: #0caeee;
+  cursor: pointer;
 }
 
 #graficos menu select {
-    text-align: center;
-    padding: 15px;
-    border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 #graficos section {
-    width: 100%;
-    height: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    color: white;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
 }
 
 #graficos section button {
-    background-color: #0A8CBF;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
+  background-color: #0a8cbf;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 #graficos section button:hover {
-    background-color: #0caeee;
-    cursor: pointer;
+  background-color: #0caeee;
+  cursor: pointer;
 }
 
 #graficoMensalPlant1 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #graficoDiarioPlant1 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #graficoMensalPlant2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #graficoDiarioPlant2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .grafico {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    align-items: center;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
 }
 
 /* #div_grafico_foda 
@@ -183,35 +181,58 @@ width: 100%;
 } */
 
 .kpiNaoEstatica {
-    display: flex;
+  display: flex;
 }
 
 .btnMudarGrafico {
-    margin: 40px;
+  margin: 40px;
 }
 
 .kpi {
-    background-color: #0A8CBF;
-    padding: 10px;
-    margin: 20px;
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-
+  background-color: #0a8cbf;
+  padding: 10px;
+  margin: 20px;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
 }
 
 /* Plantações */
 
 #plantacao1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #plantacao2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#div_alerta {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 150px;
+  width: 220px;
+  border-radius: 10px;
+  background-color: white;
+  color: red;
+  font-weight: 600;
+  gap: 10px;
+  border: 2px solid black;
+}
+
+#btn_alerta {
+  margin-top: 10px;
+  height: 25px;
+  width: 65%;
+  font-weight: 700;
+  cursor: pointer;
 }
