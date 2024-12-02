@@ -110,6 +110,10 @@ a {
     animation: dark-to-light-bg-slide 0.3s ease-in-out;
 }
 
+#header a {
+    color: #0A8CBF;
+}
+
 #esqueceu_senha a
 {
 

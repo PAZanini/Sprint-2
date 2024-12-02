@@ -101,6 +101,29 @@ function plotar(req, res) {
   }
 }
 
+function plotar2(req, res) {
+  var idPLANTACAO = req.body.idPLANTACAO;
+
+  if (idPLANTACAO == undefined) {
+    res.status(400).send("Algum parametro está undefined!");
+  } else {
+    usuarioModel
+      .plotar2(idPLANTACAO)
+      .then(function (resultado) {
+        res.json(resultado);
+        res.status(200);
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 function alertar_umi(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
   var umidade = req.body.umiServer;
@@ -161,6 +184,7 @@ module.exports = {
   autenticar,
   cadastrar,
   plotar,
+  plotar2,
   alertar_umi,
   alertar_desumi,
 };

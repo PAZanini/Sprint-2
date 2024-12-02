@@ -19,7 +19,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
     </style>
 
-    <script src="../js/sessao.js"></script>
+    <!-- <script src="../js/sessao.js"></script> -->
   </head>
   <body onload="validarSessao(), listar()">
     <header id="headerSuperior">
@@ -103,11 +103,11 @@
           </div>
 
           <div>
+            <button onclick="graficoDiario() " class="btnMudarGrafico">
+              Gráfico Atual
+            </button>
             <button onclick="graficoMensal()" class="btnMudarGrafico">
               Gráfico Mensal
-            </button>
-            <button onclick="graficoDiario() " class="btnMudarGrafico">
-              Gráfico Diário
             </button>
           </div>
         </section>
@@ -165,11 +165,11 @@
           </div>
 
           <div>
+            <button onclick="graficoDiario2()" class="btnMudarGrafico">
+              Gráfico Atual
+            </button>
             <button onclick="graficoMensal2()" class="btnMudarGrafico">
               Gráfico Mensal
-            </button>
-            <button onclick="graficoDiario2()" class="btnMudarGrafico">
-              Gráfico Diário
             </button>
           </div>
         </section>
@@ -287,6 +287,8 @@
   let proximaAtualizacao;
   var umidade = [];
   var dtHora = [];
+  var umidade2 = [];
+  var dtHora2 = [];
 
   function selecionarPlant() {
     var lista = listaPlant.value;
@@ -298,6 +300,7 @@
       document.getElementById("plantacao1").style.display = "none";
       document.getElementById("plantacao2").style.display = "flex";
     }
+
   }
 
   function plantacao1() {
@@ -312,25 +315,26 @@
     document.getElementById("plantacao1").style.display = "none";
   }
 
-  function graficoDiario() {
+  function graficoMensal() {
     document.getElementById("graficoMensalPlant1").style.display = "none";
     document.getElementById("graficoDiarioPlant1").style.display = "flex";
   }
 
-  function graficoMensal() {
+  function graficoDiario() {
     document.getElementById("graficoMensalPlant1").style.display = "flex";
     document.getElementById("graficoDiarioPlant1").style.display = "none";
   }
 
-  function graficoDiario2() {
+  function graficoMensal2() {
     document.getElementById("graficoMensalPlant2").style.display = "none";
     document.getElementById("graficoDiarioPlant2").style.display = "flex";
   }
 
-  function graficoMensal2() {
+  function graficoDiario2() {
     document.getElementById("graficoMensalPlant2").style.display = "flex";
     document.getElementById("graficoDiarioPlant2").style.display = "none";
   }
+
 
   var ctx = new Chart(document.getElementById("myChart"), {
     type: "line",
@@ -338,7 +342,7 @@
       labels: dtHora,
       datasets: [
         {
-          label: "# of Votes",
+          label: "#Atual",
           data: umidade,
           borderWidth: 1,
         },
@@ -352,6 +356,70 @@
       },
     },
   });
+
+  var ctx2 = new Chart(document.getElementById("myChart2"), {
+    type: "bar",
+    data: {
+      labels: dtHora,
+      datasets: [
+        {
+          label: "#Mensal",
+          data: umidade,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  var ctx3 = new Chart(document.getElementById("myChart3"), {
+    type: "line",
+    data: {
+      labels: dtHora,
+      datasets: [
+        {
+          label: "#Atual",
+          data: umidade,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  var ctx4 = new Chart(document.getElementById("myChart4"), {
+    type: "bar",
+    data: {
+      labels: dtHora,
+      datasets: [
+        {
+          label: "#Mensal",
+          data: umidade,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
 
   function plotar() {
     var idPLANTACAO = Number(listaPlant.value);
@@ -423,6 +491,76 @@
     //   }
   }
 
+  function plotar2() {
+    var idPLANTACAO = Number(listaPlant.value);
+
+    fetch("/usuarios/plotar2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPLANTACAO: idPLANTACAO,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    fetch(`/usuarios/plotar2`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPLANTACAO: idPLANTACAO,
+      }),
+    })
+      .then((resposta) => {
+        resposta
+          .json()
+          .then((dados) => {
+            "";
+            umidade2 = [];
+            dtHora2 = [];
+            for (var i = 0; i < dados.length; i++) {
+              console.log(dados[i].dadoSensor, dados[i].dtRegistro);
+              umidade2.push(dados[i].dadoSensor);
+              dtHora2.push(dados[i].dtRegistro);
+            }
+            var ultima_posicao = umidade2[0];
+            if (ultima_posicao > 80) {
+              alertar_umi();
+            } else if (ultima_posicao < 60) {
+              alertar_desumi();
+            }
+            var umidadeReversa = umidade2.reverse();
+            var dtHoraReversa = dtHora2.reverse();
+
+            ctx2.data.datasets[0].data = umidadeReversa;
+            ctx2.data.labels = dtHoraReversa;
+            ctx2.update();
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+
+    // if (proximaAtualizacao != undefined) {
+    //       clearTimeout(proximaAtualizacao);
+    //   }
+  }
+
   function atlGrafico() {
     proximaAtualizacao = setInterval(() => plotar(), 7000);
   }
@@ -430,7 +568,7 @@
   //Funções para plotagem de dados
 
   // variáveis para os charts:
-  let chart1, chart2, chart3, chart4;
+  // let chart1, chart2, chart3, chart4;
 
   // function plotar() {
   //   var idPLANTACAO = Number(listaPlant.value);

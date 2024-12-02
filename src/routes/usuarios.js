@@ -16,6 +16,10 @@ router.post("/plotar", function (req, res) {
   usuarioController.plotar(req, res);
 });
 
+router.post("/plotar2", function (req, res) {
+  usuarioController.plotar(req, res);
+});
+
 router.post("/alertar_umi", function (req, res) {
   usuarioController.alertar_umi(req, res);
 });

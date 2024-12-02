@@ -43,6 +43,17 @@ function plotar(idPLANTACAO) {
   return database.executar(instrucaoSql);
 }
 
+function plotar2(idPLANTACAO) {
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucaoSql = `
+            SELECT p.nome as Plantação, dadoSensor as dadoSensor, dataRegistro AS dtRegistro FROM plantacao as p JOIN sensor on fkPlantacao = idPLANTACAO JOIN registro as dados on fkSensor = idSensor WHERE idPLANTACAO = ${idPLANTACAO} order by dataRegistro DESC limit 5;
+          `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function alertar_umi(umidade, fkEmpresa) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",
@@ -77,6 +88,7 @@ module.exports = {
   autenticar,
   cadastrar,
   plotar,
+  plotar2,
   alertar_umi,
   alertar_desumi,
 };

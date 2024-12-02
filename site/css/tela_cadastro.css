@@ -82,7 +82,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 10px 50px;
+    padding: 30px 60px;
     border-radius: 10px;
     gap: 30px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.366);
@@ -148,9 +148,7 @@ body {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out
 }
 
-
-
-#btn_cadastro 
+#btn_cadastro
 {
     width: 60%;
     height: 50px;
@@ -162,6 +160,11 @@ body {
     font-size: 22px;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
+}
+
+#btn_cadastro:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .mensagemErro
