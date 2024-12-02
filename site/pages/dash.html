@@ -247,12 +247,15 @@
   }
   function alertar_desumi() {
     var umidade = "Umidade Baixa";
+    // var idEmpresaVincular
+
+    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      idEmpresaVincular = listaEmpresasCadastradas[i].idEmpresa;
+    }
 
     div_alerta.style.display = "flex";
-
-    // div_alerta.classList.add("aparecer");
-    // div_alerta.querySelector(".p_sit").textContent = "Umidade baixa!";
-
+    // div_alerta.classList.remove("aparecer");
+    // div_alerta.querySelector(".p_sit").textContent = "Umidade alta!";
     div_alerta.innerHTML = `
         <img
           src="../imagens/alerta.png"
@@ -262,13 +265,14 @@
         <p id="p_sit">Umidade Baixa</p>
         <button id="btn_alerta" onclick="destroier_of_alerts()">OK</button>`;
 
-    fetch("/usuarios/cadastrar", {
+    fetch("/usuarios/alertar_desumi", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         umiServer: umidade,
+        idEmpresaVincularServer: idEmpresaVincular,
       }),
     })
       .then(function (resposta) {

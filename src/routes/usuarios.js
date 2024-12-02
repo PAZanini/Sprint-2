@@ -20,4 +20,8 @@ router.post("/alertar_umi", function (req, res) {
   usuarioController.alertar_umi(req, res);
 });
 
+router.post("/alertar_desumi", function (req, res) {
+  usuarioController.alertar_desumi(req, res);
+});
+
 module.exports = router;
