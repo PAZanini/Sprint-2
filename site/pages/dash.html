@@ -19,7 +19,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
     </style>
 
-    <!-- <script src="../js/sessao.js"></script> -->
+    <script src="../js/sessao.js"></script>
   </head>
   <body onload="validarSessao(), listar()">
     <header id="headerSuperior">
@@ -45,7 +45,7 @@
             <option value="1">Plantação 1</option>
             <option value="2">Plantação 2</option>
           </select>
-          <button onclick="selecionarPlant(), atlGrafico(), plotar()">
+          <button onclick="selecionarPlant(), atlGrafico(), plotar(), plotar2()">
             Selecionar
           </button>
         </menu>
@@ -242,7 +242,7 @@
       })
       .catch(function (erro) {
         console.error("Erro ao enviar dados:", erro);
-        alert("Erro ao tentar realizar o cadastro. Tente novamente.");
+        alert("erro alerta umi");
       });
   }
   function alertar_desumi() {
@@ -280,11 +280,13 @@
       })
       .catch(function (erro) {
         console.error("Erro ao enviar dados:", erro);
-        alert("Erro ao tentar realizar o cadastro. Tente novamente.");
+        alert("Erro desumi");
       });
   }
 
   let proximaAtualizacao;
+  var mes = [];
+  var valor_mes = [];
   var umidade = [];
   var dtHora = [];
   var umidade2 = [];
@@ -485,22 +487,18 @@
       .catch((erro) => {
         console.log(erro);
       });
+    }
+    
 
-    // if (proximaAtualizacao != undefined) {
-    //       clearTimeout(proximaAtualizacao);
-    //   }
-  }
 
-  function plotar2() {
-    var idPLANTACAO = Number(listaPlant.value);
-
+    function plotar2() {
+    
     fetch("/usuarios/plotar2", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        idPLANTACAO: idPLANTACAO,
       }),
     })
       .then(function (resposta) {
@@ -520,7 +518,6 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        idPLANTACAO: idPLANTACAO,
       }),
     })
       .then((resposta) => {
@@ -528,22 +525,19 @@
           .json()
           .then((dados) => {
             "";
-            umidade2 = [];
-            dtHora2 = [];
+            valor_mes = [];
+            mes = [];
             for (var i = 0; i < dados.length; i++) {
               console.log(dados[i].dadoSensor, dados[i].dtRegistro);
-              umidade2.push(dados[i].dadoSensor);
-              dtHora2.push(dados[i].dtRegistro);
+              valor_mes.push(dados[i].media_valor);
+              mes.push(dados[i].Mes);
             }
-            var ultima_posicao = umidade2[0];
-            if (ultima_posicao > 80) {
-              alertar_umi();
-            } else if (ultima_posicao < 60) {
-              alertar_desumi();
-            }
-            var umidadeReversa = umidade2.reverse();
-            var dtHoraReversa = dtHora2.reverse();
+            var ultima_posicao = umidade[0];
+            
+            var umidadeReversa = valor_mes;
+            var dtHoraReversa = mes;
 
+           
             ctx2.data.datasets[0].data = umidadeReversa;
             ctx2.data.labels = dtHoraReversa;
             ctx2.update();
@@ -560,6 +554,8 @@
     //       clearTimeout(proximaAtualizacao);
     //   }
   }
+
+  
 
   function atlGrafico() {
     proximaAtualizacao = setInterval(() => plotar(), 7000);

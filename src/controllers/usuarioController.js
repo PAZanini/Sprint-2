@@ -93,7 +93,7 @@ function plotar(req, res) {
       .catch(function (erro) {
         console.log(erro);
         console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          "\nErro plotar 1 ",
           erro.sqlMessage
         );
         res.status(500).json(erro.sqlMessage);
@@ -101,28 +101,25 @@ function plotar(req, res) {
   }
 }
 
-function plotar2(req, res) {
-  var idPLANTACAO = req.body.idPLANTACAO;
+function plotar2(req,res) {
+  usuarioModel
+    .plotar2()
+    .then(function (resultado) {
+      res.json(resultado);
 
-  if (idPLANTACAO == undefined) {
-    res.status(400).send("Algum parametro está undefined!");
-  } else {
-    usuarioModel
-      .plotar2(idPLANTACAO)
-      .then(function (resultado) {
-        res.json(resultado);
-        res.status(200);
-      })
-      .catch(function (erro) {
-        console.log(erro);
-        console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
-          erro.sqlMessage
-        );
-        res.status(500).json(erro.sqlMessage);
-      });
-  }
+      res.status(200).json(resultado); // Define o status antes de enviar o JSON
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nErro plotar 2 ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
 }
+
+
 
 function alertar_umi(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
