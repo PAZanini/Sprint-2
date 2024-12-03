@@ -244,9 +244,19 @@
 }
 
 #listaPlant {
-  padding: 5px;
+  padding: 10px;
+  font-size: 15px;
   border-radius: 5px;
-  border: solid black 1px;
+  /* border: solid black 1px; */
+  border: none;
+  background-color: #f0f6f5;
+
+  option {
+    padding: 10px;
+    background-color: #f0f6f5;
+    color: #333;
+  }
+
 }
 
 .btnLateral {
@@ -254,7 +264,7 @@
   background-color: white;
   color: #0a8cbf;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   font-weight: 500;
 }
