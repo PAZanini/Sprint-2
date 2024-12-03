@@ -101,6 +101,30 @@ function plotar(req, res) {
   }
 }
 
+function plotar7(req, res) {
+  var idPLANTACAO = req.body.idPLANTACAO;
+
+  if (idPLANTACAO == undefined) {
+    res.status(400).send("Algum parametro está undefined!");
+  } else {
+    usuarioModel
+      .plotar7(idPLANTACAO)
+      .then(function (resultado) {
+        res.json(resultado);
+        res.status(200);
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nErro plotar 7 ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+
 function plotar2(req,res) {
   usuarioModel
     .plotar2()
@@ -113,6 +137,24 @@ function plotar2(req,res) {
       console.log(erro);
       console.log(
         "\nErro plotar 2 ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function plotar4(req,res) {
+  usuarioModel
+    .plotar4()
+    .then(function (resultado) {
+      res.json(resultado);
+
+      res.status(200).json(resultado); // Define o status antes de enviar o JSON
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nErro plotar 4 ",
         erro.sqlMessage
       );
       res.status(500).json(erro.sqlMessage);
@@ -181,6 +223,8 @@ module.exports = {
   autenticar,
   cadastrar,
   plotar,
+  plotar7,
+  plotar4,
   plotar2,
   alertar_umi,
   alertar_desumi,

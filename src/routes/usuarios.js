@@ -16,6 +16,15 @@ router.post("/plotar", function (req, res) {
   usuarioController.plotar(req, res);
 });
 
+router.post("/plotar7", function (req, res) {
+  usuarioController.plotar7(req, res);
+});
+
+
+router.post("/plotar4", function (req, res) {
+  usuarioController.plotar4(req, res);
+});
+
 router.post("/plotar2", function (req, res) {
   usuarioController.plotar2(req, res);
 });

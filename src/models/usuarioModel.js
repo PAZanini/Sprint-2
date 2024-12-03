@@ -44,12 +44,41 @@ function plotar(idPLANTACAO) {
   return database.executar(instrucaoSql);
 }
 
+function plotar7(idPLANTACAO) {
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucaoSql = `
+            SELECT p.nome as Plantação, dadoSensor as dadoSensor, dataRegistro AS dtRegistro FROM plantacao as p JOIN sensor on fkPlantacao = idPLANTACAO JOIN registro as dados on fkSensor = idSensor WHERE idPLANTACAO = ${idPLANTACAO} order by dataRegistro DESC limit 5;
+          `;
+          
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+
+
 function plotar2() {
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucaoSql = `
             SELECT Mes, AVG(dadoSensor) AS media_valor
-            FROM vw_mes
+            FROM vw_mes1
+            GROUP BY Mes
+            ORDER BY FIELD(Mes, 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+          `;
+          
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function plotar4() {
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucaoSql = `
+            SELECT Mes, AVG(dadoSensor) AS media_valor
+            FROM vw_mes2
             GROUP BY Mes
             ORDER BY FIELD(Mes, 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
           `;
@@ -95,6 +124,8 @@ module.exports = {
   autenticar,
   cadastrar,
   plotar,
+  plotar7,
+  plotar4,
   plotar2,
   alertar_umi,
   alertar_desumi,

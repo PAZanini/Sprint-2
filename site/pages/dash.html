@@ -40,12 +40,12 @@
       <section id="graficos">
         <menu>
           <!-- <button onclick="plotar(), plotar2()">Iniciar</button> -->
-          <select id="listaPlant">
+          <select id="listaPlant" onchange="chamar()">
             <option value="#" selected disabled>Selecione uma plantação</option>
             <option  value="1">Plantação 1</option>
             <option  value="2">Plantação 2</option>
           </select>
-          <button onclick=" selecionarPlant(), atlGrafico(), plotar(), plotar2()">
+          <button onclick=" selecionarPlant(), plotar(), plotar2()">
             Selecionar
           </button>
         </menu>
@@ -135,7 +135,7 @@
                   60%
                 </div>
               </div>
-              <canvas id="myChart" height="304" style="display: block; box-sizing: border-box; height: 304px; width: 609px;" width="609"></canvas>
+              <canvas id="myChart3" ></canvas>
             </div>
           </div>
           <div id="graficoDiarioPlant2" style="display: none">
@@ -179,11 +179,19 @@
   </body>
 </html>
 <script>
-  let listaEmpresasCadastradas = [];
 
-  function destroychartMerda() {
-    ctx.destroy();
-  }
+  let listaEmpresasCadastradas = [];
+  let proximaAtualizacao;
+  let proximaAtualizacao2;
+  var mes = [];
+  var valor_mes = [];
+  var mes2 = [];
+  var valor_mes2 = [];
+  var umidade = [];
+  var dtHora = [];
+  var umidade2 = [];
+  var dtHora2 = [];
+
 
   function listar() {
     fetch("/empresas/listar", {
@@ -288,14 +296,6 @@
       });
   }
 
-  let proximaAtualizacao;
-  var mes = [];
-  var valor_mes = [];
-  var umidade = [];
-  var dtHora = [];
-  var umidade2 = [];
-  var dtHora2 = [];
-
   function selecionarPlant() {
     var lista = listaPlant.value;
 
@@ -366,11 +366,11 @@
   var ctx2 = new Chart(document.getElementById("myChart2"), {
     type: "bar",
     data: {
-      labels: dtHora,
+      labels: mes,
       datasets: [
         {
           label: "#Mensal",
-          data: umidade,
+          data: valor_mes,
           borderWidth: 1,
         },
       ],
@@ -384,6 +384,60 @@
     },
   });
 
+  var ctx3 = new Chart(document.getElementById("myChart3"), {
+    type: "line",
+    data: {
+      labels: dtHora2,
+      datasets: [
+        {
+          label: "#Atual",
+          data: umidade2,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  var ctx4 = new Chart(document.getElementById("myChart4"), {
+    type: "bar",
+    data: {
+      labels: mes2,
+      datasets: [
+        {
+          label: "#Atual",
+          data: valor_mes2,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+
+  function chamar() {
+    const valorSelecionado = listaPlant.value;
+    if (valorSelecionado == 1) {
+      atlGrafico();
+    } else if (valorSelecionado == '#') {
+      ''
+    } else {
+      atlGrafico2();
+      plotar4();
+    }
+  }
 
 
   function plotar() {
@@ -439,9 +493,10 @@
             var umidadeReversa = umidade.reverse();
             var dtHoraReversa = dtHora.reverse();
 
-            ctx.data.datasets[0].data = umidadeReversa;
-            ctx.data.labels = dtHoraReversa;
-            ctx.update();
+            
+              ctx.data.datasets[0].data = umidadeReversa;
+              ctx.data.labels = dtHoraReversa;
+              ctx.update();
           })
           .catch((erro) => {
             console.log(erro);
@@ -451,6 +506,75 @@
         console.log(erro);
       });
     }
+
+    function plotar7() {
+    var idPLANTACAO = Number(listaPlant.value);
+
+    fetch("/usuarios/plotar7", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPLANTACAO: idPLANTACAO,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    fetch(`/usuarios/plotar7`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idPLANTACAO: idPLANTACAO,
+      }),
+    })
+      .then((resposta) => {
+        resposta
+          .json()
+          .then((dados) => {
+            "";
+            umidade2 = [];
+            dtHora2 = [];
+            for (var i = 0; i < dados.length; i++) {
+              console.log(dados[i].dadoSensor, dados[i].dtRegistro);
+              umidade2.push(dados[i].dadoSensor);
+              dtHora2.push(dados[i].dtRegistro);
+            }
+            var ultima_posicao = umidade2[0];
+            if (ultima_posicao > 80) {
+              alertar_umi();
+            } else if (ultima_posicao < 60) {
+              alertar_desumi();
+            }
+            var umidadeReversa2 = umidade2.reverse();
+            var dtHoraReversa2 = dtHora2.reverse();
+
+            
+              ctx3.data.datasets[0].data = umidadeReversa2;
+              ctx3.data.labels = dtHoraReversa2;
+              ctx3.update();
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+    }
+
+    
     
 
 
@@ -513,191 +637,77 @@
         console.log(erro);
       });
 
-    // if (proximaAtualizacao != undefined) {
-    //       clearTimeout(proximaAtualizacao);
-    //   }
   }
 
-  
+  function plotar4() {
+    
+    fetch("/usuarios/plotar4", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    fetch(`/usuarios/plotar4`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+      }),
+    })
+      .then((resposta) => {
+        resposta
+          .json()
+          .then((dados) => {
+            "";
+            valor_mes2 = [];
+            mes2 = [];
+            for (var i = 0; i < dados.length; i++) {
+              console.log(dados[i].dadoSensor, dados[i].dtRegistro);
+              valor_mes2.push(dados[i].media_valor);
+              mes2.push(dados[i].Mes);
+            }
+            
+            var umidadeReversa2 = valor_mes2;
+            var dtHoraReversa2 = mes2;
+
+           
+            ctx4.data.datasets[0].data = umidadeReversa2;
+            ctx4.data.labels = dtHoraReversa2;
+            ctx4.update();
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+
+  }
+
+  function atlGrafico2() {
+    proximaAtualizacao2 = setInterval(() => plotar7(), 3000);
+    proximaAtualizacao = '';
+
+  }
 
   function atlGrafico() {
-    proximaAtualizacao = setInterval(() => plotar(), 7000);
+    proximaAtualizacao = setInterval(() => plotar(), 3000);
+    proximaAtualizacao2 = ''
   }
 
-  //Funções para plotagem de dados
-
-  // variáveis para os charts:
-  // let chart1, chart2, chart3, chart4;
-
-  // function plotar() {
-  //   var idPLANTACAO = Number(listaPlant.value);
-
-  //   fetch("/usuarios/plotar", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       idPLANTACAO: idPLANTACAO,
-  //     }),
-  //   })
-  //     .then(function (resposta) {
-  //       console.log("resposta: ", resposta);
-
-  //       if (resposta.ok) {
-  //         console.log("Dados plotados!");
-  //         graficoDiarioPlant1();
-  //         graficoMensalPlant1();
-  //         graficoDiarioPlant2();
-  //         graficoMensalPlant2();
-  //       }
-  //     })
-  //     .catch(function (resposta) {
-  //       console.log(`#ERRO: ${resposta}`);
-  //       finalizarAguardar();
-  //     });
-  // }
-
-  // function graficoMensalPlant1(dado) {
-  //   if (chart1) {
-  //     chart1.destroy();
-  //   }
-
-  //   // console.log("Iniciando a plotagem dos gráficos");
-  //   console.log(dado, dado.length);
-  //   let labels = [];
-  //   let dados = {};
-  //   let dados_valor = [];
-
-  //   for (i = 0; i < dado.length; i++) {
-  //     labels.push([
-  //       dado[i].dtRegistro,
-  //       // dado[1].dtRegistro,
-  //       // dado[2].dtRegistro,
-  //       // dado[3].dtRegistro,
-  //     ]);
-
-  //     dados_valor.push(dado[i].dadoSensor);
-  //     dados = {
-  //       labels: labels,
-  //       datasets: [
-  //         {
-  //           label: "Umidade",
-  //           data: [],
-  //           fill: true,
-  //           borderColor: "blue",
-  //           tension: 1,
-  //           backgroundColor: "green",
-  //         },
-  //       ],
-  //     };
-  //   }
-  //   const config = {
-  //     type: "bar",
-  //     data: dados,
-  //   };
-  //   chart1 = new Chart(document.getElementById("myChart"), config);
-
-  //   atlGrafico(dados.dataset[0].data, dado);
-  // }
-
-  // function atlGrafico(data, dado) {
-  //   for (i = 0; i < dado.length; i++) {
-  //     data.push(dado[i].dadoSensor);
-  //   }
-  //   setInterval(atlGrafico, 3000);
-  // }
-
-  // function graficoDiarioPlant1(dado, data) {
-  //   if (chart2) {
-  //     chart2.destroy();
-  //   }
-
-  //   console.log("Iniciando a plotagem dos gráficos");
-
-  //   let labels = [data];
-
-  //   let dados = {
-  //     labels: labels,
-  //     datasets: [
-  //       {
-  //         label: "Umidade",
-  //         data: [dado],
-  //         fill: true,
-  //         borderColor: "blue",
-  //         tension: 1,
-  //         backgroundColor: "green",
-  //       },
-  //     ],
-  //   };
-
-  //   const config = {
-  //     type: "line",
-  //     data: dados,
-  //   };
-
-  //   chart2 = new Chart(document.getElementById("myChart2"), config);
-  // }
-
-  // function graficoMensalPlant2() {
-  //   if (chart3) {
-  //     chart3.destroy();
-  //   }
-
-  //   console.log("Iniciando a plotagem dos gráficos");
-
-  //   let labels = [1, 2, 3, 4];
-
-  //   let dados = {
-  //     labels: labels,
-  //     datasets: [
-  //       {
-  //         label: "Umidade",
-  //         data: [1, 2, 3, 4],
-  //         fill: true,
-  //         borderColor: "blue",
-  //         tension: 1,
-  //         backgroundColor: "green",
-  //       },
-  //     ],
-  //   };
-
-  //   const config = {
-  //     type: "bar",
-  //     data: dados,
-  //   };
-
-  //   chart3 = new Chart(document.getElementById("myChart3"), config);
-  // }
-
-  // function graficoDiarioPlant2() {
-  //   if (chart4) {
-  //     chart4.destroy();
-  //   }
-
-  //   console.log("Iniciando a plotagem dos gráficos");
-
-  //   let labels = [1, 2, 3, 4];
-
-  //   let dados = {
-  //     labels: labels,
-  //     datasets: [
-  //       {
-  //         label: "Umidade",
-  //         data: [1, 2, 3, 4],
-  //         fill: true,
-  //         borderColor: "blue",
-  //         tension: 1,
-  //         backgroundColor: "green",
-  //       },
-  //     ],
-  //   };
-
-  //   const config = {
-  //     type: "line",
-  //     data: dados,
-  //   };
-
-  //   chart4 = new Chart(document.getElementById("myChart4"), config);
-  // }
 </script>
