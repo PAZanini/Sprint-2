@@ -12,8 +12,7 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<!-- <body onload="validarSessao(), listar()"> -->
-  <body>
+<body onload="validarSessao(), listar()">
     <div>
         <div class="container">
             <div class="barrinha">
@@ -21,7 +20,7 @@
                     <img src="../imgs - Home/logoWW.png" alt="WaterWorks">
                     <h1>ater Works</h1>
                 </div>
-                <span>Empresa</span>
+                <span id="b_empresa">Empresa</span>
                 <span id="b_usuario">Funcionário</span>
                 <div class="user">
                     <img src="../imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt="">
@@ -45,10 +44,10 @@
                             <i><img src="../imgs - Home/icons/calendario-com-a-palavra-dia.png" alt=""></i>
 
                             <button onclick="graficoDiario() " class="btnMudarGrafico" id="btnPlant1Grafico1">
-                                Gráfico Atual
+                                Gráfico Umidade Atual
                             </button>
                             <button onclick="graficoDiario2()" class="btnMudarGrafico" style="display: none;" id="btnPlant2Grafico1">
-                                Gráfico Atual 2 
+                                Gráfico Umidade Atual
                             </button>
                         </a>
                     </li>
@@ -56,10 +55,10 @@
                         <a href="#">
                             <i><img src="../imgs - Home/icons/calendario-mensal.png" alt=""></i>
                             <button onclick="graficoMensal()" class="btnMudarGrafico" id="btnPlant1Grafico2">
-                                Gráfico Mensal
+                                Gráfico Média Mensal
                             </button>
                             <button onclick="graficoMensal2()" class="btnMudarGrafico" style="display: none;" id="btnPlant2Grafico2">
-                                Gráfico Mensal 2 
+                                Gráfico Média Mensal
                             </button>
                         </a>
                     </li>
@@ -76,8 +75,8 @@
                 <div class="cards">
                     <div class="card">
                         <div class="container">
-                            <div class="numero">80%</div>
-                            <div class="nome">Umidade Máxima</div>
+                            <div class="numero" id="maiorUmidade"></div>
+                            <div class="nome">Maior Registro do Dia</div>
                         </div>
                         <div class="icone">
                             <img src="../imgs - Home/icons/gotas.png" alt="">
@@ -85,8 +84,8 @@
                     </div>
                     <div class="card">
                         <div class="container">
-                            <div class="numero">60%</div>
-                            <div class="nome">Umidade Mínima</div>
+                            <div class="numero" id="menorUmidade"></div>
+                            <div class="nome">Menor Registro do Dia</div>
                         </div>
                         <div class="icone">
                             <img src="../imgs - Home/icons/gotas.png" alt="">
@@ -94,8 +93,8 @@
                     </div>
                     <div class="card">
                         <div class="container">
-                            <div class="numero">66%</div>
-                            <div class="nome">Média</div>
+                            <div class="numero" id="ultimaUmidade"></div>
+                            <div class="nome">Ultimo Registro</div>
                         </div>
                         <div class="icone">
                             <img src="../imgs - Home/icons/gotas.png" alt="">
@@ -103,11 +102,12 @@
                     </div>
                     <div class="card">
                         <div class="container">
-                            <div class="numero">IDEAL</div>
+                            <div class="numero"><b style="color: #0a8cbf;" id="mensagemStatus"></b></div>
                             <div class="nome">Status</div>
                         </div>
-                        <div class="icone">
-                            <img src="../imgs - Home/icons/simbolo-correto.png" alt="">
+                        <div class="icone" id="imgStatus">
+                            <img src="../imgs - Home/icons/simbolo-correto.png" alt="" >
+                            
                         </div>
                     </div>
                 </div>
@@ -116,12 +116,14 @@
                         <section id="plantacao1" style="display: none">
                             <div id="graficoMensalPlant1">
                                 <div class="grafico">
+                                    <h2>Monitoramento de Umidade de Solo em Tempo Real</h2>
                                     <canvas id="myChart"></canvas>
                                 </div>
                             </div>
 
                             <div id="graficoDiarioPlant1" style="display: none">
                                 <div class="grafico">
+                                    <h2>Histórico de Média de Umidade de Solo dos Últimos Meses</h2>
                                     <canvas id="myChart2"></canvas>
                                 </div>
                             </div>
@@ -130,6 +132,7 @@
                         <section id="plantacao2" style="display: none">
                             <div id="graficoMensalPlant2">
                                 <div class="grafico">
+                                    <h2>Gráfico de Monitoramento de Umidade de Solo em Tempo Real</h2>
                                     <canvas id="myChart3"></canvas>
                                 </div>
                             </div>
@@ -142,7 +145,8 @@
                     </div>
                     <div class="grafico" id="popUpAlerta">
                           <h2>Alertas</h2>
-                          <div id="div_alerta"></div>
+                          <div id="div_alerta" style="display: none;"></div>
+                          <b>Umidade Máxima: 80% | Umidade Mínima: 60%</b>
                     </div>
                 </div>
             </div>
@@ -206,10 +210,10 @@
     div_alerta.innerHTML = `
         <img
           src="../imagens/alerta.png"
-          style="height: 30px; width: 30px"
+          style="height: 60px; width: 60px"
           alt=""
         />
-        <p id="p_sit">Umidade Alta</p>
+        <p id="p_sit" style ="font-size: 40px;">Umidade Alta</p>
         <button id="btn_alerta" onclick="destroier_of_alerts()">OK</button>`;
 
     fetch("/usuarios/alertar_umi", {
@@ -244,7 +248,7 @@
     div_alerta.innerHTML = `
         <img
           src="../imagens/alerta.png"
-          style="height: 30px; width: 30px"
+          style="height: 60px; width: 60px"
           alt=""
         />
         <p id="p_sit">Umidade Baixa</p>
@@ -322,16 +326,15 @@
     document.getElementById("graficoDiarioPlant2").style.display = "none";
   }
 
-
   var ctx = new Chart(document.getElementById("myChart"), {
     type: "line",
     data: {
       labels: dtHora,
       datasets: [
         {
-          label: "#Atual 1",
+          label: "Umidade",
           data: umidade,
-          borderWidth: 1,
+          borderWidth: 3,
         },
       ],
     },
@@ -350,7 +353,7 @@
       labels: mes,
       datasets: [
         {
-          label: "#Mensal 1",
+          label: "Umidade",
           data: valor_mes,
           borderWidth: 1,
         },
@@ -371,7 +374,7 @@
       labels: dtHora2,
       datasets: [
         {
-          label: "#Atual 2",
+          label: "Umidade",
           data: umidade2,
           borderWidth: 1,
         },
@@ -392,7 +395,7 @@
       labels: mes2,
       datasets: [
         {
-          label: "#Mensal 2",
+          label: "Umidade",
           data: valor_mes2,
           borderWidth: 1,
         },
@@ -468,13 +471,42 @@
             var ultima_posicao = umidade[0];
             if (ultima_posicao > 80) {
               alertar_umi();
+              imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`
+              mensagemStatus.innerHTML = `<b style="color: red;" id="status">INAPROPRIADO</b>`
             } else if (ultima_posicao < 60) {
               alertar_desumi();
+              imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`
+              mensagemStatus.innerHTML = `<b style="color: red;" id="status">INAPROPRIADO</b>`
+            } else {
+              imgStatus.innerHTML = `<img src="../imgs - Home/icons/simbolo-correto.png" alt="" >`
+              mensagemStatus.innerHTML = `<b style="color: #0a8cbf;" id="status">IDEAL</b>`
             }
             var umidadeReversa = umidade.reverse();
             var dtHoraReversa = dtHora.reverse();
 
-            
+              ultimaUmidade.innerHTML = `${ultima_posicao}%`
+
+              var menorMenor = umidade[umidade.length - 1]
+              var maiorMaior = umidade[umidade.length - 1]
+
+              for (i = 0; i <= umidade.length - 1; i++) {
+                if (umidade[i] > maiorMaior) {
+                  maiorMaior = umidade[i]
+                  maiorUmidade.innerHTML = `${maiorMaior}%`
+                } else {
+                  maiorUmidade.innerHTML = `${maiorMaior}%`
+                }
+
+                if (umidade[i] < menorMenor) {
+                  menorMenor = umidade[i]
+                  menorUmidade.innerHTML = `${menorMenor}%`
+                } else {
+                  menorUmidade.innerHTML = `${menorMenor}%`
+                }
+              }
+
+              
+
               ctx.data.datasets[0].data = umidadeReversa;
               ctx.data.labels = dtHoraReversa;
               ctx.update();
@@ -535,13 +567,38 @@
             var ultima_posicao = umidade2[0];
             if (ultima_posicao > 80) {
               alertar_umi();
+              imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`
             } else if (ultima_posicao < 60) {
               alertar_desumi();
+              imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`
+            } else {
+              imgStatus.innerHTML = `<img src="../imgs - Home/icons/simbolo-correto.png" alt="" >`
             }
             var umidadeReversa2 = umidade2.reverse();
             var dtHoraReversa2 = dtHora2.reverse();
 
-            
+
+            ultimaUmidade.innerHTML = `${ultima_posicao}%`
+
+            var menorMenor = umidade2[umidade2.length - 1]
+            var maiorMaior = umidade2[umidade2.length - 1]
+
+              for (i = 0; i <= umidade2.length - 1; i++) {
+                if (umidade2[i] > maiorMaior) {
+                  maiorMaior = umidade2[i]
+                  maiorUmidade.innerHTML = `${maiorMaior}%`
+                } else {
+                  maiorUmidade.innerHTML = `${maiorMaior}%`
+                }
+
+                if (umidade2[i] < menorMenor) {
+                  menorMenor = umidade2[i]
+                  menorUmidade.innerHTML = `${menorMenor}%`
+                } else {
+                  menorUmidade.innerHTML = `${menorMenor}%`
+                }
+              }
+
               ctx3.data.datasets[0].data = umidadeReversa2;
               ctx3.data.labels = dtHoraReversa2;
               ctx3.update();
