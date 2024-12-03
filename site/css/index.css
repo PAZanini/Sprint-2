@@ -152,10 +152,10 @@ header {
         z-index: 2;
         align-items: center;
         justify-content: center;
-        
+
         .um {
             width: 70%;
-            
+
             p {
                 color: #F0F6F5;
                 font-size: 3em;
@@ -577,13 +577,36 @@ header {
             flex-wrap: wrap;
             justify-content: space-around;
 
-                
-                a {
+
+            a {
+                color: #F0F6F5;
+                list-style: none;
+                text-decoration: none;
+
+            }
+        }
+
+        a {
+            text-decoration: none;
+
+
+            .download {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span {
                     color: #F0F6F5;
-                    list-style: none;
-                    text-decoration: none;
 
                 }
+
+                img {
+                    margin-left: 10px;
+                    width: 30px;
+                    height: auto;
+                    cursor: pointer;
+                }
+            }
         }
     }
 
