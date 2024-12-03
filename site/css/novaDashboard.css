@@ -258,3 +258,32 @@
   border-radius: 5px;
   font-weight: 500;
 }
+
+#popUpAlerta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#div_alerta {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 200px;
+  width: 350px;
+  margin-top: 50px;
+  border-radius: 15px;
+  border: solid black 1px;
+}
+
+#div_alerta button {
+  border: solid black 1px;
+  background-color: #0a8cbf;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: 500;
+}

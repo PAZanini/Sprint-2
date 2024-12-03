@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="../imgs - Home/icons/ww icon.png" type="img/png">
 
-    <!-- <script src="../js/sessao.js"></script> -->
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body onload="validarSessao(), listar()">
@@ -139,9 +139,9 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="grafico">
-                        <h2>Gravidade dos Alertas</h2>
-                        
+                    <div class="grafico" id="popUpAlerta">
+                          <h2>Alertas</h2>
+                          <div id="div_alerta"></div>
                     </div>
                 </div>
             </div>
@@ -691,4 +691,4 @@
   }
 
 </script>
-  
+
