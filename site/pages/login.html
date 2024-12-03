@@ -34,7 +34,7 @@
             </div>
 
             <button onclick="entrar()" type="button" id="btn_login">Entrar</button>
-            <button onclick="suporte()" type="button" id="btn_login">Suporte</button>
+            <!-- <button onclick="suporte()" type="button" id="btn_login">Suporte</button> -->
         </form>
        </div>
         
@@ -50,11 +50,32 @@
 
 <script>
     
+//     function suporte() {
+
+// var emailVar = inp_user.value;
+// var senhaVar = inp_senha.value;
+
+// if (emailVar == 'suportewaterworks@gmail.com' && senhaVar == 'Sptech/2024') {
+
+//     window.location='http://localhost:3001';
+
+// } else {
+
+//     alert(`Suporte inválido`);
+
+// }
+
+// }
 
 function entrar() {
 
         var emailVar = inp_user.value;
         var senhaVar = inp_senha.value;
+
+        if (emailVar == 'suportewaterworks@gmail.com' && senhaVar == 'Sptech/2024') {
+
+        window.location='http://localhost:3001';
+        }
 
         if (emailVar == "" || senhaVar == "") {
             alert("(Mensagem de erro para todos os campos em branco)");
@@ -141,22 +162,5 @@ function entrar() {
     container.classList.remove('dark');
     form.classList.remove('dark');
 });
-
-    function suporte() {
-
-        var emailVar = inp_user.value;
-        var senhaVar = inp_senha.value;
-
-        if (emailVar == 'suportewaterworks@gmail.com' && senhaVar == 'Sptech/2024') {
-
-            window.location='http://localhost:3001';
-
-        } else {
-
-            alert(`Suporte inválido`);
-
-        }
-
-    }
 
 </script>
