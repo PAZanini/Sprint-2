@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | WaterWorks</title>
+    <link rel="stylesheet" href="../css/novaDashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="../imgs - Home/icons/ww icon.png" type="img/png">
+
+    <script src="../js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao()">
+
+    <div>
+
+        <div class="container">
+
+            <div class="barrinha">
+                <div class="logo">
+                    <img src="../imgs - Home/logoWW.png" alt="WaterWorks">
+                    <h1>ater Works</h1>
+                </div>
+                <span id="b_empresa">Empresa</span>
+                <span id="b_usuario">Funcionário</span>
+                <div class="user">
+                    <img src="../imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt="">
+                </div>
+            </div>
+
+            <div class="lateral">
+                <ul>
+                    <li>
+                        <a href="#" id="liSelectBtn">
+                            <i><img src="../imgs - Home/icons/plantar.png" alt=""></i> <br>
+                            <select name="" id="listaPlant" onchange="iniciar()">
+                                <option value="1" selected>Plantação 1</option>
+                                <option value="2">Plantação 2</option>
+                            </select>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i><img src="../imgs - Home/icons/calendario-com-a-palavra-dia.png" alt=""></i>
+                            <button  class="btnMudarGrafico">
+                                Gráfico Diário
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i><img src="../imgs - Home/icons/calendario-mensal.png" alt=""></i>
+                            <button  class="btnMudarGrafico">
+                                Gráfico Média Mensal
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://waterworks-help.freshdesk.com/support/home" target="_blank">
+                            <i><img src="../imgs - Home/icons/apoio-suporte.png" alt=""></i>
+                            <button class="btnMudarGrafico">
+                              Abrir Chamado
+                            </button>
+                        </a>
+                    </li>
+                    <button class="btnLateral" onclick="limparSessao()">Logout</button>
+                </ul>
+            </div>
+
+            <div class="menu">
+                <div class="cards">
+                    <div class="card">
+                        <div class="container">
+                            <div class="numero" id="maiorUmidade"></div>
+                            <div class="nome">Maior Registro do Dia</div>
+                        </div>
+                        <div class="icone">
+                            <img src="../imgs - Home/icons/gotas.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="container">
+                            <div class="numero" id="menorUmidade"></div>
+                            <div class="nome">Menor Registro do Dia</div>
+                        </div>
+                        <div class="icone">
+                            <img src="../imgs - Home/icons/gotas.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="container">
+                            <div class="numero" id="ultimaUmidade"></div>
+                            <div class="nome">Ultimo Registro</div>
+                        </div>
+                        <div class="icone">
+                            <img src="../imgs - Home/icons/gotas.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="container">
+                            <div class="numero"><b style="color: #0a8cbf;" id="mensagemStatus"></b></div>
+                            <div class="nome">Status</div>
+                        </div>
+                        <div class="icone" id="imgStatus">
+                            <img src="../imgs - Home/icons/simbolo-correto.png" alt="" >
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart">
+                    <div class="grafico">
+                        <section id="plantacao1" style="display: none">
+                            <div>
+                                <div class="grafico">
+                                    <h2>Monitoramento de Umidade de Solo em Tempo Real</h2>
+                                    <canvas id="graficoDiario"></canvas>
+                                </div>
+                            </div>
+
+                            <div style="display: none">
+                                <div class="grafico">
+                                    <h2>Histórico de Média de Umidade de Solo</h2>
+                                    <canvas id="graficoMedia"></canvas>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="grafico" id="popUpAlerta">
+                          <h2>Alertas</h2>
+                          <div id="div_alerta" style="display: none;"></div>
+                          <b>Umidade Máxima: 80% | Umidade Mínima: 60%</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+
+  function iniciar() {
+    var idEmpresa = sessionStorage.FK_EMPRESA;
+    var idPlant = Number(listaPlant.value)
+
+
+    function umidadeMaxima() {
+
+      fecth("/sensor/umiMax",{
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          idEmpresaBD: idEmpresa,
+          idPlantBD: idPlant
+        })
+      }).then(function(resposta) {
+        if (resposta.ok) {
+          resposta.json().then(json => {
+            maiorUmidade.innerHTML = `${json.max}%`
+          })
+        } else {
+          maiorUmidade.innerHTML = `ERRO :(`
+        }
+      })
+
+    }
+
+    function umidadeMinima() {
+
+    }
+
+    function graficoDiario() {
+
+    }
+
+    function graficoMensal() {
+
+    }
+  }
+
+</script>

@@ -21,7 +21,7 @@
                     <h1>ater Works</h1>
                 </div>
                 <span id="b_empresa">Empresa</span>
-                <span id="b_usuario">Funcionário</span>
+                <span id="b_usuario"><a href="./DashboardV2.html">Funcionário</a></span>
                 <div class="user">
                     <img src="../imgs - Home/icons/imagem-do-usuario-com-fundo-preto.png" alt="">
                 </div>
@@ -274,25 +274,25 @@
   }
 
   function selecionarPlant() {
-        var lista = listaPlant.value;
+    var lista = listaPlant.value;
 
-        if (lista == 1) {
-            document.getElementById("plantacao1").style.display = "flex";
-            document.getElementById("plantacao2").style.display = "none";
-            document.getElementById('btnPlant1Grafico1').style.display = 'block'
-            document.getElementById('btnPlant1Grafico2').style.display = 'block'
-            document.getElementById('btnPlant2Grafico1').style.display = 'none'
-            document.getElementById('btnPlant2Grafico2').style.display = 'none'
-        } else if (lista == 2) {
-            document.getElementById("plantacao1").style.display = "none";
-            document.getElementById("plantacao2").style.display = "flex";
-            document.getElementById('btnPlant1Grafico1').style.display = 'none'
-            document.getElementById('btnPlant1Grafico2').style.display = 'none'
-            document.getElementById('btnPlant2Grafico1').style.display = 'block'
-            document.getElementById('btnPlant2Grafico2').style.display = 'block'
-        }
-
+    if (lista == 1) {
+        document.getElementById("plantacao1").style.display = "flex";
+        document.getElementById("plantacao2").style.display = "none";
+        document.getElementById('btnPlant1Grafico1').style.display = 'block'
+        document.getElementById('btnPlant1Grafico2').style.display = 'block'
+        document.getElementById('btnPlant2Grafico1').style.display = 'none'
+        document.getElementById('btnPlant2Grafico2').style.display = 'none'
+    } else if (lista == 2) {
+      document.getElementById("plantacao1").style.display = "none";
+      document.getElementById("plantacao2").style.display = "flex";
+      document.getElementById('btnPlant1Grafico1').style.display = 'none'
+      document.getElementById('btnPlant1Grafico2').style.display = 'none'
+      document.getElementById('btnPlant2Grafico1').style.display = 'block'
+      document.getElementById('btnPlant2Grafico2').style.display = 'block'
     }
+
+  } 
 
   function plantacao1() {
     document.getElementById("selecionarPlantacao").style.display = "none";
@@ -490,12 +490,6 @@
               var maiorMaior = umidade[umidade.length - 1]
 
               for (i = 0; i <= umidade.length - 1; i++) {
-                if (umidade[i] > maiorMaior) {
-                  maiorMaior = umidade[i]
-                  maiorUmidade.innerHTML = `${maiorMaior}%`
-                } else {
-                  maiorUmidade.innerHTML = `${maiorMaior}%`
-                }
 
                 if (umidade[i] < menorMenor) {
                   menorMenor = umidade[i]
@@ -518,6 +512,7 @@
       .catch((erro) => {
         console.log(erro);
       });
+      buscarMax();
     }
 
     function plotar7() {
@@ -746,6 +741,33 @@
   function atlGrafico() {
     proximaAtualizacao = setInterval(() => plotar(), 3000);
     proximaAtualizacao2 = ''
+  }
+
+  var idEmp = sessionStorage.FK_EMPRESA;
+  
+  function buscarMax() {
+    var idPVar = listaPlant.value;
+
+    fetch("/sensor/umiMax", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idEmpServer: idEmp,
+        idPServer: idPVar,
+      }),
+    }).then(function (resposta) {
+
+      if(resposta.ok) {
+        resposta.json().then(json => {
+          maiorUmidade.innerHTML = `${json.max}%`;
+          })
+      } else {
+        maiorUmidade.innerHTML = `ERRO :(`
+      }
+      
+    })
   }
 
 </script>
