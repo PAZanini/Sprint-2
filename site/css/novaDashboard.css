@@ -194,8 +194,7 @@
   color: red;
 }
 
-
-#graficoMensalPlant1 {
+#divGraficoDiario {
   width: 100%;
   height: 100%;
   display: flex;
@@ -204,25 +203,7 @@
   justify-content: center;
 }
 
-#graficoDiarioPlant1 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#graficoMensalPlant2 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#graficoDiarioPlant2 {
+#divGraficoMensal {
   width: 100%;
   height: 100%;
   display: flex;

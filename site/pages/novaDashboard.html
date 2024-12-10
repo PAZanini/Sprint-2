@@ -427,26 +427,6 @@
   function plotar() {
     var idPLANTACAO = Number(listaPlant.value);
 
-    fetch("/usuarios/plotar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idPLANTACAO: idPLANTACAO,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
     fetch(`/usuarios/plotar`, {
       method: "POST",
       headers: {
@@ -468,39 +448,8 @@
               umidade.push(dados[i].dadoSensor);
               dtHora.push(dados[i].dtRegistro);
             }
-            var ultima_posicao = umidade[0];
-            if (ultima_posicao > 80) {
-              alertar_umi();
-              imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`
-              mensagemStatus.innerHTML = `<b style="color: red;" id="status">INAPROPRIADO</b>`
-            } else if (ultima_posicao < 60) {
-              alertar_desumi();
-              imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`
-              mensagemStatus.innerHTML = `<b style="color: red;" id="status">INAPROPRIADO</b>`
-            } else {
-              imgStatus.innerHTML = `<img src="../imgs - Home/icons/simbolo-correto.png" alt="" >`
-              mensagemStatus.innerHTML = `<b style="color: #0a8cbf;" id="status">IDEAL</b>`
-            }
             var umidadeReversa = umidade.reverse();
             var dtHoraReversa = dtHora.reverse();
-
-              ultimaUmidade.innerHTML = `${ultima_posicao}%`
-
-              var menorMenor = umidade[umidade.length - 1]
-              var maiorMaior = umidade[umidade.length - 1]
-
-              for (i = 0; i <= umidade.length - 1; i++) {
-
-                if (umidade[i] < menorMenor) {
-                  menorMenor = umidade[i]
-                  menorUmidade.innerHTML = `${menorMenor}%`
-                } else {
-                  menorUmidade.innerHTML = `${menorMenor}%`
-                }
-              }
-
-              
-
               ctx.data.datasets[0].data = umidadeReversa;
               ctx.data.labels = dtHoraReversa;
               ctx.update();
@@ -512,7 +461,6 @@
       .catch((erro) => {
         console.log(erro);
       });
-      buscarMax();
     }
 
     function plotar7() {

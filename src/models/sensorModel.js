@@ -1,21 +1,19 @@
 var database = require("../database/config")
 
-function graficoDiario() {
+function graficoDiario(idPLANTACAO) {
     var instrucao = `
-    SELECT p.nome as Plantação, dadoSensor as dadoSensor, dataRegistro AS dtRegistro FROM plantacao as p JOIN sensor on fkPlantacao = idPLANTACAO 
+    SELECT p.nome as Plantação, dadoSensor as dadoSensor, HOUR(dataRegistro) AS dtRegistro FROM plantacao as p JOIN sensor on fkPlantacao = idPLANTACAO 
 	JOIN registro as dados on fkSensor = idSensor 
-    WHERE idPLANTACAO = ${idPlant} and date(dataRegistro) = curdate() order by dataRegistro DESC limit 5;`
+    WHERE idPLANTACAO = ${idPLANTACAO} and date(dataRegistro) = curdate() order by dataRegistro DESC limit 24;`
 
     console.log("Executando a instrução SQL (gráfico diário): \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function graficoMensal() {
+function graficoMensal(idPLANTACAO) {
     var instrucao = `
-    SELECT Mes, AVG(dadoSensor) AS media_valor
-    FROM vw_mes2 where year(dataRegistro) = year(curdate())
-    GROUP BY Mes 
-    ORDER BY FIELD(Mes, 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');`
+    SELECT Mes, AVG(dadoSensor) AS media_valo FROM vw_mes WHERE YEAR(dataRegistro) = YEAR(CURDATE()) AND idPLANTACAO = ${idPLANTACAO} 
+    GROUP BY Mes, mes_num ORDER BY mes_num; `
 
     console.log("Executando a instrução SQL (gráfico mensal): \n" + instrucao);
     return database.executar(instrucao);
@@ -52,5 +50,5 @@ module.exports = {
     graficoDiario,
     graficoMensal,
     umiMax,
-    umiMin
+    umiMin,
 }
