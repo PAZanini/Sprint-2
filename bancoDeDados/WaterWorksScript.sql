@@ -174,3 +174,4 @@ LEFT JOIN
 
     SELECT * FROM viewalerta;
     SELECT * FROM viewgeral;
+
