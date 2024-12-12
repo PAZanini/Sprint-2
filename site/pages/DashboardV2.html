@@ -64,8 +64,6 @@
                 <button class="btnMudarGrafico" onclick="setGraficoMensal()">
                   Gráfico Média Mensal
                 </button>
-
-                <button onclick="alertar_umi()">Apertar</button>
               </a>
             </li>
             <li>
@@ -357,11 +355,14 @@
             if (umidade[umidade.length - 1] > 80) {
               alertar_umi();
               imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`;
+              mensagemStatus.innerHTML = `<span style="color: red; font-size: 30px;">Inapropriado</span>`
             } else if (umidade[umidade.length - 1] < 60) {
               alertar_desumi();
               imgStatus.innerHTML = `<img src="../imgs - Home/icons/cancelar-marca.png" alt="" >`;
+              mensagemStatus.innerHTML = `<span style="color: red; font-size: 30px;">Inapropriado</span>`
             } else {
               imgStatus.innerHTML = `<img src="../imgs - Home/icons/simbolo-correto.png" alt="" >`;
+              mensagemStatus.innerHTML = `Apropriado`
             }
           })
           .catch((erro) => {
